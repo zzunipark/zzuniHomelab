@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as s from "./style";
+import { LanguageContext } from "../../Context/LanguageContext";
 
-const Footerbar = ({ language }) => {
+const Footerbar = () => {
 	const navigate = useNavigate();
+	const { language } = useContext(LanguageContext);
 
 	const DisclaimerItems =
 		language === "Korean"

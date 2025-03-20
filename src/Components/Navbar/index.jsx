@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as s from "./style";
+import { LanguageContext } from "../../Context/LanguageContext";
 
-const Navbar = ({ language, toggleLanguage }) => {
+const Navbar = () => {
 	const navigate = useNavigate();
+	const { language, toggleLanguage } = useContext(LanguageContext);
 	const [mobileNavOpen, setMobileNavOpen] = useState(false);
 	const [showMobileNav, setShowMobileNav] = useState(false);
 
@@ -22,7 +24,7 @@ const Navbar = ({ language, toggleLanguage }) => {
 			: [
 					{ title: "About Us", route: "/about-us" },
 					{ title: "Projects", route: "/projects" },
-					{ title: "Contact Us", route: "/contact" },
+					{ title: "Status", route: "/status" },
 					{ title: "Blog", route: "/blog" },
 			  ];
 
@@ -41,7 +43,7 @@ const Navbar = ({ language, toggleLanguage }) => {
 	return (
 		<>
 			<s.MainNavbar>
-				<s.LogoBox />
+				<s.LogoBox onClick={() => navigate("/")} />
 				<s.Navigator>
 					{navItems.map((item, index) => (
 						<s.NavigatorText
@@ -57,11 +59,7 @@ const Navbar = ({ language, toggleLanguage }) => {
 					<s.Globe onClick={toggleLanguage} />
 					<s.HamburgerIcon
 						onClick={() => {
-							if (mobileNavOpen) {
-								closeMobileNav();
-							} else {
-								openMobileNav();
-							}
+							mobileNavOpen ? closeMobileNav() : openMobileNav();
 						}}
 					>
 						<s.HamburgerLine />

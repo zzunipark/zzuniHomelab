@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../../Components/Navbar";
+import { LanguageContext } from "../../Context/LanguageContext";
 
-const AboutusPage = ({ language, toggleLanguage }) => {
+const AboutusPage = () => {
+	const { language } = useContext(LanguageContext);
+
 	return (
 		<>
-			<Navbar language={language} toggleLanguage={toggleLanguage} />
+			<Navbar />
 			{language === "Korean" ? (
 				<p>소개 내용 (한국어)</p>
 			) : (

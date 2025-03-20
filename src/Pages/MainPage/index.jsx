@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import * as s from "./style";
 import { CountUpStyle } from "./style";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
 import BackgroundVideoKO from "../../Assets/videos/zzuniHomelab_KO.mp4";
 import BackgroundVideoEN from "../../Assets/videos/zzuniHomelab_EN.mp4";
+import { LanguageContext } from "../../Context/LanguageContext";
 
 function useHasBeenVisible(ref, rootMargin = "0px") {
 	const [hasBeenVisible, setHasBeenVisible] = useState(false);
@@ -53,12 +54,7 @@ const CountUp = ({ end, duration, suffix = "", prefix = "", animate }) => {
 };
 
 const MainPage = () => {
-	const [language, setLanguage] = useState("Korean");
-	const toggleLanguage = () => {
-		setLanguage((prevLanguage) =>
-			prevLanguage === "Korean" ? "English" : "Korean"
-		);
-	};
+	const { language } = useContext(LanguageContext);
 
 	const handleVideoClick = (e) => {
 		e.currentTarget.paused
@@ -80,7 +76,7 @@ const MainPage = () => {
 
 	return (
 		<>
-			<Navbar language={language} toggleLanguage={toggleLanguage} />
+			<Navbar />
 			{language === "Korean" ? (
 				<>
 					<s.MainContainer>
@@ -222,10 +218,7 @@ const MainPage = () => {
 							</s.SubContainer3SectionDescription>
 						</s.SubContainer3Section>
 					</s.SubContainer3>
-					<Footerbar
-						language={language}
-						toggleLanguage={toggleLanguage}
-					/>
+					<Footerbar />
 				</>
 			) : (
 				<>
@@ -370,10 +363,7 @@ const MainPage = () => {
 							</s.SubContainer3SectionDescription>
 						</s.SubContainer3Section>
 					</s.SubContainer3>
-					<Footerbar
-						language={language}
-						toggleLanguage={toggleLanguage}
-					/>
+					<Footerbar />
 				</>
 			)}
 		</>
