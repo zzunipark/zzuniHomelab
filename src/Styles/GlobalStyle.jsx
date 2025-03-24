@@ -81,15 +81,6 @@ const GlobalStyle = createGlobalStyle`
     url('../../public/fonts/woff2/Pretendard-Thin.woff2') format('woff2'),
     url('../../public/fonts/woff/Pretendard-Thin.woff') format('woff');
 }
-
-@font-face {
-  font-family: 'Noto-Sans';
-  font-weight: 800;
-  font-display: swap;
-  src: local('NotoSans-ExtraBold'),
-    url('../../public/fonts/ttf/NotoSans-ExtraBold.ttf') format('ttf');
-}
-
 * {
   padding: 0;
   margin: 0;

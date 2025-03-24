@@ -30,7 +30,7 @@ const Footerbar = () => {
 		<s.FooterContainer>
 			<s.FooterTop>
 				<s.FooterTopSection>
-					<s.LogoBox />
+					<s.LogoBox onClick={() => navigate("/")} />
 					<s.Navigator>
 						{DisclaimerItems.map((item, index) => (
 							<s.NavigatorText

@@ -28,6 +28,11 @@ const Navbar = () => {
 					{ title: "Blog", route: "/blog" },
 			  ];
 
+	const refuseEmailText =
+		language === "Korean"
+			? "이메일 무단수집 거부"
+			: "Unauthorized Email Collection Refusal";
+
 	const openMobileNav = () => {
 		setMobileNavOpen(true);
 		setShowMobileNav(true);
@@ -90,6 +95,13 @@ const Navbar = () => {
 						</s.MobileNavMenu>
 						<s.MobileNavContact>
 							<div>me@zzunipark.com</div>
+							<s.RefuseEmailButton
+								onClick={() =>
+									navigate("/refuse-email-collection")
+								}
+							>
+								{refuseEmailText}
+							</s.RefuseEmailButton>
 						</s.MobileNavContact>
 					</s.MobileNavContent>
 				</s.MobileNavOverlay>
