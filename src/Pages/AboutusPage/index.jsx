@@ -5,14 +5,30 @@ import * as s from "./style";
 import { LanguageContext } from "../../Context/LanguageContext";
 import VisionenPng from "../../Assets/images/png/vision_en.png";
 import VisionkoPng from "../../Assets/images/png/vision_ko.png";
+import Image1Jpg from "../../Assets/images/jpg/1.jpg";
+import Image2Jpg from "../../Assets/images/jpg/2.jpg";
+import Image3Jpg from "../../Assets/images/jpg/3.jpg";
+import Image4Jpg from "../../Assets/images/jpg/4.jpg";
+import Image5Jpg from "../../Assets/images/jpg/5.jpg";
+import Image6Jpg from "../../Assets/images/jpg/6.jpg";
 
 const AboutusPage = () => {
 	const { language } = useContext(LanguageContext);
 	const [activeTab, setActiveTab] = useState("greeting");
+	const [modalImage, setModalImage] = useState(null);
 
 	const handleTabClick = (tab) => {
 		setActiveTab(tab);
 	};
+
+	const galleryImages = [
+		Image1Jpg,
+		Image2Jpg,
+		Image3Jpg,
+		Image4Jpg,
+		Image5Jpg,
+		Image6Jpg,
+	];
 
 	const historyData = [
 		{
@@ -185,6 +201,12 @@ const AboutusPage = () => {
 						>
 							연혁
 						</s.TabItem>
+						<s.TabItem
+							active={activeTab === "gallery"}
+							onClick={() => handleTabClick("gallery")}
+						>
+							갤러리
+						</s.TabItem>
 					</s.TabContainer>
 					{activeTab === "greeting" && (
 						<s.GreetingContainer>
@@ -287,6 +309,26 @@ const AboutusPage = () => {
 							</s.HistoryTimeline>
 						</s.HistoryContainer>
 					)}
+					{activeTab === "gallery" && (
+						<s.GalleryContainer>
+							<s.GalleryTitle>
+								{language === "Korean" ? "갤러리" : "Gallery"}
+							</s.GalleryTitle>
+							<s.GalleryGrid>
+								{galleryImages.map((src, index) => (
+									<s.GalleryItem
+										key={index}
+										onClick={() => setModalImage(src)}
+									>
+										<s.GalleryImg
+											src={src}
+											alt={`gallery-${index}`}
+										/>
+									</s.GalleryItem>
+								))}
+							</s.GalleryGrid>
+						</s.GalleryContainer>
+					)}
 				</>
 			)}
 			{language === "English" && (
@@ -317,6 +359,12 @@ const AboutusPage = () => {
 							onClick={() => handleTabClick("history")}
 						>
 							History
+						</s.TabItem>
+						<s.TabItem
+							active={activeTab === "gallery"}
+							onClick={() => handleTabClick("gallery")}
+						>
+							Gallery
 						</s.TabItem>
 					</s.TabContainer>
 					{activeTab === "greeting" && (
@@ -425,7 +473,34 @@ const AboutusPage = () => {
 							</s.HistoryTimeline>
 						</s.HistoryContainer>
 					)}
+					{activeTab === "gallery" && (
+						<s.GalleryContainer>
+							<s.GalleryTitle>
+								{language === "Korean" ? "갤러리" : "Gallery"}
+							</s.GalleryTitle>
+							<s.GalleryGrid>
+								{galleryImages.map((src, index) => (
+									<s.GalleryItem
+										key={index}
+										onClick={() => setModalImage(src)}
+									>
+										<s.GalleryImg
+											src={src}
+											alt={`gallery-${index}`}
+										/>
+									</s.GalleryItem>
+								))}
+							</s.GalleryGrid>
+						</s.GalleryContainer>
+					)}
 				</>
+			)}
+			{modalImage && (
+				<s.ModalOverlay onClick={() => setModalImage(null)}>
+					<s.ModalContent onClick={(e) => e.stopPropagation()}>
+						<s.ModalImg src={modalImage} alt="Modal" />
+					</s.ModalContent>
+				</s.ModalOverlay>
 			)}
 			<Footerbar />
 		</>

@@ -157,6 +157,7 @@ export const MobileNavContent = styled.div`
 	flex-direction: column;
 	padding: 20px;
 	box-sizing: border-box;
+	z-index: 1000;
 `;
 
 export const MobileNavClose = styled.div`
@@ -166,12 +167,14 @@ export const MobileNavClose = styled.div`
 	align-self: flex-end;
 	cursor: pointer;
 	margin-top: 30px;
+	z-index: 1000;
 `;
 
 export const MobileNavMenu = styled.div`
 	margin-top: 40px;
 	display: flex;
 	flex-direction: column;
+	z-index: 1000;
 `;
 
 export const MobileNavItem = styled.div`
@@ -183,6 +186,7 @@ export const MobileNavItem = styled.div`
 	&:hover {
 		opacity: 0.7;
 	}
+	z-index: 1000;
 `;
 
 export const MobileNavContact = styled.div`
@@ -192,6 +196,7 @@ export const MobileNavContact = styled.div`
 	font-size: 14px;
 	color: #171717;
 	line-height: 1.6;
+	z-index: 1000;
 `;
 
 export const RefuseEmailButton = styled.div``;

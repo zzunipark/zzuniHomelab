@@ -89,6 +89,15 @@ export const TabItem = styled.div`
 	&:hover {
 		color: #171717;
 	}
+
+	@media (max-width: 768px) {
+		margin: 0 0.7rem;
+		font-size: 16px;
+	}
+
+	@media (max-width: 480px) {
+		font-size: 14px;
+	}
 `;
 
 export const GreetingContainer = styled.div`
@@ -258,7 +267,6 @@ export const HistoryTimeline = styled.div`
 		width: 2px;
 		height: 100%;
 		background: #171717;
-
 		@media (max-width: 920px) {
 			display: none;
 		}
@@ -279,7 +287,6 @@ export const HistoryItem = styled.div`
 	&:nth-child(even) {
 		animation-delay: 0.2s;
 	}
-
 	@media (max-width: 920px) {
 		transform: none;
 		padding: 0 2rem;
@@ -298,7 +305,6 @@ export const HistoryMarker = styled.div`
 	align-items: center;
 	justify-content: center;
 	z-index: 1;
-
 	@media (max-width: 920px) {
 		display: none;
 	}
@@ -334,4 +340,77 @@ export const HistoryDesc = styled.div`
 	font-size: 16px;
 	color: #333;
 	line-height: 1.4;
+`;
+
+export const GalleryContainer = styled.div`
+	padding: 2rem 5rem;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
+export const GalleryTitle = styled.div`
+	font-size: 48px;
+	font-weight: 700;
+	color: #171717;
+	margin-bottom: 2rem;
+`;
+
+export const GalleryGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+	width: 100%;
+	max-width: 800px;
+
+	@media (max-width: 768px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: 480px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+`;
+
+export const GalleryItem = styled.div`
+	cursor: pointer;
+	overflow: hidden;
+	border-radius: 8px;
+	&:hover img {
+		transform: scale(1.1);
+		transition: transform 0.3s;
+	}
+`;
+
+export const GalleryImg = styled.img`
+	width: 100%;
+	height: auto;
+	display: block;
+`;
+
+export const ModalOverlay = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 999;
+`;
+
+export const ModalContent = styled.div`
+	position: relative;
+	max-width: 90%;
+	max-height: 90%;
+`;
+
+export const ModalImg = styled.img`
+	width: 100%;
+	height: auto;
+	display: block;
+	border-radius: 8px;
 `;

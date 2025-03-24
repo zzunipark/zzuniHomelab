@@ -25,21 +25,31 @@ export const MainContainer = styled.div`
 	height: 35vh;
 `;
 
-export const MainContainerTitle = styled.h1`
-	font-size: 2.5rem;
-	color: white;
-	font-weight: bold;
+export const MainContainerTitle = styled.div`
+	font-size: 56px;
+	font-weight: 700;
+	color: #ededed;
 	text-align: center;
-	margin-bottom: 10px;
+	opacity: 0;
+	transform: translateY(20px);
 	animation: ${fadeIn} 1s ease-out forwards;
+	@media (max-width: 768px) {
+		font-size: 42px;
+	}
 `;
 
-export const MainContainerSubTitle = styled.p`
-	font-size: 1.2rem;
-	color: white;
+export const MainContainerSubTitle = styled.div`
+	font-size: 26px;
+	font-weight: 500;
+	color: #ededed;
+	margin-top: 5px;
 	text-align: center;
-	max-width: 80%;
+	opacity: 0;
+	transform: translateY(20px);
 	animation: ${fadeIn} 1s ease-out forwards;
+	@media (max-width: 768px) {
+		font-size: 20px;
+	}
 `;
 
 export const SubContainer1 = styled.div`
