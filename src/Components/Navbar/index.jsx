@@ -10,7 +10,7 @@ const Navbar = () => {
 	const [showMobileNav, setShowMobileNav] = useState(false);
 
 	const goToStatus = () => {
-		window.location.href = "https://zzunilabs.statuspage.io/";
+		window.location.href = "#";
 	};
 
 	const navItems =
