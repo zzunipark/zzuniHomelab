@@ -165,6 +165,7 @@ export const MobileNavClose = styled.div`
 	color: #171717;
 	align-self: flex-end;
 	cursor: pointer;
+	margin-top: 30px;
 `;
 
 export const MobileNavMenu = styled.div`
