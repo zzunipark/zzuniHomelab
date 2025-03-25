@@ -171,7 +171,6 @@ export const MobileNavClose = styled.div`
 `;
 
 export const MobileNavMenu = styled.div`
-	margin-top: 40px;
 	display: flex;
 	flex-direction: column;
 	z-index: 1000;
