@@ -59,8 +59,8 @@ const serverData = [
 		name: "HypervisorSV",
 		cpu: "AMD Ryzen 5 5500GT @ 3.6GHz",
 		memory: "DDR4-3200 64GB",
-		storage: "PCIe 4.0 256GB NVMe",
-		network: "Intel X520-DA2 / 10Gbps x 2",
+		storage: "Gen4 256GB NVMe",
+		network: "Intel X520-DA2 / 10Gbps x 2 LACP",
 		os: "Proxmox VE 8.2",
 	},
 	{
@@ -68,7 +68,7 @@ const serverData = [
 		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
 		memory: "DDR4-3200 40GB",
 		storage:
-			"2TB SATA HDD x 8 + PCIe 4.0 512GB NVMe x 2 + PCIe 4.0 256GB NVMe x 2 + PCIe 3.0 128GB NVMe",
+			"2TB SATA HDD x 8 + Gen4 512GB NVMe x 2 + Gen4 256GB NVMe x 2 + Gen 3 128GB NVMe",
 		network: "Intel X520-DA2 / 10Gbps x 2 LACP",
 		os: "TrueNAS Scale 24.10",
 	},
@@ -77,7 +77,7 @@ const serverData = [
 		cpu: "Intel Processor N100 @ 3.4GHz",
 		memory: "DDR4-3200 8GB",
 		storage: "16TB SATA HDD",
-		network: "RTL8125 / 2.5Gbps x 2 LACP",
+		network: "RTL8125 / 2.5Gbps x 2",
 		os: "Ubuntu Server 22.04",
 	},
 	{
@@ -101,8 +101,32 @@ const serverData = [
 		cpu: "Intel Xeon E3-1220 v2 @ 3.1GHz",
 		memory: "DDR3-1600 16GB",
 		storage: "128GB SATA SSD",
-		network: "X520-DA2 / 10Gbps x 1",
+		network: "Embedded BCM5716 / 1Gbps x 1",
 		os: "Rocky 9.5",
+	},
+	{
+		name: "Synology DS720+",
+		cpu: "Intel Celeron J4125 @ 2.0GHz",
+		memory: "DDR4-2666 18GB",
+		storage: "4TB SATA HDD x 2 + Gen3 128GB NVMe x 2",
+		network: "RTL8156 / 2.5Gbps x 1",
+		os: "DSM 7.2.2",
+	},
+	{
+		name: "Mac Mini M1",
+		cpu: "Apple Silicon M1 @ 3.2GHz",
+		memory: "LPDDR4X-2133 8GB",
+		storage: "Gen 3 256GB NVMe",
+		network: "AQC107 / 10Gbps x 1",
+		os: "MacOS Sequoia",
+	},
+	{
+		name: "NutSV",
+		cpu: "Intel Celeron J4025 @ 2.0GHz",
+		memory: "DDR4-2666 8GB",
+		storage: "128GB SATA SSD",
+		network: "RTL8156 / 2.5Gbps x 1",
+		os: "Ubuntu Server 22.04",
 	},
 ];
 
