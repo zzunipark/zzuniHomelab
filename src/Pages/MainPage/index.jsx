@@ -3,8 +3,8 @@ import * as s from "./style";
 import { CountUpStyle } from "./style";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
-import BackgroundVideoKO from "../../Assets/videos/zzuniHomelab_KO.mp4";
-import BackgroundVideoEN from "../../Assets/videos/zzuniHomelab_EN.mp4";
+import BackgroundVideoKO from "../../Assets/videos/zzuniHomelab_KO.webm";
+import BackgroundVideoEN from "../../Assets/videos/zzuniHomelab_EN.webm";
 import { LanguageContext } from "../../Context/LanguageContext";
 
 function useHasBeenVisible(ref, rootMargin = "0px") {
@@ -89,7 +89,7 @@ const MainPage = () => {
 							onClick={handleVideoClick}
 							playsInline
 						>
-							<source src={BackgroundVideoKO} type="video/mp4" />
+							<source src={BackgroundVideoKO} type="video/webm" />
 							귀하의 브라우저는 영상 재생 기능을 지원하지
 							않습니다. 다른 브라우저로 시도하세요.
 						</video>
@@ -232,7 +232,7 @@ const MainPage = () => {
 							onClick={handleVideoClick}
 							playsInline
 						>
-							<source src={BackgroundVideoEN} type="video/mp4" />
+							<source src={BackgroundVideoEN} type="video/webm" />
 							Your browser does not support video playback. Please
 							try another browser.
 						</video>
