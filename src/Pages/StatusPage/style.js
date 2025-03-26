@@ -101,6 +101,7 @@ export const SubContainer1Item = styled.div`
 	align-items: center;
 	justify-content: center;
 	transition: background-color 0.3s ease-in-out;
+	text-align: center;
 	&:hover {
 		background-color: #444444;
 	}
