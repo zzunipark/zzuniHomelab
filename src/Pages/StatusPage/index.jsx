@@ -94,7 +94,7 @@ const serverData = [
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		storage: "250GB SATA SSD + 1TB SATA HDD",
 		network: "X520-DA2 / 10Gbps x 1",
-		os: "Ubuntu Server 24.04",
+		os: "Ubuntu Server 22.04",
 	},
 	{
 		name: "RockySV",
