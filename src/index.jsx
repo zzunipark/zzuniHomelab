@@ -14,6 +14,7 @@ const BlogPage = lazy(() => import("./Pages/BlogPage"));
 const RefuseEmailCollectionPage = lazy(() =>
 	import("./Pages/RefuseEmailCollectionPage")
 );
+const NotFoundPage = lazy(() => import("./Pages/NotFoundPage"));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -33,6 +34,7 @@ root.render(
 						path="/refuse-email-collection"
 						element={<RefuseEmailCollectionPage />}
 					/>
+					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
 			</Suspense>
 		</LanguageProvider>
