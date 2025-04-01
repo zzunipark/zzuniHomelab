@@ -10,6 +10,7 @@ const MainPage = lazy(() => import("./Pages/MainPage"));
 const AboutusPage = lazy(() => import("./Pages/AboutusPage"));
 const ProjectsPage = lazy(() => import("./Pages/ProjectsPage"));
 const StatusPage = lazy(() => import("./Pages/StatusPage"));
+const BlogPage = lazy(() => import("./Pages/BlogPage"));
 const RefuseEmailCollectionPage = lazy(() =>
 	import("./Pages/RefuseEmailCollectionPage")
 );
@@ -27,6 +28,7 @@ root.render(
 					<Route path="/about-us" element={<AboutusPage />} />
 					<Route path="/projects" element={<ProjectsPage />} />
 					<Route path="/status" element={<StatusPage />} />
+					<Route path="/blog" element={<BlogPage />} />
 					<Route
 						path="/refuse-email-collection"
 						element={<RefuseEmailCollectionPage />}

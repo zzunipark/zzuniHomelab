@@ -56,12 +56,12 @@ const hardwareItemsEN = [
 
 const serverData = [
 	{
-		name: "Hypervisor1SV",
+		name: "HypervisorSV",
 		cpu: "AMD Ryzen 5 5500GT @ 3.6GHz",
 		memory: "DDR4-3200 64GB Non-ECC",
 		storage: "Gen4 256GB NVMe + 500GB SATA SSD x 2",
 		network: "Intel X520-DA2 / 10Gbps x 2 LACP",
-		os: "Proxmox VE 8.2",
+		os: "Proxmox VE 8.3",
 	},
 	{
 		name: "TruenasSV",
@@ -92,7 +92,7 @@ const serverData = [
 		name: "UbuntuSV",
 		cpu: "Intel Xeon E3-1220 v3 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
-		storage: "250GB SATA SSD + 1TB SATA HDD",
+		storage: "250GB SATA SSD",
 		network: "X520-DA2 / 10Gbps x 1",
 		os: "Ubuntu Server 22.04",
 	},
@@ -100,7 +100,7 @@ const serverData = [
 		name: "RockySV",
 		cpu: "Intel Xeon E3-1220 v2 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
-		storage: "480GB SATA SSD + 1TB SATA HDD",
+		storage: "480GB SATA SSD",
 		network: "Embedded BCM5716 / 1Gbps x 1",
 		os: "Rocky 9.5",
 	},
