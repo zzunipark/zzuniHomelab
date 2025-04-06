@@ -97,12 +97,12 @@ const serverData = [
 		os: "Ubuntu Server 22.04",
 	},
 	{
-		name: "RockySV",
+		name: "FOSSTestSV",
 		cpu: "Intel Xeon E3-1220 v2 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		storage: "480GB SATA SSD",
 		network: "Embedded BCM5716 / 1Gbps x 1",
-		os: "Rocky 9.5",
+		os: "Proxmox VE 8.3",
 	},
 	{
 		name: "Synology DS720+",

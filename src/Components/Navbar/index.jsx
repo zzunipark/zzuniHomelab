@@ -10,7 +10,7 @@ const Navbar = () => {
 	const [showMobileNav, setShowMobileNav] = useState(false);
 
 	const goToStatus = () => {
-		window.location.href = "#";
+		window.location.href = "https://status.zzunipark.com";
 	};
 
 	const navItems =
