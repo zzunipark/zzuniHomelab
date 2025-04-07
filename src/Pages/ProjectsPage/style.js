@@ -97,7 +97,7 @@ export const ProjectCard = styled.div`
 
 export const ProjectCardImage = styled.img`
 	width: 100%;
-	height: auto;
+	height: 300px;
 	object-fit: cover;
 `;
 

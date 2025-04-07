@@ -241,7 +241,7 @@ export const VisionImage = styled.img`
 
 export const HistoryContainer = styled.div`
 	width: 100%;
-	padding: 4rem 0;
+	padding: 2rem 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -253,6 +253,7 @@ export const HistoryTitle = styled.div`
 	font-weight: 700;
 	color: #171717;
 	margin-bottom: 3rem;
+	margin-top: 20px;
 `;
 
 export const HistoryTimeline = styled.div`
@@ -351,10 +352,11 @@ export const GalleryContainer = styled.div`
 `;
 
 export const GalleryTitle = styled.div`
-	font-size: 48px;
+	font-size: 56px;
 	font-weight: 700;
 	color: #171717;
 	margin-bottom: 2rem;
+	margin-top: 20px;
 `;
 
 export const GalleryGrid = styled.div`

@@ -26,8 +26,15 @@ export const MainContainer = styled.div`
 	}
 `;
 
-export const Message = styled.div`
-	font-size: 18px;
+export const Title = styled.div`
+	font-size: 38px;
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 5px;
+`;
+
+export const Subtitle = styled.div`
+	font-size: 20px;
 	margin-bottom: 20px;
 	text-align: center;
 `;

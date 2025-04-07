@@ -33,6 +33,8 @@ const BlogPage = () => {
 
 	const countdown = Math.ceil(remainingTime / 1000);
 	const progressPercent = (remainingTime / 5000) * 100;
+	const titleText =
+		language === "Korean" ? "리다이렉트 중..." : "Redirecting...";
 	const messageText =
 		remainingTime > 0
 			? language === "Korean"
@@ -61,7 +63,8 @@ const BlogPage = () => {
 		<s.PageContainer>
 			<Navbar />
 			<s.MainContainer>
-				<s.Message>{messageText}</s.Message>
+				<s.Title>{titleText}</s.Title>
+				<s.Subtitle>{messageText}</s.Subtitle>
 				<s.ProgressBarContainer>
 					<s.ProgressBar progress={progressPercent} />
 				</s.ProgressBarContainer>

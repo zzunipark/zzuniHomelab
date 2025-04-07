@@ -3,6 +3,7 @@ import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
 import { LanguageContext } from "../../Context/LanguageContext";
 import zzunimirrorjpg from "../../Assets/images/jpg/zzunimirror.jpg";
+import zzuniparklogjpg from "../../Assets/images/jpg/zzunipark-log.jpg";
 import { ExternalLink } from "lucide-react";
 import * as s from "./style";
 
@@ -36,13 +37,24 @@ const ProjectsPage = () => {
 		{
 			title: "zzuniMirror",
 			image: zzunimirrorjpg,
-			ratio: 30,
+			ratio: 40,
 			description:
 				language === "Korean"
 					? "오픈 소스 패키지 미러링 서비스"
 					: "Open-Source Package Mirroring Service",
 			link: "https://mirror.zzunipark.com",
 			techStack: ["Nginx", "FTPSync", "Rsync", "Shell Script", "OCI"],
+		},
+		{
+			title: "zzuniPark-log",
+			image: zzuniparklogjpg,
+			ratio: 60,
+			description:
+				language === "Korean"
+					? "배우고 경험한 것을 공유하는 블로그 서비스"
+					: "zzuniPark's Blog Service",
+			link: "https://blog.zzunipark.com",
+			techStack: ["Nginx", "Hextra"],
 		},
 	];
 
