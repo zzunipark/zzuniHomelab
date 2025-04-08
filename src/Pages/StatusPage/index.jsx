@@ -25,7 +25,7 @@ const imageNames = [
 ];
 
 const hardwareItemsKR = [
-	"10Gbps SFP+ 내부 네트워크",
+	"40Gbps QSFP+ 내부 네트워크",
 	"2.5Gbps RJ45 외부 네트워크",
 	"UPS를 통한 전원 백업",
 	"3-2-1 백업 전략 준수",
@@ -40,7 +40,7 @@ const hardwareItemsKR = [
 ];
 
 const hardwareItemsEN = [
-	"10Gbps SFP+ internal network",
+	"40Gbps QSFP+ internal network",
 	"2.5Gbps RJ45 external network",
 	"Power backup via UPS",
 	"Adheres to the 3-2-1 backup strategy",
@@ -60,7 +60,8 @@ const serverData = [
 		cpu: "AMD Ryzen 5 5500GT @ 3.6GHz",
 		memory: "DDR4-3200 64GB Non-ECC",
 		storage: "Gen4 256GB NVMe + 500GB SATA SSD x 2",
-		network: "Intel X520-DA2 / 10Gbps x 2 LACP",
+		network:
+			"Mellanox ConnectX-3 VPI CX354A + RTL8125 + I225-V / 40Gbps x 1 + 10Gbps x 1 + 2.5Gbps x 2",
 		os: "Proxmox VE 8.3",
 	},
 	{
@@ -69,7 +70,7 @@ const serverData = [
 		memory: "DDR4-3200 40GB Non-ECC",
 		storage:
 			"2TB SATA HDD x 8 + Gen4 512GB NVMe x 2 + Gen4 256GB NVMe x 2 + Gen 3 128GB NVMe",
-		network: "Intel X520-DA2 / 10Gbps x 2 LACP",
+		network: "Mellanox ConnectX-3 VPI CX354A / 40Gbps x 1 + 10Gbps x 1",
 		os: "TrueNAS Scale 24.10",
 	},
 	{
@@ -77,7 +78,7 @@ const serverData = [
 		cpu: "Intel Processor N100 @ 3.4GHz",
 		memory: "DDR4-3200 8GB Non-ECC",
 		storage: "16TB SATA HDD",
-		network: "RTL8125 / 2.5Gbps x 2",
+		network: "Realtek RTL8125 + Realtek RTL8152 / 2.5Gbps x 2",
 		os: "Ubuntu Server 22.04",
 	},
 	{
@@ -85,7 +86,7 @@ const serverData = [
 		cpu: "Intel Xeon E3-1270 v3 @ 3.5GHz",
 		memory: "DDR3-1600 32GB ECC-Unbuffered",
 		storage: "250GB SATA SSD + 1TB SATA HDD",
-		network: "X520-DA2 / 10Gbps x 1",
+		network: "Intel X520-DA2 + Broadcom BCM5716 / 10Gbps x 1 + 1Gbps x 1",
 		os: "Windows Server 2022 Datacenter",
 	},
 	{
@@ -93,7 +94,7 @@ const serverData = [
 		cpu: "Intel Xeon E3-1220 v3 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		storage: "250GB SATA SSD",
-		network: "X520-DA2 / 10Gbps x 1",
+		network: "Intel X520-DA2 + Broadcom BCM5716 / 10Gbps x 1 + 1Gbps x 1",
 		os: "Ubuntu Server 22.04",
 	},
 	{
@@ -101,7 +102,7 @@ const serverData = [
 		cpu: "Intel Xeon E3-1220 v2 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		storage: "480GB SATA SSD",
-		network: "Embedded BCM5716 / 1Gbps x 1",
+		network: "Intel X520-DA2 + Broadcom BCM5716 / 10Gbps x 1 + 1Gbps x 1",
 		os: "Proxmox VE 8.3",
 	},
 	{
@@ -109,7 +110,7 @@ const serverData = [
 		cpu: "Intel Celeron J4125 @ 2.0GHz",
 		memory: "DDR4-2666 18GB Non-ECC",
 		storage: "4TB SATA HDD x 2 + Gen3 128GB NVMe x 2",
-		network: "RTL8156 / 2.5Gbps x 1",
+		network: "Realtek RTL8156 / 2.5Gbps x 1",
 		os: "DSM 7.2.2",
 	},
 	{
@@ -117,7 +118,7 @@ const serverData = [
 		cpu: "Apple Silicon M1 @ 3.2GHz",
 		memory: "LPDDR4X-2133 8GB",
 		storage: "Gen 3 256GB NVMe",
-		network: "AQC107 / 10Gbps x 1",
+		network: "Aquantia AQC107 / 10Gbps x 1",
 		os: "MacOS Sequoia",
 	},
 	{
@@ -125,7 +126,7 @@ const serverData = [
 		cpu: "Intel Celeron N2930 @ 1.83GHz",
 		memory: "DDR3L-1333 2GB Non-ECC",
 		storage: "32GB SATA SSD",
-		network: "RTL8111 / 1Gbps x 1",
+		network: "Realtek RTL8111 / 1Gbps x 1",
 		os: "Ubuntu Server 22.04",
 	},
 ];

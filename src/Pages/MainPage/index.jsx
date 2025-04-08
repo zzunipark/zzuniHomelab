@@ -6,6 +6,7 @@ import Footerbar from "../../Components/Footerbar";
 import BackgroundVideoKO from "../../Assets/videos/zzuniHomelab_KO.webm";
 import BackgroundVideoEN from "../../Assets/videos/zzuniHomelab_EN.webm";
 import { LanguageContext } from "../../Context/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 function useHasBeenVisible(ref, rootMargin = "0px") {
 	const [hasBeenVisible, setHasBeenVisible] = useState(false);
@@ -55,11 +56,15 @@ const CountUp = ({ end, duration, suffix = "", prefix = "", animate }) => {
 
 const MainPage = () => {
 	const { language } = useContext(LanguageContext);
-
+	const navigate = useNavigate();
 	const handleVideoClick = (e) => {
 		e.currentTarget.paused
 			? e.currentTarget.play()
 			: e.currentTarget.pause();
+	};
+
+	const GotoAbout = () => {
+		navigate("/about-us");
 	};
 
 	const sub1LeftRef = useRef(null);
@@ -114,8 +119,8 @@ const MainPage = () => {
 							<s.SubContainer1SectionDescription
 								animate={sub1LeftVisible}
 							>
-								10Gbps SFP+ 기반 네트워크, 고성능 가상화, 그리고
-								최적화된 스토리지.
+								최대 40Gbps QSFP+ 기반 네트워크, 고성능 가상화,
+								그리고 최적화된 스토리지.
 								<br />
 								홈랩도 충분히 강력할 수 있음을 실험하고
 								증명합니다.
@@ -125,6 +130,7 @@ const MainPage = () => {
 							</s.SubContainer1SectionDescription>
 							<s.SubContainer1SectionButton
 								animate={sub1LeftVisible}
+								onClick={GotoAbout}
 							>
 								자세히 보기
 							</s.SubContainer1SectionButton>
@@ -158,7 +164,7 @@ const MainPage = () => {
 							<s.StatsContainer>
 								<s.StatsItem>
 									<CountUp
-										end={10}
+										end={40}
 										duration={1000}
 										suffix="Gbps"
 										animate={sub2BottomVisible}
@@ -257,8 +263,9 @@ const MainPage = () => {
 							<s.SubContainer1SectionDescription
 								animate={sub1LeftVisible}
 							>
-								10Gbps SFP+ based network, high-performance
-								virtualization, and optimized storage.
+								Up to 40Gbps QSFP+ based network,
+								high-performance virtualization, and optimized
+								storage.
 								<br />
 								We experiment and prove that a homelab can be
 								powerful enough.
@@ -268,6 +275,7 @@ const MainPage = () => {
 							</s.SubContainer1SectionDescription>
 							<s.SubContainer1SectionButton
 								animate={sub1LeftVisible}
+								onClick={GotoAbout}
 							>
 								Learn More
 							</s.SubContainer1SectionButton>
@@ -301,7 +309,7 @@ const MainPage = () => {
 							<s.StatsContainer>
 								<s.StatsItem>
 									<CountUp
-										end={10}
+										end={40}
 										duration={1000}
 										suffix="Gbps"
 										animate={sub2BottomVisible}

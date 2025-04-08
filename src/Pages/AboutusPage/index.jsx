@@ -109,7 +109,7 @@ const AboutusPage = () => {
 			content:
 				language === "Korean"
 					? "SFP+기반 10Gbps 내부망 네트워크 구축"
-					: "Upgraded to a 10Gbps SFP+ backbone for internal networking",
+					: "Upgraded to a 10Gbps SFP+ link for internal networking",
 		},
 		{
 			year: 2024,
@@ -166,6 +166,14 @@ const AboutusPage = () => {
 				language === "Korean"
 					? "디스크 총 용량 40TB 달성"
 					: "Expanded total disk capacity to 40TB",
+		},
+		{
+			year: 2025,
+			month: "04",
+			content:
+				language === "Korean"
+					? "QSFP+ 기반 40Gbps 내부망 네트워크 구축"
+					: "Upgraded to a 40Gbps QSFP+ link for internal networking",
 		},
 	];
 
