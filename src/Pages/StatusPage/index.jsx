@@ -62,7 +62,7 @@ const serverData = [
 		storage: "Gen4 256GB NVMe + 500GB SATA SSD x 2",
 		network:
 			"Mellanox ConnectX-3 VPI CX354A + RTL8125 + I225-V / 40Gbps x 1 + 10Gbps x 1 + 2.5Gbps x 2",
-		os: "Proxmox VE 8.3",
+		os: "Proxmox VE 8.4",
 	},
 	{
 		name: "TruenasSV",
@@ -82,28 +82,29 @@ const serverData = [
 		os: "Ubuntu Server 22.04",
 	},
 	{
-		name: "WindowsSV",
+		name: "FOSSTestSV",
 		cpu: "Intel Xeon E3-1270 v3 @ 3.5GHz",
 		memory: "DDR3-1600 32GB ECC-Unbuffered",
 		storage: "250GB SATA SSD + 1TB SATA HDD",
+		network:
+			"Intel X520-DA2 + Broadcom BCM5716 / 10Gbps x 2 LACP + 1Gbps x 1",
+		os: "Proxmox VE 8.4",
+	},
+	{
+		name: "WindowsSV",
+		cpu: "Intel Xeon E3-1220 v3 @ 3.1GHz",
+		memory: "DDR3-1600 16GB ECC-Unbuffered",
+		storage: "250GB SATA SSD",
 		network: "Intel X520-DA2 + Broadcom BCM5716 / 10Gbps x 1 + 1Gbps x 1",
 		os: "Windows Server 2022 Datacenter",
 	},
 	{
 		name: "UbuntuSV",
-		cpu: "Intel Xeon E3-1220 v3 @ 3.1GHz",
-		memory: "DDR3-1600 16GB ECC-Unbuffered",
-		storage: "250GB SATA SSD",
-		network: "Intel X520-DA2 + Broadcom BCM5716 / 10Gbps x 1 + 1Gbps x 1",
-		os: "Ubuntu Server 22.04",
-	},
-	{
-		name: "FOSSTestSV",
 		cpu: "Intel Xeon E3-1220 v2 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		storage: "480GB SATA SSD",
 		network: "Intel X520-DA2 + Broadcom BCM5716 / 10Gbps x 1 + 1Gbps x 1",
-		os: "Proxmox VE 8.3",
+		os: "Ubuntu Server 22.04",
 	},
 	{
 		name: "Synology DS720+",
