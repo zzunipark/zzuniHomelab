@@ -303,7 +303,7 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 						</s.ServerSummaryItem>
 						<s.ServerStatus>
 							<s.StatusDot />
-							<s.StatusText>Online</s.StatusText>
+							<s.StatusText>OPERATING</s.StatusText>
 						</s.ServerStatus>
 					</s.ServerCardSummary>
 				</s.ServerCardHeaderContent>
