@@ -1,5 +1,4 @@
 "use client";
-
 import { useContext, useState } from "react";
 import * as s from "./style";
 import Navbar from "../../Components/Navbar";
@@ -172,11 +171,161 @@ const logos = imageNames.reduce((acc, name) => {
 	return acc;
 }, {});
 
-// 드롭다운 서버 카드 컴포넌트
+const calculateServerStats = () => {
+	const totalServers = serverData.length;
+
+	const memoryStats = {
+		DDR3: 0,
+		DDR4: 0,
+		DDR5: 0,
+		LPDDR4X: 0,
+		total: 0,
+	};
+
+	const storageStats = {
+		HDD: 0,
+		"SATA SSD": 0,
+		"NVMe SSD": 0,
+		total: 0,
+	};
+
+	serverData.forEach((server) => {
+		const memoryMatch = server.memory.match(/(\d+)GB/);
+		const memorySize = memoryMatch ? Number.parseInt(memoryMatch[1]) : 0;
+
+		if (server.memory.includes("DDR5")) {
+			memoryStats.DDR5 += memorySize;
+		} else if (server.memory.includes("DDR4")) {
+			memoryStats.DDR4 += memorySize;
+		} else if (server.memory.includes("DDR3")) {
+			memoryStats.DDR3 += memorySize;
+		} else if (server.memory.includes("LPDDR4X")) {
+			memoryStats.LPDDR4X += memorySize;
+		}
+		memoryStats.total += memorySize;
+
+		server.storage.forEach((storageItem) => {
+			const capacityMatch = storageItem.match(/(\d+(?:\.\d+)?)(GB|TB)/i);
+			const multiplierMatch = storageItem.match(/x\s*(\d+)/i);
+
+			if (capacityMatch) {
+				const capacity = Number.parseFloat(capacityMatch[1]);
+				const unit = capacityMatch[2].toUpperCase();
+				const multiplier = multiplierMatch
+					? Number.parseInt(multiplierMatch[1])
+					: 1;
+
+				let capacityInGB = capacity;
+				if (unit === "TB") {
+					capacityInGB = capacity * 1024;
+				}
+
+				const totalCapacity = capacityInGB * multiplier;
+
+				if (storageItem.includes("HDD")) {
+					storageStats.HDD += totalCapacity;
+				} else if (storageItem.includes("NVMe")) {
+					storageStats["NVMe SSD"] += totalCapacity;
+				} else if (storageItem.includes("SSD")) {
+					storageStats["SATA SSD"] += totalCapacity;
+				}
+
+				storageStats.total += totalCapacity;
+			}
+		});
+	});
+
+	return { totalServers, memoryStats, storageStats };
+};
+
+const formatCapacity = (capacityGB) => {
+	if (capacityGB >= 1024) {
+		const capacityTB = capacityGB / 1024;
+		return capacityTB % 1 === 0
+			? `${capacityTB}TB`
+			: `${capacityTB.toFixed(1)}TB`;
+	}
+	return capacityGB % 1 === 0
+		? `${capacityGB}GB`
+		: `${capacityGB.toFixed(1)}GB`;
+};
+
+const ServerStatsOverview = ({ isKorean }) => {
+	const { totalServers, memoryStats, storageStats } = calculateServerStats();
+
+	return (
+		<s.StatsContainer>
+			<s.StatsGrid>
+				<s.StatCard>
+					<s.StatContent>
+						<s.StatLabel>
+							{isKorean ? "총 서버 대수" : "Total Servers"}
+						</s.StatLabel>
+						<s.StatValue>{totalServers}</s.StatValue>
+						<s.StatUnit>{isKorean ? "대" : "units"}</s.StatUnit>
+					</s.StatContent>
+				</s.StatCard>
+
+				<s.StatCard>
+					<s.StatContent>
+						<s.StatLabel>
+							{isKorean ? "총 메모리" : "Total Memory"}
+						</s.StatLabel>
+						<s.StatValue>{memoryStats.total}GB</s.StatValue>
+						<s.StatBreakdown>
+							{memoryStats.DDR5 > 0 && (
+								<span>DDR5: {memoryStats.DDR5}GB</span>
+							)}
+							{memoryStats.DDR4 > 0 && (
+								<span>DDR4: {memoryStats.DDR4}GB</span>
+							)}
+							{memoryStats.DDR3 > 0 && (
+								<span>DDR3: {memoryStats.DDR3}GB</span>
+							)}
+							{memoryStats.LPDDR4X > 0 && (
+								<span>LPDDR4X: {memoryStats.LPDDR4X}GB</span>
+							)}
+						</s.StatBreakdown>
+					</s.StatContent>
+				</s.StatCard>
+
+				<s.StatCard>
+					<s.StatContent>
+						<s.StatLabel>
+							{isKorean ? "총 스토리지" : "Total Storage"}
+						</s.StatLabel>
+						<s.StatValue>
+							{formatCapacity(storageStats.total)}
+						</s.StatValue>
+						<s.StatBreakdown>
+							{storageStats.HDD > 0 && (
+								<span>
+									HDD: {formatCapacity(storageStats.HDD)}
+								</span>
+							)}
+							{storageStats["NVMe SSD"] > 0 && (
+								<span>
+									NVMe:{" "}
+									{formatCapacity(storageStats["NVMe SSD"])}
+								</span>
+							)}
+							{storageStats["SATA SSD"] > 0 && (
+								<span>
+									SATA SSD:{" "}
+									{formatCapacity(storageStats["SATA SSD"])}
+								</span>
+							)}
+						</s.StatBreakdown>
+					</s.StatContent>
+				</s.StatCard>
+			</s.StatsGrid>
+		</s.StatsContainer>
+	);
+};
+
 const DropdownServerCard = ({ server, index, isKorean }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	// 간략한 정보 추출
 	const getServerType = (name) => {
 		if (name.includes("Hypervisor")) return "Hypervisor";
 		if (name.includes("Truenas")) return "Storage";
@@ -202,33 +351,23 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 		if (cpu.includes("Intel Celeron J4125")) return "Intel Celeron J4125";
 		if (cpu.includes("Apple Silicon M1")) return "Apple Silicon M1";
 		if (cpu.includes("Intel Celeron N2930")) return "Intel Celeron N2930";
-		return cpu.split(" @")[0]; // Fallback to CPU name without frequency
+		return cpu.split(" @")[0];
 	};
 
 	const getMemorySize = (memory) => {
 		const sizeMatch = memory.match(/(\d+)GB/);
 		const ddrMatch = memory.match(/(DDR\d+L?|LPDDR\d+X?)/i);
-
 		const size = sizeMatch ? `${sizeMatch[1]}GB` : "RAM";
 		const ddrType = ddrMatch ? ddrMatch[1] : "";
-
 		return ddrType ? `${ddrType} ${size}` : size;
 	};
 
 	const getTotalStorage = (storageArray) => {
-		if (!storageArray || storageArray.length === 0) {
-			return "0GB";
-		}
+		if (!storageArray || storageArray.length === 0) return "0GB";
 
 		let totalGB = 0;
-
 		storageArray.forEach((storageItem) => {
-			// Extract capacity and multiplier from storage string
-			// Examples: "Gen4 NVMe 512GB x 2", "SATA HDD 4TB x 2", "16TB SATA HDD"
-
-			// Match patterns like "512GB", "4TB", etc.
 			const capacityMatch = storageItem.match(/(\d+(?:\.\d+)?)(GB|TB)/i);
-			// Match multiplier patterns like "x 2", "x 10", etc.
 			const multiplierMatch = storageItem.match(/x\s*(\d+)/i);
 
 			if (capacityMatch) {
@@ -238,33 +377,24 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 					? Number.parseInt(multiplierMatch[1])
 					: 1;
 
-				// Convert to GB
 				let capacityInGB = capacity;
 				if (unit === "TB") {
-					capacityInGB = capacity * 1024; // Convert TB to GB
+					capacityInGB = capacity * 1024;
 				}
 
-				// Apply multiplier
 				totalGB += capacityInGB * multiplier;
 			}
 		});
 
-		// Format the result
 		if (totalGB >= 1024) {
 			const totalTB = totalGB / 1024;
-			// If it's a whole number, don't show decimals
-			if (totalTB % 1 === 0) {
-				return `${totalTB}TB`;
-			} else {
-				return `${totalTB.toFixed(1)}TB`;
-			}
+			return totalTB % 1 === 0
+				? `${totalTB}TB`
+				: `${totalTB.toFixed(1)}TB`;
 		} else {
-			// If it's a whole number, don't show decimals
-			if (totalGB % 1 === 0) {
-				return `${totalGB}GB`;
-			} else {
-				return `${totalGB.toFixed(1)}GB`;
-			}
+			return totalGB % 1 === 0
+				? `${totalGB}GB`
+				: `${totalGB.toFixed(1)}GB`;
 		}
 	};
 
@@ -319,7 +449,6 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 					</svg>
 				</s.DropdownIcon>
 			</s.ServerCardHeader>
-
 			<s.ServerCardContent isOpen={isOpen}>
 				<s.ServerCardGrid>
 					<s.ServerCardColumn>
@@ -383,7 +512,6 @@ const StatusPage = () => {
 							zzuniHomelab의 리소스를 확인하세요.
 						</s.MainContainerSubTitle>
 					</s.MainContainer>
-
 					<s.SubContainer1>
 						<s.SubContainer1Items>
 							{hardwareItemsKR.map((item, index) => (
@@ -393,8 +521,8 @@ const StatusPage = () => {
 							))}
 						</s.SubContainer1Items>
 					</s.SubContainer1>
-
 					<s.SubContainer2>
+						<ServerStatsOverview isKorean={true} />
 						<s.ServerSection>
 							{serverData.map((server, index) => (
 								<DropdownServerCard
@@ -406,7 +534,6 @@ const StatusPage = () => {
 							))}
 						</s.ServerSection>
 					</s.SubContainer2>
-
 					<s.SubContainer3>
 						<s.SliderContainer>
 							<s.SliderTrack>
@@ -417,7 +544,6 @@ const StatusPage = () => {
 											<img
 												src={
 													logos[key] ||
-													"/placeholder.svg" ||
 													"/placeholder.svg"
 												}
 												alt={key}
@@ -431,7 +557,6 @@ const StatusPage = () => {
 											<img
 												src={
 													logos[key] ||
-													"/placeholder.svg" ||
 													"/placeholder.svg"
 												}
 												alt={key}
@@ -452,7 +577,6 @@ const StatusPage = () => {
 							Check out zzuniHomelab's computing resources.
 						</s.MainContainerSubTitle>
 					</s.MainContainer>
-
 					<s.SubContainer1>
 						<s.SubContainer1Items>
 							{hardwareItemsEN.map((item, index) => (
@@ -462,8 +586,8 @@ const StatusPage = () => {
 							))}
 						</s.SubContainer1Items>
 					</s.SubContainer1>
-
 					<s.SubContainer2>
+						<ServerStatsOverview isKorean={false} />
 						<s.ServerSection>
 							{serverData.map((server, index) => (
 								<DropdownServerCard
@@ -475,7 +599,6 @@ const StatusPage = () => {
 							))}
 						</s.ServerSection>
 					</s.SubContainer2>
-
 					<s.SubContainer3>
 						<s.SliderContainer>
 							<s.SliderTrack>
@@ -486,7 +609,6 @@ const StatusPage = () => {
 											<img
 												src={
 													logos[key] ||
-													"/placeholder.svg" ||
 													"/placeholder.svg"
 												}
 												alt={key}
@@ -500,7 +622,6 @@ const StatusPage = () => {
 											<img
 												src={
 													logos[key] ||
-													"/placeholder.svg" ||
 													"/placeholder.svg"
 												}
 												alt={key}

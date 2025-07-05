@@ -91,7 +91,6 @@ export const SubContainer1Item = styled.div`
 	text-align: center;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 	border: 1px solid rgba(255, 255, 255, 0.1);
-
 	&:hover {
 		background: linear-gradient(135deg, #2a2a2a 0%, #444444 100%);
 		transform: translateY(-1px);
@@ -106,7 +105,6 @@ export const SubContainer2 = styled.div`
 	flex-direction: column;
 	align-items: center;
 	position: relative;
-
 	&::before {
 		content: "";
 		position: absolute;
@@ -120,6 +118,104 @@ export const SubContainer2 = styled.div`
 			rgba(255, 255, 255, 0.1),
 			transparent
 		);
+	}
+`;
+
+export const StatsContainer = styled.div`
+	max-width: 1200px;
+	width: 100%;
+	margin-bottom: 2rem;
+	opacity: 0;
+	transform: translateY(20px);
+	animation: ${fadeIn} 1s ease-out forwards;
+`;
+
+export const StatsGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	@media (max-width: 1024px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+`;
+
+export const StatCard = styled.div`
+	background: rgba(255, 255, 255, 0.95);
+	border-radius: 8px;
+	padding: 1.25rem;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.8);
+	transition: all 0.2s ease;
+	backdrop-filter: blur(10px);
+
+	&:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	}
+
+	@media (max-width: 768px) {
+		padding: 1rem;
+	}
+`;
+
+export const StatContent = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+`;
+
+export const StatLabel = styled.div`
+	font-size: 12px;
+	font-weight: 500;
+	color: #666;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+	margin-bottom: 0.25rem;
+`;
+
+export const StatValue = styled.div`
+	font-size: 24px;
+	font-weight: 700;
+	color: #171717;
+	line-height: 1;
+	letter-spacing: -0.3px;
+	@media (max-width: 768px) {
+		font-size: 20px;
+	}
+`;
+
+export const StatUnit = styled.div`
+	font-size: 12px;
+	font-weight: 500;
+	color: #888;
+	margin-top: 0.25rem;
+`;
+
+export const StatBreakdown = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	margin-top: 0.5rem;
+
+	span {
+		background: #f1f3f4;
+		color: #5f6368;
+		padding: 0.2rem 0.4rem;
+		border-radius: 4px;
+		font-size: 10px;
+		font-weight: 500;
+		white-space: nowrap;
+	}
+
+	@media (max-width: 768px) {
+		span {
+			font-size: 9px;
+			padding: 0.15rem 0.3rem;
+		}
 	}
 `;
 
@@ -141,7 +237,6 @@ export const DropdownServerCard = styled.div`
 	overflow: hidden;
 	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-
 	&:hover {
 		transform: translateY(-2px);
 		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
@@ -161,7 +256,6 @@ export const ServerCardHeader = styled.div`
 		rgba(255, 255, 255, 0.9) 0%,
 		rgba(249, 249, 249, 0.9) 100%
 	);
-
 	&:hover {
 		background: linear-gradient(
 			135deg,
@@ -190,7 +284,6 @@ export const ServerCardTitle = styled.h3`
 	color: #171717;
 	margin: 0;
 	letter-spacing: -0.3px;
-
 	@media (max-width: 768px) {
 		font-size: 20px;
 	}
@@ -223,7 +316,6 @@ export const ServerSummaryItem = styled.div`
 	background: rgba(0, 0, 0, 0.05);
 	padding: 0.4rem 0.75rem;
 	border-radius: 6px;
-
 	strong {
 		color: #333;
 		margin-right: 0.25rem;
@@ -244,7 +336,6 @@ export const StatusDot = styled.div`
 	border-radius: 50%;
 	box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
 	animation: pulse 2s infinite;
-
 	@keyframes pulse {
 		0%,
 		100% {
@@ -268,7 +359,6 @@ export const DropdownIcon = styled.div`
 	color: #666;
 	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "rotate(0deg)")};
-
 	svg {
 		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 	}
@@ -288,7 +378,6 @@ export const ServerCardGrid = styled.div`
 	grid-template-columns: 1fr 1fr;
 	gap: 2rem;
 	padding: 2rem;
-
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
 		gap: 1.5rem;
@@ -311,18 +400,15 @@ export const ServerCardItem = styled.div`
 	border-radius: 8px;
 	border: 1px solid rgba(0, 0, 0, 0.05);
 	transition: all 0.2s ease;
-
 	&:hover {
 		background: rgba(255, 255, 255, 0.9);
 		border-color: rgba(0, 0, 0, 0.1);
 	}
-
 	strong {
 		color: #171717;
 		font-weight: 600;
 		margin-right: 0.5rem;
 	}
-
 	@media (max-width: 768px) {
 		font-size: 14px;
 		padding: 0.5rem;
@@ -333,7 +419,6 @@ export const ServerCardList = styled.ul`
 	margin: 0.5rem 0 0 0;
 	padding-left: 1rem;
 	list-style-type: disc;
-
 	li {
 		margin-bottom: 0.25rem;
 		color: #555;
@@ -349,7 +434,6 @@ export const SubContainer3 = styled.div`
 	align-items: center;
 	justify-content: center;
 	position: relative;
-
 	&::before {
 		content: "";
 		position: absolute;
@@ -393,7 +477,6 @@ export const SliderTrack = styled.div`
 	display: flex;
 	width: calc(200% + 1rem);
 	animation: ${scroll} 30s linear infinite;
-
 	&:hover {
 		animation-play-state: paused;
 	}
@@ -406,13 +489,11 @@ export const SliderItem = styled.div`
 	justify-content: center;
 	margin-right: 3rem;
 	transition: all 0.3s ease;
-
 	img {
 		height: 60px;
 		filter: grayscale(100%) opacity(0.7);
 		transition: all 0.3s ease;
 	}
-
 	&:hover img {
 		filter: grayscale(0%) opacity(1);
 		transform: scale(1.1);
@@ -430,7 +511,6 @@ export const SliderDesc = styled.div`
 	animation: ${fadeIn} 1s ease-out forwards;
 	max-width: 800px;
 	line-height: 1.6;
-
 	@media (max-width: 768px) {
 		font-size: 18px;
 		padding: 0 1rem;
