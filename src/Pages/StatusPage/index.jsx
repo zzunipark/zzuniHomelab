@@ -57,25 +57,32 @@ const hardwareItemsEN = [
 
 const serverData = [
 	{
-		name: "HypervisorSV",
+		name: "MainHypervisorSV",
 		cpu: "Intel Core i7-13700K @ 3.4GHz",
 		memory: "DDR5-5200 96GB On-Die-ECC",
 		motherboard: "MSI MAG B760 TOMAHAWK WIFI",
-		storage: [
-			"Gen4 NVMe 512GB x 2",
-			"Gen4 NVMe 256GB x 1",
-			"SATA HDD 4TB x 2",
-			"SATA HDD 16TB x 1",
-		],
+		storage: ["Gen4 NVMe 256GB x 2"],
 		network: [
 			"Mellanox ConnectX-3 VPI CX354A (40Gbps)",
-			"Realtek RTL8125 (2.5Gbps)",
 			"Realtek RTL8125BG (2.5Gbps)",
 		],
 		os: "Proxmox VE 8.4",
 	},
 	{
 		name: "SubHypervisorSV",
+		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
+		memory: "DDR4-3600 32GB Non-ECC",
+		motherboard: "Asus Prime A520M-K",
+		storage: [
+			"Gen 4 256GB NVMe x 1",
+			"SATA HDD 16TB x 1",
+			"SATA HDD 4TB x 2",
+		],
+		network: ["Realtek RTL8125 (2.5Gbps)", "Realtek RTL8111 (1Gbps)"],
+		os: "Proxmox VE 8.4",
+	},
+	{
+		name: "SpareHypervisorSV",
 		cpu: "Intel Xeon E3-1270 v3 @ 3.5GHz",
 		memory: "DDR3-1600 32GB ECC-Unbuffered",
 		motherboard: "Dell 81N4V",
@@ -85,16 +92,34 @@ const serverData = [
 	},
 	{
 		name: "TruenasSV",
-		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
-		memory: "DDR4-3200 40GB Non-ECC",
+		cpu: "AMD Ryzen 5 2400G @ 3.6GHz",
+		memory: "DDR4-2666 24GB Non-ECC",
 		motherboard: "Asus Prime X570-Pro",
 		storage: [
-			"Gen4 256GB NVMe x 2",
+			"Gen4 512GB NVMe x 2",
 			"Gen3 128GB NVMe x 1",
 			"2TB SATA HDD x 10",
 		],
 		network: ["Mellanox ConnectX-3 VPI CX354A (40Gbps)"],
 		os: "TrueNAS Scale 24.10",
+	},
+	{
+		name: "FinalBackupSV",
+		cpu: "Intel Celeron J4025 @ 2.00GHz",
+		memory: "DDR4-2666 16GB Non-ECC",
+		motherboard: "ECS GLKD-I-J4025",
+		storage: ["1TB SATA HDD x 2"],
+		network: ["Realtek RTL8111 (1Gbps)"],
+		os: "TrueNAS Scale 24.10",
+	},
+	{
+		name: "Synology DS720+",
+		cpu: "Intel Celeron J4125 @ 2.0GHz",
+		memory: "DDR4-2666 10GB Non-ECC",
+		motherboard: "Synology Custom Board",
+		storage: ["500GB SATA SSD x 2"],
+		network: ["Realtek RTL8156 (2.5Gbps)"],
+		os: "DSM 7.3",
 	},
 	{
 		name: "MultiPurposeSV",
@@ -103,34 +128,25 @@ const serverData = [
 		motherboard: "Asrock N100M",
 		storage: ["Gen3 128GB NVMe x 1"],
 		network: ["Aquantia AQC107 (10Gbps)"],
-		os: "Ubuntu Server 24.04",
+		os: "Debian 12.11",
 	},
 	{
 		name: "WindowsSV",
 		cpu: "Intel Xeon E3-1220 v3 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		motherboard: "Dell 81N4V",
-		storage: ["120GB SATA SSD x 1"],
+		storage: ["250GB SATA SSD x 1"],
 		network: ["Intel X520-DA2 (10Gbps)", "Broadcom BCM5716 (1Gbps)"],
 		os: "Windows Server 2022 Datacenter",
 	},
 	{
-		name: "UbuntuSV",
+		name: "DebianSV",
 		cpu: "Intel Xeon E3-1220 v2 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		motherboard: "Dell 9T7VV",
 		storage: ["120GB SATA SSD x 1"],
 		network: ["Intel X520-DA2 (10Gbps)", "Broadcom BCM5716 (1Gbps)"],
-		os: "Ubuntu Server 24.04",
-	},
-	{
-		name: "Synology DS720+",
-		cpu: "Intel Celeron J4125 @ 2.0GHz",
-		memory: "DDR4-2666 18GB Non-ECC",
-		motherboard: "Synology Custom Board",
-		storage: ["500GB SATA SSD x 2", "Gen3 128GB NVMe x 2"],
-		network: ["Realtek RTL8156 (2.5Gbps)"],
-		os: "DSM 7.3",
+		os: "Debian 12.11",
 	},
 	{
 		name: "Mac Mini M1",
@@ -151,13 +167,31 @@ const serverData = [
 		os: "Ubuntu Server 22.04",
 	},
 	{
-		name: "FinalBackupSV",
-		cpu: "Intel Celeron J4025 @ 2.00GHz",
-		memory: "DDR4-2666 8GB Non-ECC",
-		motherboard: "ECS GLKD-I-J4025",
-		storage: ["1TB SATA HDD x 2"],
-		network: ["Realtek RTL8111 (1Gbps)"],
-		os: "TrueNAS Scale 24.10",
+		name: "LocalRPI1",
+		cpu: "Broadcom BCM2711B0 @ 1.5GHz",
+		memory: "LPDDR4-3200 4GB",
+		motherboard: "Raspberry Pi 4 Model B",
+		storage: ["120GB SATA SSD x 1"],
+		network: ["Broadcom BCM54210PE (1Gbps)"],
+		os: "Raspberry Pi OS Lite 64-bit",
+	},
+	{
+		name: "LocalRPI2",
+		cpu: "Broadcom BCM2711B0 @ 1.5GHz",
+		memory: "LPDDR4-3200 8GB",
+		motherboard: "Raspberry Pi 4 Model B",
+		storage: ["120GB SATA SSD x 1"],
+		network: ["Broadcom BCM54210PE (1Gbps)"],
+		os: "Raspberry Pi OS Lite 64-bit",
+	},
+	{
+		name: "LocalRPI3",
+		cpu: "Broadcom BCM2711B0 @ 1.5GHz",
+		memory: "LPDDR4-3200 8GB",
+		motherboard: "Raspberry Pi 4 Model B",
+		storage: ["120GB SATA SSD x 1"],
+		network: ["Broadcom BCM54210PE (1Gbps)"],
+		os: "Raspberry Pi OS Lite 64-bit",
 	},
 ];
 
@@ -329,18 +363,20 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 	const getServerType = (name) => {
 		if (name.includes("Hypervisor")) return "Hypervisor";
 		if (name.includes("Truenas")) return "Storage";
-		if (name.includes("Mirror")) return "Backup";
-		if (name.includes("Windows")) return "Windows";
+		if (name.includes("Mirror")) return "Storage";
+		if (name.includes("Backup")) return "Storage";
+		if (name.includes("Windows")) return "RemotePC";
 		if (name.includes("Ubuntu")) return "Linux";
-		if (name.includes("Synology")) return "NAS";
-		if (name.includes("Mac")) return "macOS";
-		if (name.includes("FOSS")) return "Development";
+		if (name.includes("Synology")) return "Storage";
+		if (name.includes("Mac")) return "RemotePC";
+		if (name.includes("MultiPurpose")) return "Server";
 		return "Server";
 	};
 
 	const getCpuBrand = (cpu) => {
 		if (cpu.includes("Intel Core i7-13700K")) return "Intel Core i7-13700K";
 		if (cpu.includes("AMD Ryzen 3 4350G")) return "AMD Ryzen 3 4350G";
+		if (cpu.includes("AMD Ryzen 5 2400G")) return "AMD Ryzen 5 2400G";
 		if (cpu.includes("Intel Processor N100")) return "Intel Processor N100";
 		if (cpu.includes("Intel Xeon E3-1270 v3"))
 			return "Intel Xeon E3-1270 v3";
