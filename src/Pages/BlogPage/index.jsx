@@ -32,16 +32,18 @@ const BlogPage = () => {
 	}, [remainingTime]);
 
 	const countdown = Math.ceil(remainingTime / 1000);
-	const progressPercent = (remainingTime / 5000) * 100;
+	const progressPercent = ((5000 - remainingTime) / 5000) * 100;
 	const titleText =
-		language === "Korean" ? "리다이렉트 중..." : "Redirecting...";
+		language === "Korean"
+			? "블로그로 이동 중..."
+			: "Redirecting to Blog...";
 	const messageText =
 		remainingTime > 0
 			? language === "Korean"
-				? `5초 후 https://blog.zzunipark.com 으로 이동됩니다. 남은 시간: ${countdown}초`
-				: `Redirecting to https://blog.zzunipark.com in 5 seconds. Time left: ${countdown} seconds`
+				? `곧 zzuniPark-Log로 이동합니다`
+				: `Taking you to zzuniPark-Log`
 			: language === "Korean"
-			? "이동중입니다.."
+			? "이동 중입니다..."
 			: "Redirecting...";
 	const pauseResumeText = isPaused
 		? language === "Korean"
@@ -50,8 +52,7 @@ const BlogPage = () => {
 		: language === "Korean"
 		? "일시정지"
 		: "Pause";
-	const redirectNowText =
-		language === "Korean" ? "즉시 이동" : "Redirect Now";
+	const redirectNowText = language === "Korean" ? "지금 이동" : "Go Now";
 	const handlePauseResume = () => {
 		setIsPaused(!isPaused);
 	};
@@ -63,19 +64,22 @@ const BlogPage = () => {
 		<s.PageContainer>
 			<Navbar />
 			<s.MainContainer>
-				<s.Title>{titleText}</s.Title>
-				<s.Subtitle>{messageText}</s.Subtitle>
-				<s.ProgressBarContainer>
-					<s.ProgressBar progress={progressPercent} />
-				</s.ProgressBarContainer>
-				<s.ButtonContainer>
-					<s.Button onClick={handlePauseResume}>
-						{pauseResumeText}
-					</s.Button>
-					<s.Button onClick={handleRedirectNow}>
-						{redirectNowText}
-					</s.Button>
-				</s.ButtonContainer>
+				<s.RedirectCard>
+					<s.Title>{titleText}</s.Title>
+					<s.Subtitle>{messageText}</s.Subtitle>
+					<s.CountdownDisplay>{countdown}</s.CountdownDisplay>
+					<s.ProgressBarContainer>
+						<s.ProgressBar progress={progressPercent} />
+					</s.ProgressBarContainer>
+					<s.ButtonContainer>
+						<s.Button onClick={handlePauseResume}>
+							{pauseResumeText}
+						</s.Button>
+						<s.Button primary onClick={handleRedirectNow}>
+							{redirectNowText}
+						</s.Button>
+					</s.ButtonContainer>
+				</s.RedirectCard>
 			</s.MainContainer>
 			<Footerbar />
 		</s.PageContainer>

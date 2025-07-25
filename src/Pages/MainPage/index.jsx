@@ -162,7 +162,7 @@ const MainPage = () => {
 							animate={sub2BottomVisible}
 						>
 							<s.StatsContainer>
-								<s.StatsItem>
+								<s.StatsItem className="stats-item">
 									<CountUp
 										end={40}
 										duration={1000}
@@ -173,7 +173,7 @@ const MainPage = () => {
 										Ethernet Link
 									</s.StatsItemDescription>
 								</s.StatsItem>
-								<s.StatsItem>
+								<s.StatsItem className="stats-item">
 									<CountUp
 										end={300}
 										duration={1000}
@@ -184,7 +184,7 @@ const MainPage = () => {
 										Switching Capacity
 									</s.StatsItemDescription>
 								</s.StatsItem>
-								<s.StatsItem>
+								<s.StatsItem className="stats-item">
 									<CountUp
 										end={21}
 										duration={1000}
@@ -195,7 +195,7 @@ const MainPage = () => {
 										Monthly Traffic
 									</s.StatsItemDescription>
 								</s.StatsItem>
-								<s.StatsItem>
+								<s.StatsItem className="stats-item">
 									<CountUp
 										end={50}
 										duration={1000}
@@ -307,7 +307,7 @@ const MainPage = () => {
 							animate={sub2BottomVisible}
 						>
 							<s.StatsContainer>
-								<s.StatsItem>
+								<s.StatsItem className="stats-item">
 									<CountUp
 										end={40}
 										duration={1000}
@@ -318,7 +318,7 @@ const MainPage = () => {
 										Ethernet Link
 									</s.StatsItemDescription>
 								</s.StatsItem>
-								<s.StatsItem>
+								<s.StatsItem className="stats-item">
 									<CountUp
 										end={300}
 										duration={1000}
@@ -329,7 +329,7 @@ const MainPage = () => {
 										Switching Capacity
 									</s.StatsItemDescription>
 								</s.StatsItem>
-								<s.StatsItem>
+								<s.StatsItem className="stats-item">
 									<CountUp
 										end={21}
 										duration={1000}
@@ -340,7 +340,7 @@ const MainPage = () => {
 										Monthly Traffic
 									</s.StatsItemDescription>
 								</s.StatsItem>
-								<s.StatsItem>
+								<s.StatsItem className="stats-item">
 									<CountUp
 										end={40}
 										duration={1000}

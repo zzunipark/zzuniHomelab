@@ -6,8 +6,8 @@ const GlobalStyle = createGlobalStyle`
   font-weight: 900;
   font-display: swap;
   src: local('Pretendard Black'),
-    url('../../public/fonts/woff2/Pretendard-Black.woff2') format('woff2'),
-    url('../../public/fonts/woff/Pretendard-Black.woff') format('woff');
+    url('/fonts/woff2/Pretendard-Black.woff2') format('woff2'),
+    url('/fonts/woff/Pretendard-Black.woff') format('woff');
 }
 
 @font-face {
