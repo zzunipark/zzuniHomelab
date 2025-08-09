@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
-import { bodyText } from "../../Styles/commonStyles";
+import { bodyText, lightText } from "../../Styles/commonStyles";
 import AboutusTitleJpg from "../../Assets/images/jpg/aboutus-title.jpg";
 
 const fadeIn = keyframes`
@@ -135,7 +135,7 @@ export const GreetingTitle = styled.div`
 `;
 
 export const GreetingDesc = styled.div`
-	${bodyText}
+	${lightText}
 	font-size: 18px;
 	color: #171717;
 	line-height: 1.6;
