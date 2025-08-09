@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { bodyText } from "../../Styles/commonStyles";
 import StatusTitleJpg from "../../Assets/images/jpg/status-title.jpg";
 
 const fadeIn = keyframes`
@@ -39,8 +40,8 @@ export const MainContainerTitle = styled.div`
 `;
 
 export const MainContainerSubTitle = styled.div`
+	${bodyText}
 	font-size: 26px;
-	font-weight: 500;
 	color: #fff;
 	margin-top: 5px;
 	text-align: center;

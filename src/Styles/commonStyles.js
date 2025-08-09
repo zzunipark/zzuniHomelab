@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
+import { keyframes, css } from "styled-components";
 
 // 공통 애니메이션
 export const fadeIn = keyframes`
@@ -108,7 +108,7 @@ export const sectionTitle = css`
 
 export const sectionSubtitle = css`
 	font-size: 26px;
-	font-weight: 500;
+	font-weight: 400;
 	color: #333;
 	text-align: center;
 	margin-bottom: 1rem;
@@ -118,5 +118,29 @@ export const sectionSubtitle = css`
 	}
 	@media (max-width: 480px) {
 		font-size: 18px;
+	}
+`;
+
+// iOS에서 본문 텍스트를 위한 가벼운 폰트 스타일
+export const lightText = css`
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* iOS Safari에서 폰트를 더 가볍게 보이도록 */
+	@supports (-webkit-appearance: none) {
+		font-weight: 200;
+	}
+`;
+
+// iOS에서 일반 본문 텍스트를 위한 스타일
+export const bodyText = css`
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+	/* iOS Safari에서 폰트를 더 가볍게 보이도록 */
+	@supports (-webkit-appearance: none) {
+		font-weight: 300;
 	}
 `;

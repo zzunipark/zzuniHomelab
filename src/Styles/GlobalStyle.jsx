@@ -86,7 +86,17 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   list-style: none;
   text-decoration: none;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}
+
+/* iOS에서의 폰트 렌더링 최적화 */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  * {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
 }
 `;
 

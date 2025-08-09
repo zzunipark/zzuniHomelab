@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
+import { bodyText } from "../../Styles/commonStyles";
 import Image1Jpg from "../../Assets/images/jpg/image1.jpg";
 import Image2Jpg from "../../Assets/images/jpg/image2.jpg";
 
@@ -153,8 +154,8 @@ export const SubContainer1SectionDescription = styled.div`
 		css`
 			animation: ${fadeIn} 1s ease-out forwards;
 		`}
+	${bodyText}
 	font-size: 22px;
-	font-weight: 500;
 	color: #171717;
 	@media (max-width: 1920px) {
 		font-size: 20px;
@@ -330,8 +331,8 @@ export const SubContainer2SectionDescription = styled.div`
 		css`
 			animation: ${fadeIn} 1s ease-out forwards;
 		`}
+	${bodyText}
 	font-size: 22px;
-	font-weight: 500;
 	color: #fff;
 	text-align: center;
 	margin-top: 20px;
@@ -385,8 +386,8 @@ export const StatsItem = styled.div`
 `;
 
 export const StatsItemDescription = styled.div`
+	${bodyText}
 	font-size: 24px;
-	font-weight: 500;
 	color: #171717;
 
 	@media (max-width: 1450px) {

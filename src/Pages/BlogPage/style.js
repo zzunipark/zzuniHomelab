@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { bodyText } from "../../Styles/commonStyles";
 
 const fadeIn = keyframes`
   from {
@@ -114,9 +115,9 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
+	${bodyText}
 	padding: 0.75rem 1.5rem;
 	font-size: 1rem;
-	font-weight: 500;
 	border-radius: 6px;
 	cursor: pointer;
 	transition: all 0.2s ease;
