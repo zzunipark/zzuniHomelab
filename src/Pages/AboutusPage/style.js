@@ -1,5 +1,4 @@
 import styled, { keyframes, css } from "styled-components";
-import { bodyText } from "../../Styles/commonStyles";
 import AboutusTitleJpg from "../../Assets/images/jpg/aboutus-title.jpg";
 
 const fadeIn = keyframes`
@@ -44,8 +43,8 @@ export const MainContainerTitle = styled.div`
 `;
 
 export const MainContainerSubTitle = styled.div`
-	${bodyText}
 	font-size: 26px;
+	font-weight: 500;
 	color: #ededed;
 	margin-top: 5px;
 	text-align: center;
@@ -135,8 +134,8 @@ export const GreetingTitle = styled.div`
 `;
 
 export const GreetingDesc = styled.div`
-	${bodyText}
 	font-size: 18px;
+	font-weight: 400;
 	color: #171717;
 	line-height: 1.6;
 	margin-top: 20px;
