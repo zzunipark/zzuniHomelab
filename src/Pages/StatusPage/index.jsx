@@ -57,11 +57,14 @@ const hardwareItemsEN = [
 
 const serverData = [
 	{
-		name: "MainHypervisorSV",
+		name: "MainHypervisor",
 		cpu: "Intel Core i7-13700K @ 3.4GHz",
 		memory: "DDR5-5200 96GB On-Die-ECC",
 		motherboard: "MSI MAG B760 TOMAHAWK WIFI",
-		storage: ["Gen4 NVMe 256GB x 2"],
+		storage: [
+			"Gen4 NVMe 256GB x 3",
+			"SATA HDD 2TB x 6",
+		],
 		network: [
 			"Mellanox ConnectX-3 VPI CX354A (40Gbps)",
 			"Realtek RTL8125BG (2.5Gbps)",
@@ -69,20 +72,7 @@ const serverData = [
 		os: "Proxmox VE 8.4",
 	},
 	{
-		name: "SubHypervisorSV",
-		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
-		memory: "DDR4-3600 32GB Non-ECC",
-		motherboard: "Asus Prime A520M-K",
-		storage: [
-			"Gen 4 256GB NVMe x 1",
-			"SATA HDD 16TB x 1",
-			"SATA HDD 4TB x 2",
-		],
-		network: ["Realtek RTL8125 (2.5Gbps)", "Realtek RTL8111 (1Gbps)"],
-		os: "Proxmox VE 8.4",
-	},
-	{
-		name: "SpareHypervisorSV",
+		name: "SpareHypervisor",
 		cpu: "Intel Xeon E3-1270 v3 @ 3.5GHz",
 		memory: "DDR3-1600 32GB ECC-Unbuffered",
 		motherboard: "Dell 81N4V",
@@ -91,25 +81,18 @@ const serverData = [
 		os: "Proxmox VE 8.4",
 	},
 	{
-		name: "TruenasSV",
-		cpu: "AMD Ryzen 5 2400G @ 3.6GHz",
-		memory: "DDR4-2666 24GB Non-ECC",
+		name: "MainTrueNAS",
+		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
+		memory: "DDR4-3200 32GB Non-ECC",
 		motherboard: "Asus Prime X570-Pro",
 		storage: [
 			"Gen4 512GB NVMe x 2",
-			"Gen3 128GB NVMe x 1",
-			"2TB SATA HDD x 10",
+			"1TB SATA HDD x 4",
+			"4TB SATA HDD x 2",
+			"10TB SAS HDD x 1",
+			"16TB SATA HDD x 1"
 		],
 		network: ["Mellanox ConnectX-3 VPI CX354A (40Gbps)"],
-		os: "TrueNAS Scale 24.10",
-	},
-	{
-		name: "FinalBackupSV",
-		cpu: "Intel Celeron J4025 @ 2.00GHz",
-		memory: "DDR4-2666 16GB Non-ECC",
-		motherboard: "ECS GLKD-I-J4025",
-		storage: ["1TB SATA HDD x 2"],
-		network: ["Realtek RTL8111 (1Gbps)"],
 		os: "TrueNAS Scale 24.10",
 	},
 	{
@@ -117,18 +100,18 @@ const serverData = [
 		cpu: "Intel Celeron J4125 @ 2.0GHz",
 		memory: "DDR4-2666 10GB Non-ECC",
 		motherboard: "Synology Custom Board",
-		storage: ["500GB SATA SSD x 2"],
+		storage: ["2TB SATA HDD x 2"],
 		network: ["Realtek RTL8156 (2.5Gbps)"],
-		os: "DSM 7.3",
+		os: "DSM 7.2",
 	},
 	{
-		name: "MultiPurposeSV",
+		name: "MainRouter",
 		cpu: "Intel Processor N100 @ 3.4GHz",
 		memory: "DDR4-3200 8GB Non-ECC",
 		motherboard: "Asrock N100M",
 		storage: ["Gen3 128GB NVMe x 1"],
 		network: ["Aquantia AQC107 (10Gbps)"],
-		os: "Debian 12.11",
+		os: "OPNsense 25.1",
 	},
 	{
 		name: "WindowsSV",
@@ -164,7 +147,16 @@ const serverData = [
 		motherboard: "Mini-ITX Celeron Board",
 		storage: ["32GB SATA SSD x 1"],
 		network: ["Realtek RTL8111 (1Gbps)"],
-		os: "Ubuntu Server 22.04",
+		os: "Ubuntu Server 24.04",
+	},
+	{
+		name: "MultiPurposeSV",
+		cpu: "Intel Pentium J4025 @ 2.00GHz",
+		memory: "DDR4-2666 16GB Non-ECC",
+		motherboard: "ECS GLKD-I-J4025",
+		storage: ["128GB SATA SSD x 1"],
+		network: ["Realtek RTL8111 (1Gbps)"],
+		os: "Ubuntu Server 24.04",
 	},
 	{
 		name: "LocalRPI1",
