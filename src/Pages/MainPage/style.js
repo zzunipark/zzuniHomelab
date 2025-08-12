@@ -354,34 +354,34 @@ export const StatsContainer = styled.div`
 `;
 
 export const StatsItem = styled.div`
-	font-size: 36px;
-	font-weight: bold;
-	color: #171717;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-	display: flex;
-	background-color: #fff;
-	padding: 20px 30px;
-	border-radius: 30px;
-	width: 100%;
-	height: 150px;
-	flex-direction: column;
-	@media (max-width: 1450px) {
-		width: 100%;
-		padding: 8px 0;
-		font-size: 30px;
-	}
-	@media (max-width: 1100px) {
-		font-size: 24px;
-		padding: 0;
-	}
-	@media (max-width: 542px) {
-		font-size: 20px;
-	}
-	@media (max-width: 368px) {
-		font-size: 18px;
-	}
+  font-size: 36px;
+  font-weight: bold;
+  color: #171717;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 30px;
+  width: 100%;
+  height: 150px;
+  flex-direction: column;
+  @media (max-width: 1450px) {
+    width: 100%;
+    padding: 8px 0;
+    font-size: 30px;
+    
+  }
+  @media (max-width: 1100px) {
+    font-size: 24px;
+    padding: 0;
+  }
+  @media (max-width: 542px) {
+    font-size: 20px;
+  }
+  @media (max-width: 368px) {
+    font-size: 18px;
 `;
 
 export const StatsItemDescription = styled.div`
