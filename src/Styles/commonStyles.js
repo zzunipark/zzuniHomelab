@@ -123,45 +123,24 @@ export const sectionSubtitle = css`
 
 // iOS에서 본문 텍스트를 위한 가벼운 폰트 스타일
 export const lightText = css`
-	font-weight: 200;
+	font-weight: 300;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	
 	/* iOS Safari에서 폰트를 더 가볍게 보이도록 */
 	@supports (-webkit-appearance: none) {
-		font-weight: 100;
-		-webkit-font-smoothing: subpixel-antialiased;
-	}
-	
-	/* iOS 특정 미디어 쿼리 */
-	@media screen and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-		font-weight: 100;
-		-webkit-font-smoothing: subpixel-antialiased;
-		text-rendering: optimizeLegibility;
+		font-weight: 200;
 	}
 `;
 
 // iOS에서 일반 본문 텍스트를 위한 스타일
 export const bodyText = css`
-	font-weight: 300;
+	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	text-rendering: optimizeLegibility;
 	
 	/* iOS Safari에서 폰트를 더 가볍게 보이도록 */
 	@supports (-webkit-appearance: none) {
-		font-weight: 200;
-		-webkit-font-smoothing: subpixel-antialiased;
-	}
-	
-	/* iOS 특정 미디어 쿼리 */
-	@media screen and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-		font-weight: 200;
-		-webkit-font-smoothing: subpixel-antialiased;
-	}
-	
-	/* iPhone에서 더 가벼운 폰트 */
-	@media only screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
-		font-weight: 200;
+		font-weight: 300;
 	}
 `;
