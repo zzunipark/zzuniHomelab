@@ -16,6 +16,11 @@ const Footerbar = () => {
 						route: "/refuse-email-collection",
 					},
 					{ title: "블로그", route: "/blog" },
+					{
+						title: "서비스 상태",
+						route: "https://status.zzunipark.com",
+						external: true,
+					},
 			  ]
 			: [
 					{ title: "About Us", route: "/about-us" },
@@ -24,7 +29,20 @@ const Footerbar = () => {
 						route: "/refuse-email-collection",
 					},
 					{ title: "Blog", route: "/blog" },
+					{
+						title: "Service Status",
+						route: "https://status.zzunipark.com",
+						external: true,
+					},
 			  ];
+
+	const handleNavigation = (item) => {
+		if (item.external) {
+			window.open(item.route, "_blank");
+		} else {
+			navigate(item.route);
+		}
+	};
 
 	return (
 		<s.FooterContainer>
@@ -35,7 +53,7 @@ const Footerbar = () => {
 						{DisclaimerItems.map((item, index) => (
 							<s.NavigatorText
 								key={index}
-								onClick={() => navigate(item.route)}
+								onClick={() => handleNavigation(item)}
 							>
 								{item.title}
 							</s.NavigatorText>
