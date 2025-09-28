@@ -191,6 +191,14 @@ const AboutusPage = () => {
 					? "LGA1700 기반 고성능 컴퓨팅 시스템 구축"
 					: "Implemented a high-performance computing system utilizing LGA1700",
 		},
+		{
+			year: 2025,
+			month: "09",
+			content:
+				language === "Korean"
+					? "디스크 총 용량 60TB 달성"
+					: "Expanded total disk capacity to 60TB",
+		},
 	];
 
 	return (

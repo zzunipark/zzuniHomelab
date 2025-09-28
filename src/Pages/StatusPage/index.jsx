@@ -61,24 +61,21 @@ const serverData = [
 		cpu: "Intel Core i7-13700K @ 3.4GHz",
 		memory: "DDR5-5200 96GB On-Die-ECC",
 		motherboard: "MSI MAG B760 TOMAHAWK WIFI",
-		storage: [
-			"Gen4 NVMe 256GB x 3",
-			"SATA HDD 2TB x 6",
-		],
+		storage: ["Gen4 NVMe 256GB x 1", "500GB SATA SSD x 1"],
 		network: [
 			"Mellanox ConnectX-3 VPI CX354A (40Gbps)",
 			"Realtek RTL8125BG (2.5Gbps)",
 		],
-		os: "Proxmox VE 8.4",
+		os: "Proxmox VE 9.0",
 	},
 	{
 		name: "SpareHypervisor",
 		cpu: "Intel Xeon E3-1270 v3 @ 3.5GHz",
 		memory: "DDR3-1600 32GB ECC-Unbuffered",
 		motherboard: "Dell 81N4V",
-		storage: ["SATA SSD 250GB x 1"],
+		storage: ["SATA SSD 250GB x 1", "SATA SSD 500GB x 1"],
 		network: ["Intel X520-DA2 (10Gbps)", "Broadcom BCM5716 (1Gbps)"],
-		os: "Proxmox VE 8.4",
+		os: "Proxmox VE 9.0",
 	},
 	{
 		name: "MainTrueNAS",
@@ -87,22 +84,23 @@ const serverData = [
 		motherboard: "Asus Prime X570-Pro",
 		storage: [
 			"Gen4 512GB NVMe x 2",
-			"1TB SATA HDD x 4",
+			"Gen3 128GB NVMe x 1",
+			"1TB SATA HDD x 6",
 			"4TB SATA HDD x 2",
 			"10TB SAS HDD x 1",
-			"16TB SATA HDD x 1"
+			"16TB SATA HDD x 1",
 		],
 		network: ["Mellanox ConnectX-3 VPI CX354A (40Gbps)"],
 		os: "TrueNAS Scale 24.10",
 	},
 	{
-		name: "Synology DS720+",
-		cpu: "Intel Celeron J4125 @ 2.0GHz",
-		memory: "DDR4-2666 10GB Non-ECC",
-		motherboard: "Synology Custom Board",
-		storage: ["2TB SATA HDD x 2"],
-		network: ["Realtek RTL8156 (2.5Gbps)"],
-		os: "DSM 7.2",
+		name: "BackupTrueNAS",
+		cpu: "Intel Pentium G5420 @ 3.8GHz",
+		memory: "DDR4-3200 16GB Non-ECC (Actual DDR4-2133)",
+		motherboard: "Asrock B360M-Pro4",
+		storage: ["Gen3 128GB NVMe x 1", "2TB SATA HDD x 6"],
+		network: ["Aquantia AQC107 (10Gbps)"],
+		os: "TrueNAS Scale 24.10",
 	},
 	{
 		name: "MainRouter",
@@ -110,7 +108,7 @@ const serverData = [
 		memory: "DDR4-3200 8GB Non-ECC",
 		motherboard: "Asrock N100M",
 		storage: ["Gen3 128GB NVMe x 1"],
-		network: ["Aquantia AQC107 (10Gbps)"],
+		network: ["Intel X550-T2 (10Gbps)", "Intel X710-DA2 (10Gbps)"],
 		os: "OPNsense 25.1",
 	},
 	{
@@ -132,6 +130,15 @@ const serverData = [
 		os: "Debian 12.11",
 	},
 	{
+		name: "Synology DS720+",
+		cpu: "Intel Celeron J4125 @ 2.0GHz",
+		memory: "DDR4-2666 10GB Non-ECC",
+		motherboard: "Synology Custom Board",
+		storage: ["2TB SATA HDD x 2"],
+		network: ["Realtek RTL8156 (2.5Gbps)"],
+		os: "DSM 7.2",
+	},
+	{
 		name: "Mac Mini M1",
 		cpu: "Apple Silicon M1 @ 3.2GHz",
 		memory: "LPDDR4X-2133 8GB",
@@ -139,15 +146,6 @@ const serverData = [
 		storage: ["Gen3 256GB NVMe x 1"],
 		network: ["Aquantia AQC107 (10Gbps)"],
 		os: "MacOS Sequoia",
-	},
-	{
-		name: "SuperSignSV",
-		cpu: "Intel Celeron N2930 @ 1.83GHz",
-		memory: "DDR3L-1333 2GB Non-ECC",
-		motherboard: "Mini-ITX Celeron Board",
-		storage: ["32GB SATA SSD x 1"],
-		network: ["Realtek RTL8111 (1Gbps)"],
-		os: "Ubuntu Server 24.04",
 	},
 	{
 		name: "MultiPurposeSV",
@@ -159,31 +157,13 @@ const serverData = [
 		os: "Ubuntu Server 24.04",
 	},
 	{
-		name: "LocalRPI1",
-		cpu: "Broadcom BCM2711B0 @ 1.5GHz",
-		memory: "LPDDR4-3200 4GB",
-		motherboard: "Raspberry Pi 4 Model B",
-		storage: ["120GB SATA SSD x 1"],
-		network: ["Broadcom BCM54210PE (1Gbps)"],
-		os: "Raspberry Pi OS Lite 64-bit",
-	},
-	{
-		name: "LocalRPI2",
-		cpu: "Broadcom BCM2711B0 @ 1.5GHz",
-		memory: "LPDDR4-3200 8GB",
-		motherboard: "Raspberry Pi 4 Model B",
-		storage: ["120GB SATA SSD x 1"],
-		network: ["Broadcom BCM54210PE (1Gbps)"],
-		os: "Raspberry Pi OS Lite 64-bit",
-	},
-	{
-		name: "LocalRPI3",
-		cpu: "Broadcom BCM2711B0 @ 1.5GHz",
-		memory: "LPDDR4-3200 8GB",
-		motherboard: "Raspberry Pi 4 Model B",
-		storage: ["120GB SATA SSD x 1"],
-		network: ["Broadcom BCM54210PE (1Gbps)"],
-		os: "Raspberry Pi OS Lite 64-bit",
+		name: "MonitorSV",
+		cpu: "AMD Ryzen 3 3200G @ 3.6GHz",
+		memory: "DDR4-3200 8GB Non-ECC",
+		motherboard: "Asus Prime A520M-A II",
+		storage: ["Gen 3 128GB NVMe SSD x 1"],
+		network: ["Realtek RTL8125 (2.5Gbps)"],
+		os: "Ubuntu Server 24.04",
 	},
 ];
 
@@ -353,15 +333,14 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const getServerType = (name) => {
-		if (name.includes("Hypervisor")) return "Hypervisor";
-		if (name.includes("Truenas")) return "Storage";
-		if (name.includes("Mirror")) return "Storage";
-		if (name.includes("Backup")) return "Storage";
-		if (name.includes("Windows")) return "RemotePC";
-		if (name.includes("Ubuntu")) return "Linux";
-		if (name.includes("Synology")) return "Storage";
-		if (name.includes("Mac")) return "RemotePC";
-		if (name.includes("MultiPurpose")) return "Server";
+		if (name === "Main" || name === "Spare") return "Hypervisor";
+		if (name === "Storage" || name === "Backup") return "Storage";
+		if (name === "Router") return "Network";
+		if (name === "Windows") return "RemotePC";
+		if (name === "Debian") return "Linux";
+		if (name === "Synology") return "Storage";
+		if (name === "Mac Mini") return "RemotePC";
+		if (name === "MultiPurpose" || name === "Monitor") return "Server";
 		return "Server";
 	};
 
