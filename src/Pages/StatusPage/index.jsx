@@ -61,7 +61,12 @@ const serverData = [
 		cpu: "Intel Core i7-13700K @ 3.4GHz",
 		memory: "DDR5-5200 96GB On-Die-ECC",
 		motherboard: "MSI MAG B760 TOMAHAWK WIFI",
-		storage: ["Gen4 NVMe 256GB x 1", "500GB SATA SSD x 1"],
+		storage: [
+			"Gen4 NVMe 256GB x 1",
+			"500GB SATA SSD x 1",
+			"16TB SATA HDD x 2",
+			"4TB SATA HDD x 2",
+		],
 		network: [
 			"Mellanox ConnectX-3 VPI CX354A (40Gbps)",
 			"Realtek RTL8125BG (2.5Gbps)",
@@ -86,9 +91,7 @@ const serverData = [
 			"Gen4 512GB NVMe x 2",
 			"Gen3 128GB NVMe x 1",
 			"1TB SATA HDD x 6",
-			"4TB SATA HDD x 2",
 			"10TB SAS HDD x 1",
-			"16TB SATA HDD x 1",
 		],
 		network: ["Mellanox ConnectX-3 VPI CX354A (40Gbps)"],
 		os: "TrueNAS Scale 24.10",
