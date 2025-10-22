@@ -4,6 +4,7 @@ import Footerbar from "../../Components/Footerbar";
 import { LanguageContext } from "../../Context/LanguageContext";
 import zzunimirrorjpg from "../../Assets/images/jpg/zzunimirror.jpg";
 import zzuniparklogjpg from "../../Assets/images/jpg/zzunipark-log.jpg";
+import zzuniapijpg from "../../Assets/images/jpg/zzuniapi.jpg";
 import { ExternalLink } from "lucide-react";
 import * as s from "./style";
 
@@ -55,6 +56,17 @@ const ProjectsPage = () => {
 					: "zzuniPark's Blog Service",
 			link: "https://blog.zzunipark.com",
 			techStack: ["Nginx", "Hextra"],
+		},
+		{
+			title: "zzuniAPI",
+			image: zzuniapijpg,
+			ratio: 100,
+			description:
+				language === "Korean"
+					? "공공재로 개방된 무료 API 서비스"
+					: "Publicly available free API service",
+			link: "https://api.zzunipark.com",
+			techStack: ["Node.js", "Express", "pm2"],
 		},
 	];
 

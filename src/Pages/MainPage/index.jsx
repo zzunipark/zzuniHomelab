@@ -197,7 +197,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={60}
+										end={70}
 										duration={1000}
 										suffix="TB+"
 										animate={sub2BottomVisible}
@@ -342,7 +342,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={60}
+										end={70}
 										duration={1000}
 										suffix="TB+"
 										animate={sub2BottomVisible}
