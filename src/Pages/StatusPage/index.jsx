@@ -138,6 +138,15 @@ const serverData = [
 		os: "Debian 12.11",
 	},
 	{
+		name: "FallBackSV",
+		cpu: "Intel Celeron N100 @ 1.1GHz",
+		memory: "DDR4-2133 4GB Non-ECC",
+		motherboard: "ASRock N100M",
+		storage: ["120GB SATA SSD x 1"],
+		network: ["Realtek RTL8111E (1Gbps)"],
+		os: "Windows Server 2019 Standard",
+	},
+	{
 		name: "Synology DS720+",
 		cpu: "Intel Celeron J4125 @ 2.0GHz",
 		memory: "DDR4-2666 10GB Non-ECC",
