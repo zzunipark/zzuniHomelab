@@ -207,6 +207,14 @@ const AboutusPage = () => {
 					? "디스크 총 용량 70TB 달성"
 					: "Expanded total disk capacity to 70TB",
 		},
+		{
+			year: 2026,
+			month: "1",
+			content:
+				language === "Korean"
+					? "디스크 총 용량 110TB 달성"
+					: "Expanded total disk capacity to 110TB",
+		},
 	];
 
 	return (
