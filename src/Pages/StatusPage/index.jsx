@@ -77,7 +77,7 @@ const serverData = [
 	{
 		name: "SubHypervisor",
 		cpu: "Intel Xeon E-2144G @ 3.6GHz",
-		memory: "DDR4-3200(2400) 64GB Non-ECC",
+		memory: "DDR4-3200 64GB Non-ECC (Actual DDR4-2400)",
 		motherboard: "AsrockRack E3C242D4U2-2T",
 		storage: ["Gen4(Gen3) NVMe 256GB x 1", "SATA SSD 500GB x 1"],
 		network: [
@@ -90,7 +90,7 @@ const serverData = [
 	{
 		name: "MainTrueNAS",
 		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
-		memory: "DDR4-3200 32GB Non-ECC",
+		memory: "DDR4-3200 32GB Non-ECC (Actual DDR4-2933)",
 		motherboard: "Asus Prime X570-Pro",
 		storage: [
 			"Gen4 512GB NVMe x 2",
