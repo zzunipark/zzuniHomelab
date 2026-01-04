@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
-import ProjectsTitleJpg from "../../Assets/images/jpg/projects-title.jpg";
+
+const ProjectsTitleJpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_ProjectsTitle.jpg";
 
 const fadeIn = keyframes`
   from {

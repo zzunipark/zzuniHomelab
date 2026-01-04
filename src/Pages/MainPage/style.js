@@ -1,6 +1,9 @@
 import styled, { keyframes, css } from "styled-components";
-import Image1Jpg from "../../Assets/images/jpg/image1.jpg";
-import Image2Jpg from "../../Assets/images/jpg/image2.jpg";
+
+const Image1Jpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Main_SubContainer1.jpg";
+const Image2Jpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Main_SubContainer2.jpg";
 
 const fadeIn = keyframes`
   from {

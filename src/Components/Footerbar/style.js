@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import LogoInvertedpng from "../../Assets/images/png/logo_inverted.png";
+
+const LogoInvertedpng =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Inverted.png";
 
 export const FooterContainer = styled.div`
 	background-color: #171717;

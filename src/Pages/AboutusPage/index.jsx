@@ -3,14 +3,15 @@ import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
 import * as s from "./style";
 import { LanguageContext } from "../../Context/LanguageContext";
-import VisionenPng from "../../Assets/images/png/vision_en.png";
-import VisionkoPng from "../../Assets/images/png/vision_ko.png";
-import Image1Jpg from "../../Assets/images/jpg/1.jpg";
-import Image2Jpg from "../../Assets/images/jpg/2.jpg";
-import Image3Jpg from "../../Assets/images/jpg/3.jpg";
-import Image4Jpg from "../../Assets/images/jpg/4.jpg";
-import Image5Jpg from "../../Assets/images/jpg/5.jpg";
-import Image6Jpg from "../../Assets/images/jpg/6.jpg";
+
+const VisionenPng =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Vision_EN.png";
+const VisionkoPng =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Vision_KO.png";
+const Image1Jpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Gallery1.jpeg";
+const Image2Jpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Gallery2.jpeg";
 
 const AboutusPage = () => {
 	const { language } = useContext(LanguageContext);
@@ -21,14 +22,7 @@ const AboutusPage = () => {
 		setActiveTab(tab);
 	};
 
-	const galleryImages = [
-		Image1Jpg,
-		Image2Jpg,
-		Image3Jpg,
-		Image4Jpg,
-		Image5Jpg,
-		Image6Jpg,
-	];
+	const galleryImages = [Image1Jpg, Image2Jpg];
 
 	const historyData = [
 		{
@@ -209,7 +203,7 @@ const AboutusPage = () => {
 		},
 		{
 			year: 2026,
-			month: "1",
+			month: "01",
 			content:
 				language === "Korean"
 					? "디스크 총 용량 110TB 달성"
@@ -262,55 +256,39 @@ const AboutusPage = () => {
 								PO 인사말
 							</s.GreetingTitle>
 							<s.GreetingDesc animate={true}>
-								zzuniHomelab은 단순한 홈서버 구축을 넘어,
-								최적화된 네트워크 환경과 고성능 IT 인프라를 직접
-								설계하고 운영하며, 보다 신뢰할 수 있는 시스템을
-								구축하는 것을 목표로 하고 있습니다. 우리는
-								상업용 솔루션에 의존하지 않고, 필요한 기능과
-								성능을 직접 구현하며, 완전한 제어권과 유연성을
-								확보하는 것을 최우선 가치로 삼고 있습니다.
+								zzuniHomelab은 우리가 직접 설계하고 운영하는
+								개인 인프라 프로젝트이자, 작은 데이터센터와 같은
+								실험 공간입니다. 상업용 솔루션에만 의존하지
+								않고, 필요한 기능과 성능을 스스로 구현하고
+								검증해 보며, 운영 전반에 대한 이해와 통제력을
+								넓혀 가고 있습니다. 네트워크와 스토리지, 가상화
+								환경을 하나씩 구축하고 다듬어 가는 과정 속에서,
+								더 나은 구조와 안정적인 시스템 운영이 무엇인지
+								꾸준히 고민하고 있습니다.
 								<br />
 								<br />
-								zzuniHomelab은 단순한 취미가 아닙니다. 이것은
-								우리가 직접 설계하고 운영하는 독립적인
-								데이터센터이자, 최신 오픈소스 기술과
-								엔터프라이즈급 인프라를 연구하고 실험하는
-								공간입니다.
-								<br />
-								고성능 스토리지 기술을 활용하여 안정적인 데이터
-								저장 환경을 조성하고, 초고속 네트워크 인프라를
-								통해 원활한 통신을 실현하며, 가상화 및 컨테이너
-								기술을 적극 도입하여 확장성과 유연성을
-								극대화하는 데 집중하고 있습니다.
+								이곳은 단순히 서버를 운용하는 취미 공간을 넘어,
+								새로운 기술을 실제 환경에서 시험해 보고 경험을
+								축적하는 학습의 장이기도 합니다. 오픈소스 기반의
+								다양한 기술을 적용하고 비교하며, 성능과 신뢰성을
+								균형 있게 높여 가는 것을 중요한 목표로 두고
+								있습니다. 구축과 운영 과정에서 만나는 문제들을
+								스스로 해결해 나가며, 그 과정이 하나의 경험이자
+								자산이 되고 있습니다.
 								<br />
 								<br />
-								안정성과 성능은 우리의 핵심 가치입니다. 우리는
-								시스템의 신뢰성을 확보하면서도 최고의 퍼포먼스를
-								유지할 수 있도록 지속적인 개선과 최적화를
-								진행하고 있으며, 언제든 확장과 업그레이드가
-								가능한 유연한 운영 환경을 구축하는 데 힘쓰고
-								있습니다. zzuniHomelab은 단순히 개인적인 연구로
-								끝나는 것이 아닙니다. 우리가 직접 경험하고 배운
-								것들을 공유함으로써, 더 많은 사람들이 자신만의
-								IT 인프라를 구축하고 운영할 수 있도록 돕는 것
-								또한 우리의 중요한 목표입니다.
+								zzuniHomelab에서 얻은 배움과 기록은 혼자만을
+								위한 결과물로 남기지 않으려 합니다. 우리가 겪은
+								시행착오와 개선 과정, 그리고 운영 경험을
+								공유함으로써, 비슷한 길을 걷는 분들께 작은
+								참고가 되기를 바랍니다. 혼자 만드는
+								인프라일지라도, 함께 나누고 이야기할 수 있는
+								공간이 되었으면 합니다. <br />
 								<br />
-								<br />
-								zzuniHomelab은 '최적의 IT 환경을 직접 설계하고
-								운영한다'는 철학 아래, 새로운 가능성을 실험하고,
-								보다 효율적이고 강력한 홈서버 환경을 만들어
-								나가고 있으며, 나아가 개인이 운영할 수 있는
-								데이터센터의 새로운 기준을 정립해 나가고자
-								합니다. 지금 이 순간에도 우리는 더 나은 성능과
-								완벽한 안정성을 고민하며, 새로운 기술을 도입하고
-								테스트하며, 보다 효율적인 운영 방식을 찾아
-								나가고 있습니다. zzuniHomelab은 단순한 서버
-								공간이 아니라, 우리가 원하는 최적의 IT 환경을
-								직접 만들어 나가는 곳입니다.
-								<br />
-								<br />
-								앞으로도 끊임없이 발전해 나가는 zzuniHomelab을
-								지켜봐 주시기 바랍니다. 감사합니다.
+								앞으로도 zzuniHomelab은 더 나은 성능과 안정적인
+								운영 환경을 향해 천천히, 그러나 꾸준히 발전해
+								나가겠습니다. 지켜봐 주시고 함께해 주셔서
+								감사합니다.
 							</s.GreetingDesc>
 							<s.GreetingSignature animate={true}>
 								PO. 박민준
@@ -421,60 +399,49 @@ const AboutusPage = () => {
 								PO Greeting
 							</s.GreetingTitle>
 							<s.GreetingDesc animate={true}>
-								zzuniHomelab is more than just building a home
-								server; it is about designing and operating an
-								optimized network environment and
-								high-performance IT infrastructure, with the
-								goal of creating a reliable system. We do not
-								depend on commercial solutions but instead
-								implement the necessary features and performance
-								ourselves, prioritizing complete control and
-								flexibility.
+								zzuniHomelab is a personal infrastructure
+								project that we design and operate ourselves—an
+								experimental space akin to a small data center.
+								Rather than relying solely on commercial
+								solutions, we implement and validate the
+								features and performance we need on our own,
+								expanding our understanding and control over the
+								entire operation. Through the process of
+								building and refining our network, storage, and
+								virtualization environments one step at a time,
+								we continuously explore what it means to achieve
+								better architecture and stable system operation.
 								<br />
 								<br />
-								zzuniHomelab is not merely a hobby. It is an
-								independent data center that we design and
-								operate, as well as a space where we explore and
-								experiment with the latest open-source
-								technologies and enterprise-grade
-								infrastructure.
-								<br />
-								By utilizing high-performance storage
-								technology, we establish a stable data storage
-								environment, ensuring smooth communication
-								through an ultra-fast network infrastructure,
-								and maximizing scalability and flexibility by
-								actively adopting virtualization and
-								containerization technologies.
+								This place goes beyond being just a hobby space
+								for running servers, it is also a learning
+								ground where we test new technologies in a real
+								environment and accumulate hands-on experience.
+								We apply and compare various open-source
+								technologies, with the important goal of
+								achieving a balanced improvement in both
+								performance and reliability. By solving the
+								challenges we encounter during setup and
+								operation on our own, each experience becomes a
+								valuable asset.
 								<br />
 								<br />
-								Reliability and performance are our core values.
-								We continuously improve and optimize our system
-								to ensure top performance while maintaining
-								reliability, and we focus on building a flexible
-								operating environment that can be easily
-								expanded and upgraded. At zzuniHomelab, we not
-								only conduct personal research; we also share
-								our experiences and knowledge to help others
-								build and manage their own IT infrastructure.
+								We do not intend to keep the lessons and records
+								from zzuniHomelab solely for ourselves. By
+								sharing the trial and error, improvement
+								processes, and operational experiences we have
+								gone through, we hope to serve as a small
+								reference for those walking a similar path. Even
+								if it is infrastructure built alone, we hope it
+								becomes a space where we can share and discuss
+								together.
 								<br />
 								<br />
-								Under the philosophy of "designing and operating
-								the optimal IT environment ourselves,"
-								zzuniHomelab constantly experiments with new
-								possibilities, creating a more efficient and
-								powerful home server environment, and setting
-								new standards for privately operated data
-								centers. Even now, we are striving for better
-								performance and impeccable reliability by
-								adopting and testing new technologies, as well
-								as seeking more efficient operating methods.
-								zzuniHomelab is the place where we build the
-								optimal IT environment we desire.
-								<br />
-								<br />
-								Please continue to support the ever-evolving
-								zzuniHomelab. Thank you.
+								Moving forward, zzuniHomelab will continue to
+								evolve slowly but steadily toward better
+								performance and a more stable operating
+								environment. Thank you for watching over us and
+								being part of this journey.
 							</s.GreetingDesc>
 							<s.GreetingSignature animate={true}>
 								PO. MinJun Park

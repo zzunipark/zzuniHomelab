@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
-import StatusTitleJpg from "../../Assets/images/jpg/status-title.jpg";
+
+const StatusTitleJpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_StatusTitle.jpg";
 
 const fadeIn = keyframes`
   from {
@@ -105,20 +107,6 @@ export const SubContainer2 = styled.div`
 	flex-direction: column;
 	align-items: center;
 	position: relative;
-	&::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 1px;
-		background: linear-gradient(
-			90deg,
-			transparent,
-			rgba(255, 255, 255, 0.1),
-			transparent
-		);
-	}
 `;
 
 export const StatsContainer = styled.div`
@@ -516,4 +504,44 @@ export const SliderDesc = styled.div`
 		padding: 0 1rem;
 		margin-top: 1.5rem;
 	}
+`;
+
+// ============ 서비스 상태 배너 ============
+const statusPulse = keyframes`
+	0%, 100% { opacity: 1; transform: scale(1); }
+	50% { opacity: 0.6; transform: scale(1.2); }
+`;
+
+export const StatusBanner = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	margin-top: 1.5rem;
+	padding: 0.75rem 1.5rem;
+	background: rgba(0, 0, 0, 0.3);
+	border: 1px solid ${(props) => props.color || "#10b981"};
+	border-radius: 50px;
+	backdrop-filter: blur(10px);
+	opacity: 0;
+	transform: translateY(20px);
+	animation: ${fadeIn} 1s ease-out forwards;
+	animation-delay: 0.3s;
+`;
+
+export const ServiceStatusDot = styled.div`
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: ${(props) => props.color || "#10b981"};
+	box-shadow: 0 0 10px ${(props) => props.color || "#10b981"};
+	animation: ${(props) => (props.$pulse ? statusPulse : "none")} 2s
+		ease-in-out infinite;
+`;
+
+export const ServiceStatusText = styled.span`
+	font-size: 14px;
+	font-weight: 600;
+	color: #fff;
+	letter-spacing: 0.5px;
 `;

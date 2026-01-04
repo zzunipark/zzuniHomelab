@@ -2,11 +2,15 @@ import React, { useContext, useState } from "react";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
 import { LanguageContext } from "../../Context/LanguageContext";
-import zzunimirrorjpg from "../../Assets/images/jpg/zzunimirror.jpg";
-import zzuniparklogjpg from "../../Assets/images/jpg/zzunipark-log.jpg";
-import zzuniapijpg from "../../Assets/images/jpg/zzuniapi.jpg";
 import { ExternalLink } from "lucide-react";
 import * as s from "./style";
+
+const zzunimirrorjpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Projects_zzuniMirror.jpg";
+const zzuniparklogjpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Projects_zzuniPark-Log.jpg";
+const zzuniapijpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Projects_zzuniAPI.jpg";
 
 const translations = {
 	Korean: {

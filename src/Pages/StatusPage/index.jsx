@@ -1,11 +1,14 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useState, useMemo, useEffect } from "react";
 import * as s from "./style";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
 import { LanguageContext } from "../../Context/LanguageContext";
 
-const imageNames = [
+const CDN_BASE = "https://mirror.zzunipark.com/.assets";
+const STATUS_API = "https://api.zzunipark.com/api/v1/zzunihomelab/status";
+
+const IMAGE_NAMES = [
 	"amd",
 	"cisco",
 	"cloudflare",
@@ -25,37 +28,68 @@ const imageNames = [
 	"windowsserver",
 ];
 
-const hardwareItemsKR = [
-	"40Gbps QSFP+ 내부 네트워크",
-	"2.5Gbps RJ45 외부 네트워크",
-	"UPS를 통한 전원 백업",
-	"3-2-1 백업 전략 준수",
-	"RAID 구성으로 데이터 보호",
-	"하드웨어 모니터링 & 원격 관리",
-	"유연한 확장성",
-	"24시간 NVR 모니터링",
-	"자동화된 모니터링 및 알림",
-	"저소음 & 저전력 설계",
-	"24시간 365일 가동",
-	"ZFS / BTRFS 파일 시스템",
-];
+const TRANSLATIONS = {
+	Korean: {
+		title: "현황",
+		subtitle: "zzuniHomelab의 리소스를 확인하세요.",
+		sliderDesc:
+			"zzuniHomelab은 여러 기업과 단체의 기술을 활용하며 발전하고 있습니다.",
+		totalServers: "총 서버 대수",
+		totalMemory: "총 메모리",
+		totalStorage: "총 스토리지",
+		units: "대",
+		memory: "메모리",
+		motherboard: "메인보드",
+		storage: "스토리지",
+		network: "네트워크",
+		os: "운영체제",
+		hardwareItems: [
+			"40Gbps QSFP+ 내부 네트워크",
+			"2.5Gbps RJ45 외부 네트워크",
+			"UPS를 통한 전원 백업",
+			"3-2-1 백업 전략 준수",
+			"RAID 구성으로 데이터 보호",
+			"하드웨어 모니터링 & 원격 관리",
+			"유연한 확장성",
+			"24시간 NVR 모니터링",
+			"자동화된 모니터링 및 알림",
+			"저소음 & 저전력 설계",
+			"24시간 365일 가동",
+			"ZFS / BTRFS 파일 시스템",
+		],
+	},
+	English: {
+		title: "Status",
+		subtitle: "Check out zzuniHomelab's computing resources.",
+		sliderDesc:
+			"zzuniHomelab leverages the technology of various companies and organizations to drive its growth.",
+		totalServers: "Total Servers",
+		totalMemory: "Total Memory",
+		totalStorage: "Total Storage",
+		units: "units",
+		memory: "Memory",
+		motherboard: "Motherboard",
+		storage: "Storage",
+		network: "Network",
+		os: "OS",
+		hardwareItems: [
+			"40Gbps QSFP+ internal network",
+			"2.5Gbps RJ45 external network",
+			"Power backup via UPS",
+			"Adheres to the 3-2-1 backup strategy",
+			"Data protection with RAID configuration",
+			"Hardware monitoring & remote management",
+			"Flexible scalability",
+			"24/7 NVR monitoring",
+			"Automated monitoring and alerts",
+			"Low-noise & energy-efficient design",
+			"Operational 24/7/365",
+			"ZFS / BTRFS file systems",
+		],
+	},
+};
 
-const hardwareItemsEN = [
-	"40Gbps QSFP+ internal network",
-	"2.5Gbps RJ45 external network",
-	"Power backup via UPS",
-	"Adheres to the 3-2-1 backup strategy",
-	"Data protection with RAID configuration",
-	"Hardware monitoring & remote management",
-	"Flexible scalability",
-	"24/7 NVR monitoring",
-	"Automated monitoring and alerts",
-	"Low-noise & energy-efficient design",
-	"Operational 24/7/365",
-	"ZFS / BTRFS file systems",
-];
-
-const serverData = [
+const SERVER_DATA = [
 	{
 		name: "MainHypervisor",
 		cpu: "Intel Core i7-13700K @ 3.4GHz",
@@ -66,7 +100,7 @@ const serverData = [
 			"500GB SATA SSD x 1",
 			"16TB SATA HDD x 2",
 			"4TB SAS HDD x 2",
-			"10TB SAS HDD x 1"
+			"10TB SAS HDD x 1",
 		],
 		network: [
 			"Mellanox ConnectX-3 VPI CX354A (40Gbps)",
@@ -183,253 +217,141 @@ const serverData = [
 	},
 ];
 
-const sliderDescKR =
-	"zzuniHomelab은 여러 기업과 단체의 기술을 활용하며 발전하고 있습니다.";
-const sliderDescEN =
-	"zzuniHomelab leverages the technology of various companies and organizations to drive its growth.";
-
-const logos = imageNames.reduce((acc, name) => {
-	acc[name] = require(`../../Assets/images/png/${name}.png`);
-	return acc;
-}, {});
-
-const calculateServerStats = () => {
-	const totalServers = serverData.length;
-
-	const memoryStats = {
-		DDR3: 0,
-		DDR4: 0,
-		DDR5: 0,
-		LPDDR4X: 0,
-		total: 0,
-	};
-
-	const storageStats = {
-		HDD: 0,
-		"SATA SSD": 0,
-		"NVMe SSD": 0,
-		total: 0,
-	};
-
-	serverData.forEach((server) => {
-		const memoryMatch = server.memory.match(/(\d+)GB/);
-		const memorySize = memoryMatch ? Number.parseInt(memoryMatch[1]) : 0;
-
-		if (server.memory.includes("DDR5")) {
-			memoryStats.DDR5 += memorySize;
-		} else if (server.memory.includes("DDR4")) {
-			memoryStats.DDR4 += memorySize;
-		} else if (server.memory.includes("DDR3")) {
-			memoryStats.DDR3 += memorySize;
-		} else if (server.memory.includes("LPDDR4X")) {
-			memoryStats.LPDDR4X += memorySize;
-		}
-		memoryStats.total += memorySize;
-
-		server.storage.forEach((storageItem) => {
-			const capacityMatch = storageItem.match(/(\d+(?:\.\d+)?)(GB|TB)/i);
-			const multiplierMatch = storageItem.match(/x\s*(\d+)/i);
-
-			if (capacityMatch) {
-				const capacity = Number.parseFloat(capacityMatch[1]);
-				const unit = capacityMatch[2].toUpperCase();
-				const multiplier = multiplierMatch
-					? Number.parseInt(multiplierMatch[1])
-					: 1;
-
-				let capacityInGB = capacity;
-				if (unit === "TB") {
-					capacityInGB = capacity * 1024;
-				}
-
-				const totalCapacity = capacityInGB * multiplier;
-
-				if (storageItem.includes("HDD")) {
-					storageStats.HDD += totalCapacity;
-				} else if (storageItem.includes("NVMe")) {
-					storageStats["NVMe SSD"] += totalCapacity;
-				} else if (storageItem.includes("SSD")) {
-					storageStats["SATA SSD"] += totalCapacity;
-				}
-
-				storageStats.total += totalCapacity;
-			}
-		});
-	});
-
-	return { totalServers, memoryStats, storageStats };
-};
-
 const formatCapacity = (capacityGB) => {
 	if (capacityGB >= 1024) {
 		const capacityTB = capacityGB / 1024;
-		return capacityTB % 1 === 0
-			? `${capacityTB}TB`
-			: `${capacityTB.toFixed(1)}TB`;
+		return `${capacityTB % 1 === 0 ? capacityTB : capacityTB.toFixed(1)}TB`;
 	}
-	return capacityGB % 1 === 0
-		? `${capacityGB}GB`
-		: `${capacityGB.toFixed(1)}GB`;
+	return `${capacityGB % 1 === 0 ? capacityGB : capacityGB.toFixed(1)}GB`;
 };
 
-const ServerStatsOverview = ({ isKorean }) => {
-	const { totalServers, memoryStats, storageStats } = calculateServerStats();
+const parseStorage = (storageItem) => {
+	const capacityMatch = storageItem.match(/(\d+(?:\.\d+)?)(GB|TB)/i);
+	const multiplierMatch = storageItem.match(/x\s*(\d+)/i);
+	if (!capacityMatch) return 0;
+
+	const capacity = parseFloat(capacityMatch[1]);
+	const unit = capacityMatch[2].toUpperCase();
+	const multiplier = multiplierMatch ? parseInt(multiplierMatch[1]) : 1;
+
+	return (unit === "TB" ? capacity * 1024 : capacity) * multiplier;
+};
+
+const calculateServerStats = () => {
+	const memoryStats = { DDR3: 0, DDR4: 0, DDR5: 0, LPDDR4X: 0, total: 0 };
+	const storageStats = { HDD: 0, "SATA SSD": 0, "NVMe SSD": 0, total: 0 };
+
+	SERVER_DATA.forEach(({ memory, storage }) => {
+		const memoryMatch = memory.match(/(\d+)GB/);
+		const memorySize = memoryMatch ? parseInt(memoryMatch[1]) : 0;
+
+		["DDR5", "DDR4", "DDR3", "LPDDR4X"].forEach((type) => {
+			if (memory.includes(type)) memoryStats[type] += memorySize;
+		});
+		memoryStats.total += memorySize;
+
+		storage.forEach((item) => {
+			const capacity = parseStorage(item);
+			if (item.includes("HDD")) storageStats.HDD += capacity;
+			else if (item.includes("NVMe"))
+				storageStats["NVMe SSD"] += capacity;
+			else if (item.includes("SSD")) storageStats["SATA SSD"] += capacity;
+			storageStats.total += capacity;
+		});
+	});
+
+	return { totalServers: SERVER_DATA.length, memoryStats, storageStats };
+};
+
+const getCpuBrand = (cpu) => cpu.split(" @")[0];
+
+const getMemorySize = (memory) => {
+	const sizeMatch = memory.match(/(\d+)GB/);
+	const ddrMatch = memory.match(/(DDR\d+L?|LPDDR\d+X?)/i);
+	const size = sizeMatch ? `${sizeMatch[1]}GB` : "RAM";
+	return ddrMatch ? `${ddrMatch[1]} ${size}` : size;
+};
+
+const getTotalStorage = (storageArray) => {
+	const totalGB = storageArray.reduce(
+		(acc, item) => acc + parseStorage(item),
+		0
+	);
+	return formatCapacity(totalGB);
+};
+
+const ServerStatsOverview = ({ t }) => {
+	const { totalServers, memoryStats, storageStats } = useMemo(
+		calculateServerStats,
+		[]
+	);
+
+	const StatItem = ({ label, value, unit, breakdown }) => (
+		<s.StatCard>
+			<s.StatContent>
+				<s.StatLabel>{label}</s.StatLabel>
+				<s.StatValue>{value}</s.StatValue>
+				{unit && <s.StatUnit>{unit}</s.StatUnit>}
+				{breakdown && (
+					<s.StatBreakdown>
+						{breakdown
+							.filter(([_, val]) => val > 0)
+							.map(([key, val]) => (
+								<span key={key}>
+									{key}:{" "}
+									{typeof val === "number" && val >= 1024
+										? formatCapacity(val)
+										: `${val}GB`}
+								</span>
+							))}
+					</s.StatBreakdown>
+				)}
+			</s.StatContent>
+		</s.StatCard>
+	);
 
 	return (
 		<s.StatsContainer>
 			<s.StatsGrid>
-				<s.StatCard>
-					<s.StatContent>
-						<s.StatLabel>
-							{isKorean ? "총 서버 대수" : "Total Servers"}
-						</s.StatLabel>
-						<s.StatValue>{totalServers}</s.StatValue>
-						<s.StatUnit>{isKorean ? "대" : "units"}</s.StatUnit>
-					</s.StatContent>
-				</s.StatCard>
-
-				<s.StatCard>
-					<s.StatContent>
-						<s.StatLabel>
-							{isKorean ? "총 메모리" : "Total Memory"}
-						</s.StatLabel>
-						<s.StatValue>{memoryStats.total}GB</s.StatValue>
-						<s.StatBreakdown>
-							{memoryStats.DDR5 > 0 && (
-								<span>DDR5: {memoryStats.DDR5}GB</span>
-							)}
-							{memoryStats.DDR4 > 0 && (
-								<span>DDR4: {memoryStats.DDR4}GB</span>
-							)}
-							{memoryStats.DDR3 > 0 && (
-								<span>DDR3: {memoryStats.DDR3}GB</span>
-							)}
-							{memoryStats.LPDDR4X > 0 && (
-								<span>LPDDR4X: {memoryStats.LPDDR4X}GB</span>
-							)}
-						</s.StatBreakdown>
-					</s.StatContent>
-				</s.StatCard>
-
-				<s.StatCard>
-					<s.StatContent>
-						<s.StatLabel>
-							{isKorean ? "총 스토리지" : "Total Storage"}
-						</s.StatLabel>
-						<s.StatValue>
-							{formatCapacity(storageStats.total)}
-						</s.StatValue>
-						<s.StatBreakdown>
-							{storageStats.HDD > 0 && (
-								<span>
-									HDD: {formatCapacity(storageStats.HDD)}
-								</span>
-							)}
-							{storageStats["NVMe SSD"] > 0 && (
-								<span>
-									NVMe:{" "}
-									{formatCapacity(storageStats["NVMe SSD"])}
-								</span>
-							)}
-							{storageStats["SATA SSD"] > 0 && (
-								<span>
-									SATA SSD:{" "}
-									{formatCapacity(storageStats["SATA SSD"])}
-								</span>
-							)}
-						</s.StatBreakdown>
-					</s.StatContent>
-				</s.StatCard>
+				<StatItem
+					label={t.totalServers}
+					value={totalServers}
+					unit={t.units}
+				/>
+				<StatItem
+					label={t.totalMemory}
+					value={`${memoryStats.total}GB`}
+					breakdown={[
+						["DDR5", memoryStats.DDR5],
+						["DDR4", memoryStats.DDR4],
+						["DDR3", memoryStats.DDR3],
+						["LPDDR4X", memoryStats.LPDDR4X],
+					]}
+				/>
+				<StatItem
+					label={t.totalStorage}
+					value={formatCapacity(storageStats.total)}
+					breakdown={[
+						["HDD", storageStats.HDD],
+						["NVMe", storageStats["NVMe SSD"]],
+						["SATA SSD", storageStats["SATA SSD"]],
+					]}
+				/>
 			</s.StatsGrid>
 		</s.StatsContainer>
 	);
 };
 
-const DropdownServerCard = ({ server, index, isKorean }) => {
+const DropdownServerCard = ({ server, t }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	const getServerType = (name) => {
-		if (name === "Main" || name === "Spare") return "Hypervisor";
-		if (name === "Storage" || name === "Backup") return "Storage";
-		if (name === "Router") return "Network";
-		if (name === "Windows") return "RemotePC";
-		if (name === "Debian") return "Linux";
-		if (name === "Synology") return "Storage";
-		if (name === "Mac Mini") return "RemotePC";
-		if (name === "MultiPurpose" || name === "Monitor") return "Server";
-		return "Server";
-	};
-
-	const getCpuBrand = (cpu) => {
-		if (cpu.includes("Intel Core i7-13700K")) return "Intel Core i7-13700K";
-		if (cpu.includes("AMD Ryzen 3 4350G")) return "AMD Ryzen 3 4350G";
-		if (cpu.includes("AMD Ryzen 5 2400G")) return "AMD Ryzen 5 2400G";
-		if (cpu.includes("Intel Processor N100")) return "Intel Processor N100";
-		if (cpu.includes("Intel Xeon E3-1270 v3"))
-			return "Intel Xeon E3-1270 v3";
-		if (cpu.includes("Intel Xeon E3-1220 v3"))
-			return "Intel Xeon E3-1220 v3";
-		if (cpu.includes("Intel Xeon E3-1220 v2"))
-			return "Intel Xeon E3-1220 v2";
-		if (cpu.includes("Intel Celeron J4125")) return "Intel Celeron J4125";
-		if (cpu.includes("Apple Silicon M1")) return "Apple Silicon M1";
-		if (cpu.includes("Intel Celeron N2930")) return "Intel Celeron N2930";
-		return cpu.split(" @")[0];
-	};
-
-	const getMemorySize = (memory) => {
-		const sizeMatch = memory.match(/(\d+)GB/);
-		const ddrMatch = memory.match(/(DDR\d+L?|LPDDR\d+X?)/i);
-		const size = sizeMatch ? `${sizeMatch[1]}GB` : "RAM";
-		const ddrType = ddrMatch ? ddrMatch[1] : "";
-		return ddrType ? `${ddrType} ${size}` : size;
-	};
-
-	const getTotalStorage = (storageArray) => {
-		if (!storageArray || storageArray.length === 0) return "0GB";
-
-		let totalGB = 0;
-		storageArray.forEach((storageItem) => {
-			const capacityMatch = storageItem.match(/(\d+(?:\.\d+)?)(GB|TB)/i);
-			const multiplierMatch = storageItem.match(/x\s*(\d+)/i);
-
-			if (capacityMatch) {
-				const capacity = Number.parseFloat(capacityMatch[1]);
-				const unit = capacityMatch[2].toUpperCase();
-				const multiplier = multiplierMatch
-					? Number.parseInt(multiplierMatch[1])
-					: 1;
-
-				let capacityInGB = capacity;
-				if (unit === "TB") {
-					capacityInGB = capacity * 1024;
-				}
-
-				totalGB += capacityInGB * multiplier;
-			}
-		});
-
-		if (totalGB >= 1024) {
-			const totalTB = totalGB / 1024;
-			return totalTB % 1 === 0
-				? `${totalTB}TB`
-				: `${totalTB.toFixed(1)}TB`;
-		} else {
-			return totalGB % 1 === 0
-				? `${totalGB}GB`
-				: `${totalGB.toFixed(1)}GB`;
-		}
-	};
-
 	return (
-		<s.DropdownServerCard key={index} isOpen={isOpen}>
+		<s.DropdownServerCard isOpen={isOpen}>
 			<s.ServerCardHeader onClick={() => setIsOpen(!isOpen)}>
 				<s.ServerCardHeaderContent>
 					<s.ServerCardTitleRow>
 						<s.ServerCardTitle>{server.name}</s.ServerCardTitle>
-						<s.ServerTypeTag>
-							{getServerType(server.name)}
-						</s.ServerTypeTag>
+						<s.ServerTypeTag>Server</s.ServerTypeTag>
 					</s.ServerCardTitleRow>
 					<s.ServerCardSummary>
 						<s.ServerSummaryItem>
@@ -445,7 +367,7 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 						</s.ServerSummaryItem>
 						<s.ServerSummaryItem>
 							<span>
-								<strong>Total Storage:</strong>{" "}
+								<strong>Storage:</strong>{" "}
 								{getTotalStorage(server.storage)}
 							</span>
 						</s.ServerSummaryItem>
@@ -479,19 +401,14 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 							<strong>CPU:</strong> {server.cpu}
 						</s.ServerCardItem>
 						<s.ServerCardItem>
-							<strong>{isKorean ? "메모리" : "Memory"}:</strong>{" "}
-							{server.memory}
+							<strong>{t.memory}:</strong> {server.memory}
 						</s.ServerCardItem>
 						<s.ServerCardItem>
-							<strong>
-								{isKorean ? "메인보드" : "Motherboard"}:
-							</strong>{" "}
+							<strong>{t.motherboard}:</strong>{" "}
 							{server.motherboard}
 						</s.ServerCardItem>
 						<s.ServerCardItem>
-							<strong>
-								{isKorean ? "스토리지" : "Storage"}:
-							</strong>
+							<strong>{t.storage}:</strong>
 							<s.ServerCardList>
 								{server.storage.map((item, idx) => (
 									<li key={idx}>{item}</li>
@@ -501,9 +418,7 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 					</s.ServerCardColumn>
 					<s.ServerCardColumn>
 						<s.ServerCardItem>
-							<strong>
-								{isKorean ? "네트워크" : "Network"}:
-							</strong>
+							<strong>{t.network}:</strong>
 							<s.ServerCardList>
 								{server.network.map((item, idx) => (
 									<li key={idx}>{item}</li>
@@ -511,8 +426,7 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 							</s.ServerCardList>
 						</s.ServerCardItem>
 						<s.ServerCardItem>
-							<strong>{isKorean ? "운영체제" : "OS"}:</strong>{" "}
-							{server.os}
+							<strong>{t.os}:</strong> {server.os}
 						</s.ServerCardItem>
 					</s.ServerCardColumn>
 				</s.ServerCardGrid>
@@ -521,143 +435,113 @@ const DropdownServerCard = ({ server, index, isKorean }) => {
 	);
 };
 
+const LogoSlider = ({ logos }) => (
+	<s.SliderContainer>
+		<s.SliderTrack>
+			{[...logos, ...logos].map((src, index) => (
+				<s.SliderItem key={index}>
+					<img src={src} alt="" />
+				</s.SliderItem>
+			))}
+		</s.SliderTrack>
+	</s.SliderContainer>
+);
+
+const ServiceStatus = ({ language }) => {
+	const [status, setStatus] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(false);
+	const isKorean = language === "Korean";
+
+	useEffect(() => {
+		const fetchStatus = async () => {
+			try {
+				const response = await fetch(STATUS_API);
+				if (!response.ok) throw new Error("Failed to fetch");
+				const data = await response.json();
+				setStatus(data);
+				setError(false);
+			} catch (err) {
+				setError(true);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchStatus();
+		const interval = setInterval(fetchStatus, 30000);
+		return () => clearInterval(interval);
+	}, []);
+
+	if (loading) {
+		return (
+			<s.StatusBanner color="#6b7280">
+				<s.ServiceStatusDot color="#6b7280" />
+				<s.ServiceStatusText>
+					{isKorean ? "상태 확인 중..." : "Checking status..."}
+				</s.ServiceStatusText>
+			</s.StatusBanner>
+		);
+	}
+
+	if (error || !status?.success) {
+		return (
+			<s.StatusBanner color="#ef4444">
+				<s.ServiceStatusDot color="#ef4444" />
+				<s.ServiceStatusText>
+					{isKorean ? "상태 확인 실패" : "Status Check Failed"}
+				</s.ServiceStatusText>
+			</s.StatusBanner>
+		);
+	}
+
+	return (
+		<s.StatusBanner color={status.color}>
+			<s.ServiceStatusDot
+				color={status.color}
+				$pulse={status.isHealthy}
+			/>
+			<s.ServiceStatusText>
+				{isKorean ? status.text.ko : status.text.en}
+			</s.ServiceStatusText>
+		</s.StatusBanner>
+	);
+};
+
 const StatusPage = () => {
 	const { language } = useContext(LanguageContext);
+	const t = TRANSLATIONS[language] || TRANSLATIONS.English;
+	const logos = useMemo(
+		() => IMAGE_NAMES.map((name) => `${CDN_BASE}/${name}.png`),
+		[]
+	);
 
 	return (
 		<>
 			<Navbar />
-			{language === "Korean" ? (
-				<>
-					<s.MainContainer>
-						<s.MainContainerTitle>현황</s.MainContainerTitle>
-						<s.MainContainerSubTitle>
-							zzuniHomelab의 리소스를 확인하세요.
-						</s.MainContainerSubTitle>
-					</s.MainContainer>
-					<s.SubContainer1>
-						<s.SubContainer1Items>
-							{hardwareItemsKR.map((item, index) => (
-								<s.SubContainer1Item key={index}>
-									{item}
-								</s.SubContainer1Item>
-							))}
-						</s.SubContainer1Items>
-					</s.SubContainer1>
-					<s.SubContainer2>
-						<ServerStatsOverview isKorean={true} />
-						<s.ServerSection>
-							{serverData.map((server, index) => (
-								<DropdownServerCard
-									key={index}
-									server={server}
-									index={index}
-									isKorean={true}
-								/>
-							))}
-						</s.ServerSection>
-					</s.SubContainer2>
-					<s.SubContainer3>
-						<s.SliderContainer>
-							<s.SliderTrack>
-								{Object.keys(logos)
-									.sort(() => Math.random() - 0.5)
-									.map((key, index) => (
-										<s.SliderItem key={index}>
-											<img
-												src={
-													logos[key] ||
-													"/placeholder.svg"
-												}
-												alt={key}
-											/>
-										</s.SliderItem>
-									))}
-								{Object.keys(logos)
-									.sort(() => Math.random() - 0.5)
-									.map((key, index) => (
-										<s.SliderItem key={`dup_${index}`}>
-											<img
-												src={
-													logos[key] ||
-													"/placeholder.svg"
-												}
-												alt={key}
-											/>
-										</s.SliderItem>
-									))}
-							</s.SliderTrack>
-						</s.SliderContainer>
-						<s.SliderDesc>{sliderDescKR}</s.SliderDesc>
-					</s.SubContainer3>
-					<Footerbar />
-				</>
-			) : (
-				<>
-					<s.MainContainer>
-						<s.MainContainerTitle>Status</s.MainContainerTitle>
-						<s.MainContainerSubTitle>
-							Check out zzuniHomelab's computing resources.
-						</s.MainContainerSubTitle>
-					</s.MainContainer>
-					<s.SubContainer1>
-						<s.SubContainer1Items>
-							{hardwareItemsEN.map((item, index) => (
-								<s.SubContainer1Item key={index}>
-									{item}
-								</s.SubContainer1Item>
-							))}
-						</s.SubContainer1Items>
-					</s.SubContainer1>
-					<s.SubContainer2>
-						<ServerStatsOverview isKorean={false} />
-						<s.ServerSection>
-							{serverData.map((server, index) => (
-								<DropdownServerCard
-									key={index}
-									server={server}
-									index={index}
-									isKorean={false}
-								/>
-							))}
-						</s.ServerSection>
-					</s.SubContainer2>
-					<s.SubContainer3>
-						<s.SliderContainer>
-							<s.SliderTrack>
-								{Object.keys(logos)
-									.sort(() => Math.random() - 0.5)
-									.map((key, index) => (
-										<s.SliderItem key={index}>
-											<img
-												src={
-													logos[key] ||
-													"/placeholder.svg"
-												}
-												alt={key}
-											/>
-										</s.SliderItem>
-									))}
-								{Object.keys(logos)
-									.sort(() => Math.random() - 0.5)
-									.map((key, index) => (
-										<s.SliderItem key={`dup_${index}`}>
-											<img
-												src={
-													logos[key] ||
-													"/placeholder.svg"
-												}
-												alt={key}
-											/>
-										</s.SliderItem>
-									))}
-							</s.SliderTrack>
-						</s.SliderContainer>
-						<s.SliderDesc>{sliderDescEN}</s.SliderDesc>
-					</s.SubContainer3>
-					<Footerbar />
-				</>
-			)}
+			<s.MainContainer>
+				<s.MainContainerTitle>{t.title}</s.MainContainerTitle>
+				<s.MainContainerSubTitle>{t.subtitle}</s.MainContainerSubTitle>
+				<ServiceStatus language={language} />
+			</s.MainContainer>
+			<s.SubContainer1>
+				<s.SubContainer1Items>
+					{t.hardwareItems.map((item, index) => (
+						<s.SubContainer1Item key={index}>
+							{item}
+						</s.SubContainer1Item>
+					))}
+				</s.SubContainer1Items>
+			</s.SubContainer1>
+			<s.SubContainer2>
+				<ServerStatsOverview t={t} />
+				<s.ServerSection>
+					{SERVER_DATA.map((server, index) => (
+						<DropdownServerCard key={index} server={server} t={t} />
+					))}
+				</s.ServerSection>
+			</s.SubContainer2>
+			<Footerbar />
 		</>
 	);
 };

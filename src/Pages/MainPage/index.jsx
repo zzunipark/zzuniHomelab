@@ -3,10 +3,13 @@ import * as s from "./style";
 import { CountUpStyle } from "./style";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
-import BackgroundVideoKO from "../../Assets/videos/zzuniHomelab_KO.webm";
-import BackgroundVideoEN from "../../Assets/videos/zzuniHomelab_EN.webm";
 import { LanguageContext } from "../../Context/LanguageContext";
 import { useNavigate } from "react-router-dom";
+
+const BackgroundVideoKO =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_KO.webm";
+const BackgroundVideoEN =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_EN.webm";
 
 function useHasBeenVisible(ref, rootMargin = "0px") {
 	const [hasBeenVisible, setHasBeenVisible] = useState(false);

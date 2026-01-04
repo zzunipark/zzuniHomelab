@@ -1,7 +1,9 @@
 import styled, { keyframes } from "styled-components";
-import Logopng from "../../Assets/images/png/logo.png";
-import Globesvg from "../../Assets/images/svg/globe.svg";
-import Statussvg from "../../Assets/images/svg/status.svg";
+
+const Globesvg = "https://mirror.zzunipark.com/.assets/zzuniHomelab_Globe.svg";
+const Statussvg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Status.svg";
+const Logopng = "https://mirror.zzunipark.com/.assets/zzuniHomelab.png";
 
 const slideInFromRight = keyframes`
   from {

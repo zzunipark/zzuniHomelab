@@ -1,5 +1,7 @@
 import styled, { keyframes, css } from "styled-components";
-import AboutusTitleJpg from "../../Assets/images/jpg/aboutus-title.jpg";
+
+const AboutusTitleJpg =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_AboutusTitle.jpg";
 
 const fadeIn = keyframes`
   from {
@@ -140,6 +142,8 @@ export const GreetingDesc = styled.div`
 	line-height: 1.6;
 	margin-top: 20px;
 	margin-bottom: 20px;
+	max-width: 800px;
+	width: 100%;
 	opacity: 0;
 	transform: translateY(20px);
 	${(props) =>
@@ -147,6 +151,11 @@ export const GreetingDesc = styled.div`
 		css`
 			animation: ${fadeIn} 1s ease-out forwards;
 		`}
+	@media (max-width: 768px) {
+		font-size: 16px;
+		max-width: 100%;
+		padding: 0 1rem;
+	}
 `;
 
 export const GreetingSignature = styled.div`
