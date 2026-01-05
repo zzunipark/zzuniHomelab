@@ -163,11 +163,20 @@ export const GreetingSignature = styled.div`
 	margin-bottom: 20px;
 	opacity: 0;
 	transform: translateY(20px);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 	${(props) =>
 		props.animate &&
 		css`
 			animation: ${fadeIn} 1s ease-out forwards;
 		`}
+
+	span {
+		font-size: 16px;
+		font-weight: 500;
+		color: #888;
+	}
 
 	img {
 		height: 120px;
@@ -175,6 +184,9 @@ export const GreetingSignature = styled.div`
 	}
 
 	@media (max-width: 542px) {
+		span {
+			font-size: 14px;
+		}
 		img {
 			height: 90px;
 		}

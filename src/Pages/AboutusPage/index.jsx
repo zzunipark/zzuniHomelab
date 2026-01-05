@@ -291,6 +291,7 @@ const AboutusPage = () => {
 								감사합니다.
 							</s.GreetingDesc>
 							<s.GreetingSignature animate={true}>
+								<span>zzuniHomelab PO.</span>
 								<img
 									src="https://mirror.zzunipark.com/.assets/zzuniPark_Signature.png"
 									alt="PO. 박민준"
@@ -447,6 +448,7 @@ const AboutusPage = () => {
 								being part of this journey.
 							</s.GreetingDesc>
 							<s.GreetingSignature animate={true}>
+								<span>zzuniHomelab PO.</span>
 								<img
 									src="https://mirror.zzunipark.com/.assets/zzuniPark_Signature.png"
 									alt="PO. MinJun Park"

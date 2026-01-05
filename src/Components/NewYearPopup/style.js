@@ -90,7 +90,7 @@ export const Greeting = styled.div`
 	font-size: 18px;
 	font-weight: 600;
 	color: #171717;
-	margin-bottom: 1.5rem;
+	margin-bottom: 0.8rem;
 	padding: 1.2rem;
 	background-color: #f5f5f5;
 	text-align: center;
@@ -103,7 +103,17 @@ export const Greeting = styled.div`
 
 export const Signature = styled.div`
 	text-align: right;
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 0.5rem;
+
+	span {
+		font-size: 14px;
+		font-weight: 500;
+		color: #888;
+	}
 
 	img {
 		height: 90px;
@@ -111,6 +121,9 @@ export const Signature = styled.div`
 	}
 
 	@media (max-width: 542px) {
+		span {
+			font-size: 12px;
+		}
 		img {
 			height: 70px;
 		}

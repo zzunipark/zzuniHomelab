@@ -65,16 +65,17 @@ const NewYearPopup = () => {
 					</s.Paragraph>
 				</s.Content>
 
+				<s.Greeting>
+					2026년, 힘차게 도약하는 한 해 되시길 바랍니다.
+				</s.Greeting>
+
 				<s.Signature>
+					<span>zzuniHomelab PO.</span>
 					<img
 						src="https://mirror.zzunipark.com/.assets/zzuniPark_Signature.png"
 						alt="PO. 박민준"
 					/>
 				</s.Signature>
-
-				<s.Greeting>
-					2026년, 힘차게 도약하는 한 해 되시길 바랍니다.
-				</s.Greeting>
 
 				<s.ButtonContainer>
 					<s.DontShowButton onClick={handleDontShowFor7Days}>
