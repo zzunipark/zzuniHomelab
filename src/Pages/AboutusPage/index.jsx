@@ -291,7 +291,10 @@ const AboutusPage = () => {
 								감사합니다.
 							</s.GreetingDesc>
 							<s.GreetingSignature animate={true}>
-								<img src="https://mirror.zzunipark.com/.assets/zzuniPark_Signature.png" alt="PO. 박민준" />
+								<img
+									src="https://mirror.zzunipark.com/.assets/zzuniPark_Signature.png"
+									alt="PO. 박민준"
+								/>
 							</s.GreetingSignature>
 						</s.GreetingContainer>
 					)}
@@ -444,7 +447,10 @@ const AboutusPage = () => {
 								being part of this journey.
 							</s.GreetingDesc>
 							<s.GreetingSignature animate={true}>
-								<img src="https://mirror.zzunipark.com/.assets/zzuniPark_Signature.png" alt="PO. MinJun Park" />
+								<img
+									src="https://mirror.zzunipark.com/.assets/zzuniPark_Signature.png"
+									alt="PO. MinJun Park"
+								/>
 							</s.GreetingSignature>
 						</s.GreetingContainer>
 					)}
