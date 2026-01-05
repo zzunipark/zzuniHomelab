@@ -159,9 +159,6 @@ export const GreetingDesc = styled.div`
 `;
 
 export const GreetingSignature = styled.div`
-	font-size: 20px;
-	font-weight: 500;
-	color: #171717;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	opacity: 0;
@@ -171,6 +168,17 @@ export const GreetingSignature = styled.div`
 		css`
 			animation: ${fadeIn} 1s ease-out forwards;
 		`}
+
+	img {
+		height: 120px;
+		opacity: 0.8;
+	}
+
+	@media (max-width: 542px) {
+		img {
+			height: 90px;
+		}
+	}
 `;
 
 export const VisionContainer = styled.div`
@@ -243,7 +251,8 @@ export const VisionImageContainer = styled.div`
 `;
 
 export const VisionImage = styled.img`
-	width: 100%;
+	width: 80%;
+	max-width: 800px;
 	height: auto;
 	display: block;
 `;

@@ -3,6 +3,7 @@ import * as s from "./style";
 import { CountUpStyle } from "./style";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
+import NewYearPopup from "../../Components/NewYearPopup";
 import { LanguageContext } from "../../Context/LanguageContext";
 import { useNavigate } from "react-router-dom";
 
@@ -84,6 +85,7 @@ const MainPage = () => {
 
 	return (
 		<>
+			<NewYearPopup />
 			<Navbar />
 			{language === "Korean" ? (
 				<>
