@@ -63,7 +63,7 @@ const Footerbar = () => {
 			</s.FooterTop>
 			<s.FooterBottom>
 				<s.CopyRightText>
-					COPYRIGHT © 2025. zzuniHomelab ALL RIGHTS RESERVED.
+					© 2023-2026 zzuniHomelab. ALL RIGHTS RESERVED.
 					<br />
 					me@zzunipark.com
 				</s.CopyRightText>

@@ -64,6 +64,7 @@ const AboutusPage = () => {
 				language === "Korean"
 					? "Dell PowerEdge R210 ii 서버 구축"
 					: "Deployed a Dell PowerEdge R210 II server",
+			// image: HistoryServerImg,
 		},
 		{
 			year: 2023,
@@ -315,27 +316,104 @@ const AboutusPage = () => {
 					{activeTab === "history" && (
 						<s.HistoryContainer>
 							<s.HistoryTitle>연혁</s.HistoryTitle>
+							<s.HistorySubtitle>
+								zzuniHomelab이 걸어온 길을 소개합니다.
+							</s.HistorySubtitle>
 							<s.HistoryTimeline>
-								{historyData.map((item, index) => (
-									<s.HistoryItem key={index}>
-										<s.HistoryMarker>
-											<s.HistoryNumber>
-												{String(index + 1).padStart(
-													2,
-													"0"
-												)}
-											</s.HistoryNumber>
-										</s.HistoryMarker>
-										<s.HistoryCard>
-											<s.HistoryYearMonth>
-												{item.year}.{item.month}
-											</s.HistoryYearMonth>
-											<s.HistoryDesc>
-												{item.content}
-											</s.HistoryDesc>
-										</s.HistoryCard>
-									</s.HistoryItem>
-								))}
+								{[
+									...new Set(
+										historyData.map((item) => item.year)
+									),
+								]
+									.sort((a, b) => a - b)
+									.map((year) => {
+										const yearItems = historyData.filter(
+											(item) => item.year === year
+										);
+										let itemIndex = 0;
+										return (
+											<s.HistoryYearGroup
+												key={year}
+												$isEven={year % 2 === 0}
+											>
+												<s.HistoryYearLabelContainer>
+													<s.HistoryYearLabel
+														$isEven={year % 2 === 0}
+													>
+														{year}
+													</s.HistoryYearLabel>
+												</s.HistoryYearLabelContainer>
+												<s.HistoryEventList
+													$isEven={year % 2 === 0}
+												>
+													{yearItems.map(
+														(item, idx) => (
+															<s.HistoryItem
+																key={idx}
+																index={
+																	itemIndex++
+																}
+																$isEven={
+																	year % 2 ===
+																	0
+																}
+															>
+																<s.HistoryCard
+																	$isEven={
+																		year %
+																			2 ===
+																		0
+																	}
+																>
+																	<s.HistoryCardHeader
+																		$isEven={
+																			year %
+																				2 ===
+																			0
+																		}
+																	>
+																		<s.HistoryYearMonth
+																			$isEven={
+																				year %
+																					2 ===
+																				0
+																			}
+																		>
+																			{
+																				item.month
+																			}
+																			월
+																		</s.HistoryYearMonth>
+																		<s.HistoryDesc
+																			$isEven={
+																				year %
+																					2 ===
+																				0
+																			}
+																		>
+																			{
+																				item.content
+																			}
+																		</s.HistoryDesc>
+																	</s.HistoryCardHeader>
+																	{item.image && (
+																		<s.HistoryItemImage
+																			src={
+																				item.image
+																			}
+																			alt={
+																				item.content
+																			}
+																		/>
+																	)}
+																</s.HistoryCard>
+															</s.HistoryItem>
+														)
+													)}
+												</s.HistoryEventList>
+											</s.HistoryYearGroup>
+										);
+									})}
 							</s.HistoryTimeline>
 						</s.HistoryContainer>
 					)}
@@ -472,27 +550,103 @@ const AboutusPage = () => {
 					{activeTab === "history" && (
 						<s.HistoryContainer>
 							<s.HistoryTitle>History</s.HistoryTitle>
+							<s.HistorySubtitle>
+								A journey through zzuniHomelab's milestones.
+							</s.HistorySubtitle>
 							<s.HistoryTimeline>
-								{historyData.map((item, index) => (
-									<s.HistoryItem key={index}>
-										<s.HistoryMarker>
-											<s.HistoryNumber>
-												{String(index + 1).padStart(
-													2,
-													"0"
-												)}
-											</s.HistoryNumber>
-										</s.HistoryMarker>
-										<s.HistoryCard>
-											<s.HistoryYearMonth>
-												{item.year}.{item.month}
-											</s.HistoryYearMonth>
-											<s.HistoryDesc>
-												{item.content}
-											</s.HistoryDesc>
-										</s.HistoryCard>
-									</s.HistoryItem>
-								))}
+								{[
+									...new Set(
+										historyData.map((item) => item.year)
+									),
+								]
+									.sort((a, b) => a - b)
+									.map((year) => {
+										const yearItems = historyData.filter(
+											(item) => item.year === year
+										);
+										let itemIndex = 0;
+										return (
+											<s.HistoryYearGroup
+												key={year}
+												$isEven={year % 2 === 0}
+											>
+												<s.HistoryYearLabelContainer>
+													<s.HistoryYearLabel
+														$isEven={year % 2 === 0}
+													>
+														{year}
+													</s.HistoryYearLabel>
+												</s.HistoryYearLabelContainer>
+												<s.HistoryEventList
+													$isEven={year % 2 === 0}
+												>
+													{yearItems.map(
+														(item, idx) => (
+															<s.HistoryItem
+																key={idx}
+																index={
+																	itemIndex++
+																}
+																$isEven={
+																	year % 2 ===
+																	0
+																}
+															>
+																<s.HistoryCard
+																	$isEven={
+																		year %
+																			2 ===
+																		0
+																	}
+																>
+																	<s.HistoryCardHeader
+																		$isEven={
+																			year %
+																				2 ===
+																			0
+																		}
+																	>
+																		<s.HistoryYearMonth
+																			$isEven={
+																				year %
+																					2 ===
+																				0
+																			}
+																		>
+																			{
+																				item.month
+																			}
+																		</s.HistoryYearMonth>
+																		<s.HistoryDesc
+																			$isEven={
+																				year %
+																					2 ===
+																				0
+																			}
+																		>
+																			{
+																				item.content
+																			}
+																		</s.HistoryDesc>
+																	</s.HistoryCardHeader>
+																	{item.image && (
+																		<s.HistoryItemImage
+																			src={
+																				item.image
+																			}
+																			alt={
+																				item.content
+																			}
+																		/>
+																	)}
+																</s.HistoryCard>
+															</s.HistoryItem>
+														)
+													)}
+												</s.HistoryEventList>
+											</s.HistoryYearGroup>
+										);
+									})}
 							</s.HistoryTimeline>
 						</s.HistoryContainer>
 					)}
