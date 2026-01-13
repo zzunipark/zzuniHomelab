@@ -132,7 +132,7 @@ const SERVER_DATA = [
 			"2TB SATA HDD x 8",
 		],
 		network: ["Mellanox ConnectX-3 VPI CX354A (40Gbps)"],
-		os: "TrueNAS Scale 24.10",
+		os: "TrueNAS Scale 25.10",
 	},
 	{
 		name: "BackupTrueNAS",
@@ -141,7 +141,7 @@ const SERVER_DATA = [
 		motherboard: "AsrockRack E3C232D4U",
 		storage: ["Gen3 128GB NVMe x 1", "4TB SAS HDD x 8"],
 		network: ["Intel X520-DA2 (10Gbps)"],
-		os: "TrueNAS Scale 24.10",
+		os: "TrueNAS Scale 25.10",
 	},
 	{
 		name: "WindowsSV",
@@ -153,7 +153,7 @@ const SERVER_DATA = [
 		os: "Windows Server 2022 Datacenter",
 	},
 	{
-		name: "RockySV",
+		name: "NetBootSV",
 		cpu: "Intel Xeon E3-1220 v3 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		motherboard: "Dell 81N4V",
@@ -162,13 +162,13 @@ const SERVER_DATA = [
 		os: "Rocky Linux 9.6",
 	},
 	{
-		name: "DebianSV",
+		name: "ProxmoxBackupSV",
 		cpu: "Intel Xeon E3-1220 v2 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		motherboard: "Dell 9T7VV",
 		storage: ["120GB SATA SSD x 1"],
 		network: ["Intel X520-DA2 (10Gbps)", "Broadcom BCM5716 (1Gbps)"],
-		os: "Debian 12.11",
+		os: "Proxmox Backup Server 4.0",
 	},
 	{
 		name: "FallBackSV",
@@ -186,7 +186,7 @@ const SERVER_DATA = [
 		motherboard: "Synology Custom Board",
 		storage: ["4TB SATA HDD x 2"],
 		network: ["Realtek RTL8156 (2.5Gbps)"],
-		os: "DSM 7.2",
+		os: "DSM 7.3",
 	},
 	{
 		name: "Mac Mini M1",
