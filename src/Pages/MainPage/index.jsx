@@ -23,7 +23,7 @@ function useHasBeenVisible(ref, rootMargin = "0px") {
 					observer.disconnect();
 				}
 			},
-			{ rootMargin }
+			{ rootMargin },
 		);
 		if (ref.current) observer.observe(ref.current);
 		return () => {
@@ -191,7 +191,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={50}
+										end={60}
 										duration={1000}
 										suffix="TB+"
 										animate={sub2BottomVisible}
@@ -202,7 +202,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={70}
+										end={110}
 										duration={1000}
 										suffix="TB+"
 										animate={sub2BottomVisible}
@@ -336,7 +336,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={50}
+										end={60}
 										duration={1000}
 										suffix="TB+"
 										animate={sub2BottomVisible}
@@ -347,7 +347,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={70}
+										end={110}
 										duration={1000}
 										suffix="TB+"
 										animate={sub2BottomVisible}

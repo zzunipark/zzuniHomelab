@@ -275,7 +275,7 @@ const getMemorySize = (memory) => {
 const getTotalStorage = (storageArray) => {
 	const totalGB = storageArray.reduce(
 		(acc, item) => acc + parseStorage(item),
-		0
+		0,
 	);
 	return formatCapacity(totalGB);
 };
@@ -283,7 +283,7 @@ const getTotalStorage = (storageArray) => {
 const ServerStatsOverview = ({ t }) => {
 	const { totalServers, memoryStats, storageStats } = useMemo(
 		calculateServerStats,
-		[]
+		[],
 	);
 
 	const StatItem = ({ label, value, unit, breakdown }) => (
@@ -513,7 +513,7 @@ const StatusPage = () => {
 	const t = TRANSLATIONS[language] || TRANSLATIONS.English;
 	const logos = useMemo(
 		() => IMAGE_NAMES.map((name) => `${CDN_BASE}/${name}.png`),
-		[]
+		[],
 	);
 
 	return (
