@@ -4,30 +4,8 @@ import * as s from "./style";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
 import { LanguageContext } from "../../Context/LanguageContext";
-import { kaaba } from "fontawesome";
 
-const CDN_BASE = "https://mirror.zzunipark.com/.assets";
 const STATUS_API = "https://api.zzunipark.com/api/v1/zzunihomelab/status";
-
-const IMAGE_NAMES = [
-	"amd",
-	"cisco",
-	"cloudflare",
-	"dell",
-	"docker",
-	"eoptolink",
-	"grafana",
-	"influxdb",
-	"intel",
-	"nginx",
-	"oci",
-	"portainer",
-	"proxmox",
-	"tailscale",
-	"tplink",
-	"ubuntu",
-	"windowsserver",
-];
 
 const TRANSLATIONS = {
 	Korean: {
@@ -35,8 +13,8 @@ const TRANSLATIONS = {
 		subtitle: "zzuniHomelab의 리소스를 확인하세요.",
 		sliderDesc:
 			"zzuniHomelab은 여러 기업과 단체의 기술을 활용하며 발전하고 있습니다.",
-		totalServers: "총 서버 대수",
-		totalLocations: "위치 수",
+		totalServers: "서버",
+		totalLocations: "리전",
 		totalMemory: "총 메모리",
 		totalStorage: "총 스토리지",
 		units: "대",
@@ -68,7 +46,7 @@ const TRANSLATIONS = {
 		sliderDesc:
 			"zzuniHomelab leverages the technology of various companies and organizations to drive its growth.",
 		totalServers: "Total Servers",
-		totalLocations: "Locations",
+		totalLocations: "Total Regions",
 		totalMemory: "Total Memory",
 		totalStorage: "Total Storage",
 		units: "units",
@@ -485,18 +463,6 @@ const DropdownServerCard = ({ server, t }) => {
 	);
 };
 
-const LogoSlider = ({ logos }) => (
-	<s.SliderContainer>
-		<s.SliderTrack>
-			{[...logos, ...logos].map((src, index) => (
-				<s.SliderItem key={index}>
-					<img src={src} alt="" />
-				</s.SliderItem>
-			))}
-		</s.SliderTrack>
-	</s.SliderContainer>
-);
-
 const ServiceStatus = ({ language }) => {
 	const [status, setStatus] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -561,10 +527,6 @@ const ServiceStatus = ({ language }) => {
 const StatusPage = () => {
 	const { language } = useContext(LanguageContext);
 	const t = TRANSLATIONS[language] || TRANSLATIONS.English;
-	const logos = useMemo(
-		() => IMAGE_NAMES.map((name) => `${CDN_BASE}/${name}.png`),
-		[],
-	);
 
 	return (
 		<>

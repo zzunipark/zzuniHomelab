@@ -210,6 +210,22 @@ const AboutusPage = () => {
 					? "디스크 총 용량 110TB 달성"
 					: "Expanded total disk capacity to 110TB",
 		},
+		{
+			year: 2026,
+			month: "02",
+			content:
+				language === "Korean"
+					? "디스크 총 용량 140TB 달성"
+					: "Expanded total disk capacity to 140TB",
+		},
+		{
+			year: 2026,
+			month: "02",
+			content:
+				language === "Korean"
+					? "광주·안양 2개 지역에 분산된 멀티 사이트 인프라 구축"
+					: "Established a multi-site infrastructure distributed across two locations: Gwangju and Anyang",
+		},
 	];
 
 	return (
@@ -322,13 +338,13 @@ const AboutusPage = () => {
 							<s.HistoryTimeline>
 								{[
 									...new Set(
-										historyData.map((item) => item.year)
+										historyData.map((item) => item.year),
 									),
 								]
 									.sort((a, b) => a - b)
 									.map((year) => {
 										const yearItems = historyData.filter(
-											(item) => item.year === year
+											(item) => item.year === year,
 										);
 										let itemIndex = 0;
 										return (
@@ -408,7 +424,7 @@ const AboutusPage = () => {
 																	)}
 																</s.HistoryCard>
 															</s.HistoryItem>
-														)
+														),
 													)}
 												</s.HistoryEventList>
 											</s.HistoryYearGroup>
@@ -556,13 +572,13 @@ const AboutusPage = () => {
 							<s.HistoryTimeline>
 								{[
 									...new Set(
-										historyData.map((item) => item.year)
+										historyData.map((item) => item.year),
 									),
 								]
 									.sort((a, b) => a - b)
 									.map((year) => {
 										const yearItems = historyData.filter(
-											(item) => item.year === year
+											(item) => item.year === year,
 										);
 										let itemIndex = 0;
 										return (
@@ -641,7 +657,7 @@ const AboutusPage = () => {
 																	)}
 																</s.HistoryCard>
 															</s.HistoryItem>
-														)
+														),
 													)}
 												</s.HistoryEventList>
 											</s.HistoryYearGroup>

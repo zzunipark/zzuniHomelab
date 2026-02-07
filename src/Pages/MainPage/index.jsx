@@ -3,7 +3,6 @@ import * as s from "./style";
 import { CountUpStyle } from "./style";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
-import NewYearPopup from "../../Components/NewYearPopup";
 import { LanguageContext } from "../../Context/LanguageContext";
 import { useNavigate } from "react-router-dom";
 
@@ -85,7 +84,7 @@ const MainPage = () => {
 
 	return (
 		<>
-			<NewYearPopup />
+			{/* <NewYearPopup /> */}
 			<Navbar />
 			{language === "Korean" ? (
 				<>
@@ -180,7 +179,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={300}
+										end={450}
 										duration={1000}
 										suffix="Gbps+"
 										animate={sub2BottomVisible}
@@ -202,7 +201,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={110}
+										end={140}
 										duration={1000}
 										suffix="TB+"
 										animate={sub2BottomVisible}
@@ -212,6 +211,9 @@ const MainPage = () => {
 									</s.StatsItemDescription>
 								</s.StatsItem>
 							</s.StatsContainer>
+							<s.RegionContainer animate={sub2BottomVisible}>
+								광주 · 안양 2개 리전 운용중
+							</s.RegionContainer>
 						</s.SubContainer2SectionBottom>
 					</s.SubContainer2>
 					<s.SubContainer3>
@@ -303,8 +305,9 @@ const MainPage = () => {
 							<s.SubContainer2SectionTitle
 								animate={sub2TopVisible}
 							>
-								Optimal Performance Enabled by High-Speed
-								Networking and High-Capacity Storage
+								Optimal Performance Enabled by
+								<br />
+								High-Speed Networking & High-Capacity Storage
 							</s.SubContainer2SectionTitle>
 						</s.SubContainer2SectionTop>
 						<s.SubContainer2SectionBottom
@@ -325,7 +328,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={300}
+										end={450}
 										duration={1000}
 										suffix="Gbps+"
 										animate={sub2BottomVisible}
@@ -347,7 +350,7 @@ const MainPage = () => {
 								</s.StatsItem>
 								<s.StatsItem>
 									<CountUp
-										end={110}
+										end={140}
 										duration={1000}
 										suffix="TB+"
 										animate={sub2BottomVisible}
@@ -357,6 +360,9 @@ const MainPage = () => {
 									</s.StatsItemDescription>
 								</s.StatsItem>
 							</s.StatsContainer>
+							<s.RegionContainer animate={sub2BottomVisible}>
+								Operating across 2 regions — Gwangju · Anyang
+							</s.RegionContainer>
 						</s.SubContainer2SectionBottom>
 					</s.SubContainer2>
 					<s.SubContainer3>

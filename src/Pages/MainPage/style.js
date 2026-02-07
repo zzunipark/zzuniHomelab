@@ -201,15 +201,12 @@ export const SubContainer2 = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	height: 60vh;
-	background-color: #171717;
-	padding: 0 18rem;
-	@media (max-width: 1450px) {
-		flex-direction: column;
-		height: auto;
-		padding: 2rem;
-		padding-top: 4rem;
-		padding-bottom: 4rem;
+	min-height: 60vh;
+	background: linear-gradient(180deg, #171717 0%, #1e1e1e 50%, #171717 100%);
+	padding: 5rem 2rem;
+
+	@media (max-width: 768px) {
+		padding: 3rem 1.5rem;
 	}
 `;
 
@@ -239,13 +236,66 @@ export const SubContainer2SectionBottom = styled.div`
 			animation: ${fadeIn} 1s ease-out forwards;
 		`}
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 0 10rem;
 	width: 100%;
-	@media (max-width: 1450px) {
-		padding: 0;
+	max-width: 1400px;
+`;
+
+export const RegionContainer = styled.div`
+	opacity: 0;
+	transform: translateY(20px);
+	${(props) =>
+		props.animate &&
+		css`
+			animation: ${fadeIn} 1s ease-out 0.3s forwards;
+		`}
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	margin-top: 2.5rem;
+	color: rgba(255, 255, 255, 0.3);
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 0.3px;
+
+	@media (max-width: 542px) {
+		font-size: 12px;
 	}
+`;
+
+export const RegionLabel = styled.span``;
+
+export const RegionList = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 0;
+`;
+
+export const RegionItem = styled.div`
+	display: flex;
+	align-items: center;
+
+	&::before {
+		content: "·";
+		margin: 0 0.5rem;
+		color: rgba(255, 255, 255, 0.2);
+	}
+`;
+
+export const RegionDot = styled.div`
+	display: none;
+`;
+
+export const RegionName = styled.span`
+	color: rgba(255, 255, 255, 0.5);
+	font-weight: 500;
+`;
+
+export const RegionBadge = styled.span`
+	display: none;
 `;
 
 export const SubContainer2SectionSubTitle = styled.div`
@@ -341,80 +391,95 @@ export const SubContainer2SectionDescription = styled.div`
 `;
 
 export const StatsContainer = styled.div`
-	display: flex;
-	justify-content: space-around;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.5rem;
 	width: 100%;
-	margin-top: 20px;
-	> * {
-		margin: 0 10px;
+	margin-top: 3rem;
+	@media (max-width: 1024px) {
+		grid-template-columns: repeat(2, 1fr);
 	}
-	@media (max-width: 1450px) {
-		flex-direction: column;
-		> * {
-			margin: 10px 0;
-		}
+	@media (max-width: 542px) {
+		grid-template-columns: 1fr;
+		gap: 1rem;
 	}
 `;
 
 export const StatsItem = styled.div`
-  font-size: 36px;
-  font-weight: bold;
-  color: #171717;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  background-color: #fff;
-  padding: 20px 30px;
-  border-radius: 30px;
-  width: 100%;
-  height: 150px;
-  flex-direction: column;
-  @media (max-width: 1450px) {
-    width: 100%;
-    padding: 8px 0;
-    font-size: 30px;
-    
-  }
-  @media (max-width: 1100px) {
-    font-size: 24px;
-    padding: 0;
-  }
-  @media (max-width: 542px) {
-    font-size: 20px;
-  }
-  @media (max-width: 368px) {
-    font-size: 18px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 20px;
+	padding: 2.5rem 2rem;
+	min-height: 160px;
+	transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba(255, 255, 255, 0.5),
+			transparent
+		);
+		opacity: 0;
+		transition: opacity 0.35s ease;
+	}
+
+	&:hover {
+		background: rgba(255, 255, 255, 0.1);
+		border-color: rgba(255, 255, 255, 0.18);
+		transform: translateY(-4px);
+		box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+
+		&::before {
+			opacity: 1;
+		}
+	}
+
+	@media (max-width: 542px) {
+		padding: 2rem 1.5rem;
+		min-height: 120px;
+	}
 `;
 
 export const StatsItemDescription = styled.div`
-	font-size: 24px;
+	font-size: 15px;
 	font-weight: 500;
-	color: #171717;
+	color: rgba(255, 255, 255, 0.45);
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	margin-top: 0.75rem;
 
-	@media (max-width: 1450px) {
-		font-size: 20px;
-	}
-	@media (max-width: 1100px) {
-		font-size: 17px;
-	}
 	@media (max-width: 542px) {
-		font-size: 14px;
-	}
-	@media (max-width: 368px) {
-		font-size: 12px;
+		font-size: 13px;
 	}
 `;
 
 export const CountUpStyle = styled.span`
 	font-size: 48px;
 	font-weight: 700;
-	color: #171717;
+	color: #fff;
+	letter-spacing: -1px;
+	line-height: 1;
+
 	@media (max-width: 1100px) {
-		font-size: 45px;
+		font-size: 42px;
 	}
 	@media (max-width: 542px) {
-		font-size: 42px;
+		font-size: 36px;
 	}
 `;
 
