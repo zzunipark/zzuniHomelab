@@ -4,6 +4,7 @@ import * as s from "./style";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
 import { LanguageContext } from "../../Context/LanguageContext";
+import { kaaba } from "fontawesome";
 
 const CDN_BASE = "https://mirror.zzunipark.com/.assets";
 const STATUS_API = "https://api.zzunipark.com/api/v1/zzunihomelab/status";
@@ -35,14 +36,17 @@ const TRANSLATIONS = {
 		sliderDesc:
 			"zzuniHomelab은 여러 기업과 단체의 기술을 활용하며 발전하고 있습니다.",
 		totalServers: "총 서버 대수",
+		totalLocations: "위치 수",
 		totalMemory: "총 메모리",
 		totalStorage: "총 스토리지",
 		units: "대",
+		locations: "곳",
 		memory: "메모리",
 		motherboard: "메인보드",
 		storage: "스토리지",
 		network: "네트워크",
 		os: "운영체제",
+		location: "위치",
 		hardwareItems: [
 			"40Gbps QSFP+ 내부 네트워크",
 			"2.5Gbps RJ45 외부 네트워크",
@@ -64,14 +68,17 @@ const TRANSLATIONS = {
 		sliderDesc:
 			"zzuniHomelab leverages the technology of various companies and organizations to drive its growth.",
 		totalServers: "Total Servers",
+		totalLocations: "Locations",
 		totalMemory: "Total Memory",
 		totalStorage: "Total Storage",
 		units: "units",
+		locations: "locations",
 		memory: "Memory",
 		motherboard: "Motherboard",
 		storage: "Storage",
 		network: "Network",
 		os: "OS",
+		location: "Location",
 		hardwareItems: [
 			"40Gbps QSFP+ internal network",
 			"2.5Gbps RJ45 external network",
@@ -107,6 +114,7 @@ const SERVER_DATA = [
 			"Realtek RTL8125BG (2.5Gbps)",
 		],
 		os: "Proxmox VE 9.0",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "SubHypervisor",
@@ -120,6 +128,17 @@ const SERVER_DATA = [
 			"RTL8125 (2.5Gbps)",
 		],
 		os: "Proxmox VE 9.0",
+		location: "zzuniHomelab Gwangju",
+	},
+	{
+		name: "OffSiteSV",
+		cpu: "Intel Core i5-13600K @ 3.5GHz",
+		memory: "DDR4-3200 16GB Non-ECC",
+		motherboard: "Gigabyte B760M DS3H D4",
+		storage: ["Gen4 NVMe 2TB x 1", "4TB SAS HDD x 6", "500GB SATA HDD x 2"],
+		network: ["RTL8125BG (2.5Gbps)", "Realtek RTL8111E (1Gbps)"],
+		os: "Proxmox VE 9.0",
+		location: "zzuniHomelab Anyang",
 	},
 	{
 		name: "MainTrueNAS",
@@ -133,6 +152,7 @@ const SERVER_DATA = [
 		],
 		network: ["Mellanox ConnectX-3 VPI CX354A (40Gbps)"],
 		os: "TrueNAS Scale 25.10",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "BackupTrueNAS",
@@ -142,6 +162,7 @@ const SERVER_DATA = [
 		storage: ["Gen3 128GB NVMe x 1", "4TB SAS HDD x 8"],
 		network: ["Intel X520-DA2 (10Gbps)"],
 		os: "TrueNAS Scale 25.10",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "WindowsSV",
@@ -151,6 +172,7 @@ const SERVER_DATA = [
 		storage: ["250GB SATA SSD x 1", "1TB SATA HDD x 2"],
 		network: ["Intel X520-DA2 (10Gbps)", "Broadcom BCM5716 (1Gbps)"],
 		os: "Windows Server 2022 Datacenter",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "NetBootSV",
@@ -160,6 +182,7 @@ const SERVER_DATA = [
 		storage: ["250GB SATA SSD x 1", "1TB SATA HDD x 2"],
 		network: ["Intel X520-DA2 (10Gbps)", "Broadcom BCM5716 (1Gbps)"],
 		os: "Rocky Linux 9.6",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "ProxmoxBackupSV",
@@ -169,6 +192,7 @@ const SERVER_DATA = [
 		storage: ["120GB SATA SSD x 1"],
 		network: ["Intel X520-DA2 (10Gbps)", "Broadcom BCM5716 (1Gbps)"],
 		os: "Proxmox Backup Server 4.0",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "FallBackSV",
@@ -178,6 +202,7 @@ const SERVER_DATA = [
 		storage: ["120GB SATA SSD x 1"],
 		network: ["Realtek RTL8111E (1Gbps)"],
 		os: "Windows Server 2019 Standard",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "Synology DS720+",
@@ -187,6 +212,7 @@ const SERVER_DATA = [
 		storage: ["4TB SATA HDD x 2"],
 		network: ["Realtek RTL8156 (2.5Gbps)"],
 		os: "DSM 7.3",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "Mac Mini M1",
@@ -196,6 +222,7 @@ const SERVER_DATA = [
 		storage: ["Gen3 256GB NVMe x 1"],
 		network: ["Aquantia AQC107 (10Gbps)"],
 		os: "MacOS Sequoia",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "MultiPurposeSV",
@@ -205,6 +232,7 @@ const SERVER_DATA = [
 		storage: ["128GB SATA SSD x 1"],
 		network: ["Realtek RTL8111 (1Gbps)"],
 		os: "Ubuntu Server 24.04",
+		location: "zzuniHomelab Gwangju",
 	},
 	{
 		name: "MonitorSV",
@@ -214,6 +242,7 @@ const SERVER_DATA = [
 		storage: ["Gen 3 128GB NVMe SSD x 1"],
 		network: ["Realtek RTL8125 (2.5Gbps)"],
 		os: "Ubuntu Server 24.04",
+		location: "zzuniHomelab Gwangju",
 	},
 ];
 
@@ -240,8 +269,10 @@ const parseStorage = (storageItem) => {
 const calculateServerStats = () => {
 	const memoryStats = { DDR3: 0, DDR4: 0, DDR5: 0, LPDDR4X: 0, total: 0 };
 	const storageStats = { HDD: 0, "SATA SSD": 0, "NVMe SSD": 0, total: 0 };
+	const uniqueLocations = new Set();
 
-	SERVER_DATA.forEach(({ memory, storage }) => {
+	SERVER_DATA.forEach(({ memory, storage, location }) => {
+		uniqueLocations.add(location);
 		const memoryMatch = memory.match(/(\d+)GB/);
 		const memorySize = memoryMatch ? parseInt(memoryMatch[1]) : 0;
 
@@ -260,7 +291,12 @@ const calculateServerStats = () => {
 		});
 	});
 
-	return { totalServers: SERVER_DATA.length, memoryStats, storageStats };
+	return {
+		totalServers: SERVER_DATA.length,
+		totalLocations: uniqueLocations.size,
+		memoryStats,
+		storageStats,
+	};
 };
 
 const getCpuBrand = (cpu) => cpu.split(" @")[0];
@@ -281,7 +317,7 @@ const getTotalStorage = (storageArray) => {
 };
 
 const ServerStatsOverview = ({ t }) => {
-	const { totalServers, memoryStats, storageStats } = useMemo(
+	const { totalServers, totalLocations, memoryStats, storageStats } = useMemo(
 		calculateServerStats,
 		[],
 	);
@@ -317,6 +353,11 @@ const ServerStatsOverview = ({ t }) => {
 					label={t.totalServers}
 					value={totalServers}
 					unit={t.units}
+				/>
+				<StatItem
+					label={t.totalLocations}
+					value={totalLocations}
+					unit={t.locations}
 				/>
 				<StatItem
 					label={t.totalMemory}
@@ -376,6 +417,12 @@ const DropdownServerCard = ({ server, t }) => {
 								<strong>OS:</strong> {server.os.split(" ")[0]}
 							</span>
 						</s.ServerSummaryItem>
+						<s.ServerSummaryItem>
+							<span>
+								<strong>Location:</strong>{" "}
+								{server.location.split(" ")[1]}
+							</span>
+						</s.ServerSummaryItem>
 						<s.ServerStatus>
 							<s.StatusDot />
 							<s.StatusText>OPERATING</s.StatusText>
@@ -427,6 +474,9 @@ const DropdownServerCard = ({ server, t }) => {
 						</s.ServerCardItem>
 						<s.ServerCardItem>
 							<strong>{t.os}:</strong> {server.os}
+						</s.ServerCardItem>
+						<s.ServerCardItem>
+							<strong>{t.location}:</strong> {server.location}
 						</s.ServerCardItem>
 					</s.ServerCardColumn>
 				</s.ServerCardGrid>
