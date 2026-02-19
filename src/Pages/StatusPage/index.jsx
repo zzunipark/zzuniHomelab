@@ -97,7 +97,7 @@ const SERVER_DATA = [
 	{
 		name: "SubHypervisor",
 		cpu: "Intel Xeon E-2144G @ 3.6GHz",
-		memory: "DDR4-3200 64GB Non-ECC (Actual DDR4-2400)",
+		memory: "DDR4-3200 32GB Non-ECC (Actual DDR4-2400)",
 		motherboard: "AsrockRack E3C242D4U2-2T",
 		storage: ["Gen4(Gen3) NVMe 256GB x 1", "SATA SSD 500GB x 1"],
 		network: [
@@ -111,9 +111,9 @@ const SERVER_DATA = [
 	{
 		name: "OffSiteSV",
 		cpu: "Intel Core i5-13600K @ 3.5GHz",
-		memory: "DDR4-3200 16GB Non-ECC",
+		memory: "DDR4-3200 32GB Non-ECC",
 		motherboard: "Gigabyte B760M DS3H D4",
-		storage: ["Gen4 NVMe 2TB x 1", "4TB SAS HDD x 6", "500GB SATA HDD x 2"],
+		storage: ["Gen4 NVMe 2TB x 1", "4TB SAS HDD x 6", "800GB SAS HDD x 2"],
 		network: ["RTL8125BG (2.5Gbps)", "Realtek RTL8111E (1Gbps)"],
 		os: "Proxmox VE 9.0",
 		location: "zzuniHomelab Anyang",
@@ -121,7 +121,7 @@ const SERVER_DATA = [
 	{
 		name: "MainTrueNAS",
 		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
-		memory: "DDR4-3200 32GB Non-ECC (Actual DDR4-2933)",
+		memory: "DDR4-3200 32GB Non-ECC",
 		motherboard: "Asus Prime X570-Pro",
 		storage: [
 			"Gen4 512GB NVMe x 2",
@@ -135,7 +135,7 @@ const SERVER_DATA = [
 	{
 		name: "BackupTrueNAS",
 		cpu: "Intel Xeon E3-1240L v5 @ 2.1GHz",
-		memory: "DDR4-3200 16GB Non-ECC (Actual DDR4-2133)",
+		memory: "DDR4-2666 16GB Non-ECC (Actual DDR4-2133)",
 		motherboard: "AsrockRack E3C232D4U",
 		storage: ["Gen3 128GB NVMe x 1", "4TB SAS HDD x 8"],
 		network: ["Intel X520-DA2 (10Gbps)"],
