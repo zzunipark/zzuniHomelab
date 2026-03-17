@@ -76,7 +76,7 @@ const TRANSLATIONS = {
 
 const SERVER_DATA = [
 	{
-		name: "MainHypervisor",
+		name: "PVE01.gj",
 		cpu: "Intel Core i7-13700K @ 3.4GHz",
 		memory: "DDR5-5200 96GB On-Die-ECC",
 		motherboard: "MSI MAG B760 TOMAHAWK WIFI",
@@ -91,11 +91,11 @@ const SERVER_DATA = [
 			"Mellanox ConnectX-3 VPI CX354A (40Gbps)",
 			"Realtek RTL8125BG (2.5Gbps)",
 		],
-		os: "Proxmox VE 9.0",
+		os: "Proxmox VE 9.1",
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "SubHypervisor",
+		name: "PVE02.gj",
 		cpu: "Intel Xeon E-2144G @ 3.6GHz",
 		memory: "DDR4-3200 32GB Non-ECC (Actual DDR4-2400)",
 		motherboard: "AsrockRack E3C242D4U2-2T",
@@ -105,21 +105,21 @@ const SERVER_DATA = [
 			"Intel X710-DA2 (10Gbps)",
 			"RTL8125 (2.5Gbps)",
 		],
-		os: "Proxmox VE 9.0",
+		os: "Proxmox VE 9.1",
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "OffSiteSV",
+		name: "PVE01.ay",
 		cpu: "Intel Core i5-13600K @ 3.5GHz",
 		memory: "DDR4-3200 32GB Non-ECC",
 		motherboard: "Gigabyte B760M DS3H D4",
 		storage: ["Gen4 NVMe 2TB x 1", "4TB SAS HDD x 6", "800GB SAS HDD x 2"],
 		network: ["RTL8125BG (2.5Gbps)", "Realtek RTL8111E (1Gbps)"],
-		os: "Proxmox VE 9.0",
+		os: "Proxmox VE 9.1",
 		location: "zzuniHomelab Anyang",
 	},
 	{
-		name: "MainTrueNAS",
+		name: "TNS01.gj",
 		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
 		memory: "DDR4-3200 32GB Non-ECC",
 		motherboard: "Asus Prime X570-Pro",
@@ -129,11 +129,11 @@ const SERVER_DATA = [
 			"2TB SATA HDD x 8",
 		],
 		network: ["Mellanox ConnectX-3 VPI CX354A (40Gbps)"],
-		os: "TrueNAS Scale 25.10",
+		os: "TrueNAS Scale 24.10",
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "BackupTrueNAS",
+		name: "TNS02.gj",
 		cpu: "Intel Xeon E3-1240L v5 @ 2.1GHz",
 		memory: "DDR4-2666 16GB Non-ECC (Actual DDR4-2133)",
 		motherboard: "AsrockRack E3C232D4U",
@@ -143,7 +143,7 @@ const SERVER_DATA = [
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "WindowsSV",
+		name: "MGMT01.gj",
 		cpu: "Intel Xeon E3-1270 v3 @ 3.5GHz",
 		memory: "DDR3-1600 32GB ECC-Unbuffered",
 		motherboard: "Dell 81N4V",
@@ -153,7 +153,7 @@ const SERVER_DATA = [
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "NetBootSV",
+		name: "PXE.gj",
 		cpu: "Intel Xeon E3-1220 v3 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		motherboard: "Dell 81N4V",
@@ -163,7 +163,7 @@ const SERVER_DATA = [
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "ProxmoxBackupSV",
+		name: "PBS.gj",
 		cpu: "Intel Xeon E3-1220 v2 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		motherboard: "Dell 9T7VV",
@@ -173,7 +173,7 @@ const SERVER_DATA = [
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "FallBackSV",
+		name: "MGMT02.gj",
 		cpu: "Intel Celeron N100 @ 1.1GHz",
 		memory: "DDR4-2133 4GB Non-ECC",
 		motherboard: "ASRock N100M",
@@ -203,7 +203,7 @@ const SERVER_DATA = [
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "MultiPurposeSV",
+		name: "MISC01.gj",
 		cpu: "Intel Pentium J4025 @ 2.00GHz",
 		memory: "DDR4-2666 16GB Non-ECC",
 		motherboard: "ECS GLKD-I-J4025",
@@ -213,7 +213,7 @@ const SERVER_DATA = [
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "MonitorSV",
+		name: "MISC02.gj",
 		cpu: "AMD Ryzen 3 3200G @ 3.6GHz",
 		memory: "DDR4-3200 8GB Non-ECC",
 		motherboard: "Asus Prime A520M-A II",
