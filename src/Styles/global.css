@@ -700,19 +700,21 @@ section[id] {
 }
 
 .infra-highlight-detail {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
-  visibility: hidden;
   overflow: hidden;
-  transition: max-height 2.5s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.5s ease, visibility 0s linear 2.5s;
+  transition: grid-template-rows 0.28s ease, opacity 0.2s ease;
 }
 
 .infra-highlight.is-active .infra-highlight-detail {
-  max-height: 3200px;
+  grid-template-rows: 1fr;
   opacity: 1;
-  visibility: visible;
-  transition-delay: 0s;
+  transition-duration: 0.36s, 0.24s;
+}
+
+.infra-highlight-detail-inner {
+  overflow: hidden;
 }
 
 .infra-highlight-detail-text {
@@ -1487,11 +1489,11 @@ section[id] {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease, opacity 0.3s ease;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
 }
 
 .status-detail-panel.is-open {
-  max-height: 4000px;
+  max-height: 30000px;
   opacity: 1;
 }
 
@@ -1595,12 +1597,12 @@ section[id] {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease, opacity 0.3s ease;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
   padding: 0 16px;
 }
 
 .status-server-item.is-open .status-server-detail {
-  max-height: 1200px;
+  max-height: 12000px;
   opacity: 1;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -1760,6 +1762,10 @@ section[id] {
 
   .infra-highlight-grid.has-active {
     grid-template-columns: 1fr;
+  }
+
+  .infra-highlight.is-active {
+    order: 0;
   }
 
   .vision-composition {

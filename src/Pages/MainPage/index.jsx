@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
@@ -678,6 +678,78 @@ const getTotalStorage = (storageArray) => {
 	return formatCapacity(totalGB);
 };
 
+const COUNT_ANIMATION_DURATION = 1400;
+
+const parseAnimatedStat = (value) => {
+	const match = value.match(/^(\d+(?:\.\d+)?)(.*)$/);
+	if (!match) return null;
+
+	return {
+		target: parseFloat(match[1]),
+		decimals: match[1].includes(".") ? 1 : 0,
+		suffix: match[2],
+	};
+};
+
+const AnimatedStatNumber = ({ value }) => {
+	const [displayValue, setDisplayValue] = useState(value);
+	const [hasAnimated, setHasAnimated] = useState(false);
+	const numberRef = useRef(null);
+
+	useEffect(() => {
+		const parsed = parseAnimatedStat(value);
+		const node = numberRef.current;
+		if (!parsed || !node || hasAnimated) {
+			setDisplayValue(value);
+			return undefined;
+		}
+
+		let animationFrameId;
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const [entry] = entries;
+				if (!entry.isIntersecting) return;
+				observer.disconnect();
+
+				const startTime = performance.now();
+
+				const animate = (now) => {
+					const progress = Math.min(
+						(now - startTime) / COUNT_ANIMATION_DURATION,
+						1,
+					);
+					const easedProgress = 1 - (1 - progress) ** 3;
+					const currentValue = parsed.target * easedProgress;
+					const formattedValue = currentValue.toFixed(parsed.decimals);
+					setDisplayValue(`${formattedValue}${parsed.suffix}`);
+
+					if (progress < 1) {
+						animationFrameId = window.requestAnimationFrame(animate);
+						return;
+					}
+
+					setDisplayValue(value);
+					setHasAnimated(true);
+				};
+
+				animationFrameId = window.requestAnimationFrame(animate);
+			},
+			{ threshold: 0.45 },
+		);
+
+		observer.observe(node);
+
+		return () => {
+			observer.disconnect();
+			if (animationFrameId) {
+				window.cancelAnimationFrame(animationFrameId);
+			}
+		};
+	}, [hasAnimated, value]);
+
+	return <span className="stat-number" ref={numberRef}>{displayValue}</span>;
+};
+
 const groupHistoryByYear = (items) =>
 	items.reduce((groups, item) => {
 		const [year, month] = item.date.split(".");
@@ -946,22 +1018,24 @@ const MainPage = () => {
 									))}
 								</div>
 								<div className="infra-highlight-detail">
-									{ABOUT_GREETING_DETAIL[langKey].map(
-										(paragraph) => (
-											<p
-												key={paragraph}
-												className="infra-highlight-detail-text"
-											>
-												{paragraph}
-											</p>
-										),
-									)}
-									<div className="infra-highlight-signature">
-										<strong>
-											{isKorean
-												? "zzuniHomelab PO. 박민준"
-												: "zzuniHomelab PO. MinJun Park"}
-										</strong>
+									<div className="infra-highlight-detail-inner">
+										{ABOUT_GREETING_DETAIL[langKey].map(
+											(paragraph) => (
+												<p
+													key={paragraph}
+													className="infra-highlight-detail-text"
+												>
+													{paragraph}
+												</p>
+											),
+										)}
+										<div className="infra-highlight-signature">
+											<strong>
+												{isKorean
+													? "zzuniHomelab PO. 박민준"
+													: "zzuniHomelab PO. MinJun Park"}
+											</strong>
+										</div>
 									</div>
 								</div>
 							</article>
@@ -999,49 +1073,51 @@ const MainPage = () => {
 										: "Discover the direction and core values behind zzuniHomelab."}
 								</p>
 								<div className="infra-highlight-detail">
-									<div className="vision-composition">
-										<div className="vision-summary-panel">
-											<span>zzuniHomelab Vision</span>
-											<strong>
-												{isKorean
-													? "직접 운영하는 인프라를 더 안정적이고 열린 방향으로 발전시킵니다."
-													: "Evolving self-operated infrastructure toward reliability and openness."}
-											</strong>
-											<p>
-												{isKorean
-													? "자율성, 성능, 개선, 공유를 운영 판단의 기준으로 삼습니다."
-													: "Autonomy, performance, improvement, and sharing guide every operations decision."}
-											</p>
-										</div>
-										<div className="vision-principle-list">
-											{VISION_ITEMS[langKey].map(
-												(item) => (
-													<div
-														key={item.number}
-														className="vision-principle-item"
-													>
-														<span className="vision-principle-number">
-															{item.number}
-														</span>
-														<div>
-															<strong>
-																<i
-																	className={`fas ${item.icon}`}
-																/>
-																{item.title}
-															</strong>
-															<p>
-																{
-																	item.description
-																}
-															</p>
-															<span>
-																{item.label}
+									<div className="infra-highlight-detail-inner">
+										<div className="vision-composition">
+											<div className="vision-summary-panel">
+												<span>zzuniHomelab Vision</span>
+												<strong>
+													{isKorean
+														? "직접 운영하는 인프라를 더 안정적이고 열린 방향으로 발전시킵니다."
+														: "Evolving self-operated infrastructure toward reliability and openness."}
+												</strong>
+												<p>
+													{isKorean
+														? "자율성, 성능, 개선, 공유를 운영 판단의 기준으로 삼습니다."
+														: "Autonomy, performance, improvement, and sharing guide every operations decision."}
+												</p>
+											</div>
+											<div className="vision-principle-list">
+												{VISION_ITEMS[langKey].map(
+													(item) => (
+														<div
+															key={item.number}
+															className="vision-principle-item"
+														>
+															<span className="vision-principle-number">
+																{item.number}
 															</span>
+															<div>
+																<strong>
+																	<i
+																		className={`fas ${item.icon}`}
+																	/>
+																	{item.title}
+																</strong>
+																<p>
+																	{
+																		item.description
+																	}
+																</p>
+																<span>
+																	{item.label}
+																</span>
+															</div>
 														</div>
-													</div>
-												),
-											)}
+													),
+												)}
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1088,37 +1164,39 @@ const MainPage = () => {
 									))}
 								</div>
 								<div className="infra-highlight-detail">
-									<div className="infra-history-flow">
-										{historyGroups.map((group) => (
-											<div
-												key={group.year}
-												className="infra-history-year-group"
-											>
-												<div className="infra-history-year">
-													<strong>
-														{group.year}
-													</strong>
-													<span>
-														{isKorean
-															? `${group.items.length}개 기록`
-															: `${group.items.length} entries`}
-													</span>
+									<div className="infra-highlight-detail-inner">
+										<div className="infra-history-flow">
+											{historyGroups.map((group) => (
+												<div
+													key={group.year}
+													className="infra-history-year-group"
+												>
+													<div className="infra-history-year">
+														<strong>
+															{group.year}
+														</strong>
+														<span>
+															{isKorean
+																? `${group.items.length}개 기록`
+																: `${group.items.length} entries`}
+														</span>
+													</div>
+													<div className="infra-history-events">
+														{group.items.map((item) => (
+															<div
+																key={`${item.date}-${item.text}`}
+																className="infra-history-event"
+															>
+																<span>
+																	{item.month}
+																</span>
+																<p>{item.text}</p>
+															</div>
+														))}
+													</div>
 												</div>
-												<div className="infra-history-events">
-													{group.items.map((item) => (
-														<div
-															key={`${item.date}-${item.text}`}
-															className="infra-history-event"
-														>
-															<span>
-																{item.month}
-															</span>
-															<p>{item.text}</p>
-														</div>
-													))}
-												</div>
-											</div>
-										))}
+											))}
+										</div>
 									</div>
 								</div>
 							</article>
@@ -1139,9 +1217,7 @@ const MainPage = () => {
 									className="stat-item reveal"
 									style={{ "--delay": `${index * 80}ms` }}
 								>
-									<span className="stat-number">
-										{stat.value}
-									</span>
+									<AnimatedStatNumber value={stat.value} />
 									<span className="stat-label">
 										{stat.label}
 									</span>
