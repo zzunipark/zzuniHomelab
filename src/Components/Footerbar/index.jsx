@@ -49,20 +49,6 @@ const Footerbar = () => {
 					<p className="footer-main-text">
 						{isKorean
 							? "zzuniHomelab은 "
-							: "zzuniHomelab is part of the "}
-						<a
-							href="https://krfoss.org/"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="footer-link"
-						>
-							ROKFOSS
-						</a>
-						{isKorean ? " 프로젝트의 일원입니다." : " project."}
-					</p>
-					<p className="footer-main-text">
-						{isKorean
-							? "zzuniHomelab은 "
 							: "zzuniHomelab is supported by "}
 						<a
 							href="https://eliv.digital/"
