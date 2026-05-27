@@ -83,13 +83,13 @@ const HISTORY_HIGHLIGHTS = {
 const INFRA_STATS = {
 	ko: [
 		{ value: "40Gbps", label: "이더넷 링크" },
-		{ value: "450Gbps+", label: "스위칭 용량" },
+		{ value: "850Gbps+", label: "스위칭 용량" },
 		{ value: "60TB+", label: "월간 트래픽" },
 		{ value: "140TB+", label: "스토리지 용량" },
 	],
 	en: [
 		{ value: "40Gbps", label: "Ethernet Link" },
-		{ value: "450Gbps+", label: "Switching Capacity" },
+		{ value: "850Gbps+", label: "Switching Capacity" },
 		{ value: "60TB+", label: "Monthly Traffic" },
 		{ value: "140TB+", label: "Storage Capacity" },
 	],
@@ -208,7 +208,10 @@ const HISTORY_FULL = {
 		{ date: "2023.08", text: "LGA1150 기반 저전력 컴퓨팅 시스템 구축" },
 		{ date: "2023.10", text: "Dell PowerEdge R210 ii 서버 구축" },
 		{ date: "2023.10", text: "zzuniMirror 서비스 시작" },
-		{ date: "2023.11", text: "총 용량 128GB 메모리의 Xeon E5-v1 기반 컴퓨팅 시스템 구축" },
+		{
+			date: "2023.11",
+			text: "총 용량 128GB 메모리의 Xeon E5-v1 기반 컴퓨팅 시스템 구축",
+		},
 		{ date: "2024.02", text: "디스크 총 용량 10TB 달성" },
 		{ date: "2024.03", text: "RJ45기반 2.5Gbps 내/외부망 네트워크 구축" },
 		{ date: "2024.04", text: "SFP+기반 10Gbps 내부망 네트워크 구축" },
@@ -226,34 +229,73 @@ const HISTORY_FULL = {
 		{ date: "2025.10", text: "디스크 총 용량 70TB 달성" },
 		{ date: "2026.01", text: "디스크 총 용량 110TB 달성" },
 		{ date: "2026.02", text: "디스크 총 용량 140TB 달성" },
-		{ date: "2026.02", text: "광주·안양 2개 지역에 분산된 멀티 사이트 인프라 구축" },
+		{
+			date: "2026.02",
+			text: "광주·안양 2개 지역에 분산된 멀티 사이트 인프라 구축",
+		},
 	],
 	en: [
 		{ date: "2023.01", text: "Initiated the zzuniHomelab project" },
-		{ date: "2023.01", text: "Deployed a 2.5Gbps RJ45-based internal network" },
-		{ date: "2023.06", text: "Implemented an Xeon E5-v2-based computing infrastructure" },
-		{ date: "2023.08", text: "Integrated a low-power computing system utilizing LGA1150 architecture" },
+		{
+			date: "2023.01",
+			text: "Deployed a 2.5Gbps RJ45-based internal network",
+		},
+		{
+			date: "2023.06",
+			text: "Implemented an Xeon E5-v2-based computing infrastructure",
+		},
+		{
+			date: "2023.08",
+			text: "Integrated a low-power computing system utilizing LGA1150 architecture",
+		},
 		{ date: "2023.10", text: "Deployed a Dell PowerEdge R210 II server" },
 		{ date: "2023.10", text: "Launched the zzuniMirror service" },
-		{ date: "2023.11", text: "Engineered an Xeon E5-v1-based computing system with 128GB of total memory" },
+		{
+			date: "2023.11",
+			text: "Engineered an Xeon E5-v1-based computing system with 128GB of total memory",
+		},
 		{ date: "2024.02", text: "Expanded total disk capacity to 10TB" },
-		{ date: "2024.03", text: "Established a 2.5Gbps RJ45-based internal and external network" },
-		{ date: "2024.04", text: "Upgraded to a 10Gbps SFP+ link for internal networking" },
+		{
+			date: "2024.03",
+			text: "Established a 2.5Gbps RJ45-based internal and external network",
+		},
+		{
+			date: "2024.04",
+			text: "Upgraded to a 10Gbps SFP+ link for internal networking",
+		},
 		{ date: "2024.05", text: "Expanded total disk capacity to 20TB" },
 		{ date: "2024.06", text: "Commissioned a Dell PowerEdge R220 server" },
-		{ date: "2024.09", text: "Deployed a low-power storage system leveraging AM4 architecture" },
-		{ date: "2025.01", text: "Implemented a high-performance computing system utilizing AM4 architecture" },
-		{ date: "2025.01", text: "Deployed an energy-efficient computing system based on LGA1700" },
+		{
+			date: "2024.09",
+			text: "Deployed a low-power storage system leveraging AM4 architecture",
+		},
+		{
+			date: "2025.01",
+			text: "Implemented a high-performance computing system utilizing AM4 architecture",
+		},
+		{
+			date: "2025.01",
+			text: "Deployed an energy-efficient computing system based on LGA1700",
+		},
 		{ date: "2025.01", text: "Expanded total disk capacity to 30TB" },
 		{ date: "2025.02", text: "Expanded total disk capacity to 40TB" },
-		{ date: "2025.04", text: "Upgraded to a 40Gbps QSFP+ link for internal networking" },
+		{
+			date: "2025.04",
+			text: "Upgraded to a 40Gbps QSFP+ link for internal networking",
+		},
 		{ date: "2025.06", text: "Expanded total disk capacity to 50TB" },
-		{ date: "2025.06", text: "Implemented a high-performance computing system utilizing LGA1700" },
+		{
+			date: "2025.06",
+			text: "Implemented a high-performance computing system utilizing LGA1700",
+		},
 		{ date: "2025.09", text: "Expanded total disk capacity to 60TB" },
 		{ date: "2025.10", text: "Expanded total disk capacity to 70TB" },
 		{ date: "2026.01", text: "Expanded total disk capacity to 110TB" },
 		{ date: "2026.02", text: "Expanded total disk capacity to 140TB" },
-		{ date: "2026.02", text: "Established a multi-site infrastructure distributed across two locations: Gwangju and Anyang" },
+		{
+			date: "2026.02",
+			text: "Established a multi-site infrastructure distributed across two locations: Gwangju and Anyang",
+		},
 	],
 };
 
@@ -285,23 +327,22 @@ const COPY = {
 		statusDetailsTitle: "상세 사양",
 		statusHardwareTitle: "하드웨어 특징",
 		statusServersTitle: "서버 상세",
-			statsTitle: "인프라 규모",
+		statsTitle: "인프라 규모",
 		galleryMore: "갤러리 더보기",
 		galleryClose: "닫기",
 		contactTitle: "문의 및 연결",
 		contactSubtitle: "기술 문의와 협업 제안을 기다립니다.",
 		serviceInfoTitle: "서비스 정보",
 		contactInfoTitle: "문의 및 신고",
-			emailRefusalTitle: "이메일 무단 수집 거부",
-			emailRefusalBody:
-				"본 웹사이트에 게시된 이메일 주소의 무단 수집을 거부합니다. 위반 시 정보통신망법에 따라 처벌될 수 있습니다.",
-			emailRefusalOpen: "전문 보기",
-			emailRefusalClose: "전문 닫기",
-			emailRefusalLawTitle:
-				"정보통신망 이용촉진 및 정보보호 등에 관한 법률",
-			serviceInfo: {
-				location: "광주 · 안양, 대한민국",
-				bandwidth: "40Gbps 내부망 / 2.5Gbps 외부망",
+		emailRefusalTitle: "이메일 무단 수집 거부",
+		emailRefusalBody:
+			"본 웹사이트에 게시된 이메일 주소의 무단 수집을 거부합니다. 위반 시 정보통신망법에 따라 처벌될 수 있습니다.",
+		emailRefusalOpen: "전문 보기",
+		emailRefusalClose: "전문 닫기",
+		emailRefusalLawTitle: "정보통신망 이용촉진 및 정보보호 등에 관한 법률",
+		serviceInfo: {
+			location: "광주 · 안양, 대한민국",
+			bandwidth: "40Gbps 내부망 / 2.5Gbps 외부망",
 			hours: "24시간 연중무휴",
 			stack: "Proxmox VE / TrueNAS / ZFS",
 		},
@@ -350,23 +391,23 @@ const COPY = {
 		statusDetailsTitle: "Detailed Specs",
 		statusHardwareTitle: "Hardware Highlights",
 		statusServersTitle: "Server Details",
-			statsTitle: "Infrastructure Scale",
+		statsTitle: "Infrastructure Scale",
 		galleryMore: "View More",
 		galleryClose: "Close",
 		contactTitle: "Contact",
 		contactSubtitle: "We welcome technical inquiries and collaboration.",
 		serviceInfoTitle: "Service Info",
 		contactInfoTitle: "Contact & Report",
-			emailRefusalTitle: "Unauthorized Email Collection Refusal",
-			emailRefusalBody:
-				"Unauthorized collection of email addresses posted on this site is prohibited and may be penalized under applicable law.",
-			emailRefusalOpen: "View Full Text",
-			emailRefusalClose: "Hide Full Text",
-			emailRefusalLawTitle:
-				"Act on Promotion of Information and Communications Network Utilization and Information Protection, etc.",
-			serviceInfo: {
-				location: "Gwangju · Anyang, South Korea",
-				bandwidth: "40Gbps internal / 2.5Gbps external",
+		emailRefusalTitle: "Unauthorized Email Collection Refusal",
+		emailRefusalBody:
+			"Unauthorized collection of email addresses posted on this site is prohibited and may be penalized under applicable law.",
+		emailRefusalOpen: "View Full Text",
+		emailRefusalClose: "Hide Full Text",
+		emailRefusalLawTitle:
+			"Act on Promotion of Information and Communications Network Utilization and Information Protection, etc.",
+		serviceInfo: {
+			location: "Gwangju · Anyang, South Korea",
+			bandwidth: "40Gbps internal / 2.5Gbps external",
 			hours: "24/7 Available",
 			stack: "Proxmox VE / TrueNAS / ZFS",
 		},
@@ -423,17 +464,11 @@ const EMAIL_REFUSAL_DETAILS = {
 
 const SERVER_DATA = [
 	{
-		name: "PVE01.gj",
+		name: "pve01.gj",
 		cpu: "Intel Core i7-13700K @ 3.4GHz",
 		memory: "DDR5-5200 96GB On-Die-ECC",
 		motherboard: "MSI MAG B760 TOMAHAWK WIFI",
-		storage: [
-			"Gen4 NVMe 256GB x 1",
-			"500GB SATA SSD x 1",
-			"16TB SATA HDD x 2",
-			"4TB SAS HDD x 2",
-			"10TB SAS HDD x 1",
-		],
+		storage: ["120GB SATA SSD x 2", "500GB SATA SSD x 1"],
 		network: [
 			"Mellanox ConnectX-3 VPI CX354A (40Gbps)",
 			"Realtek RTL8125BG (2.5Gbps)",
@@ -442,55 +477,57 @@ const SERVER_DATA = [
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "PVE02.gj",
-		cpu: "Intel Xeon E-2144G @ 3.6GHz",
-		memory: "DDR4-3200 32GB Non-ECC (Actual DDR4-2400)",
-		motherboard: "AsrockRack E3C242D4U2-2T",
-		storage: ["Gen4(Gen3) NVMe 256GB x 1", "SATA SSD 500GB x 1"],
-		network: [
-			"Intel X550-AT2 (10Gbps)",
-			"Intel X710-DA2 (10Gbps)",
-			"RTL8125 (2.5Gbps)",
-		],
+		name: "pve02.gj",
+		cpu: "Intel Core i5-13600K @ 3.5GHz",
+		memory: "DDR4-3200 32GB Non-ECC",
+		motherboard: "Gigabyte B760M DS3H D4",
+		storage: ["120GB SATA SSD x 2", "500GB SATA SSD x 1"],
+		network: ["Intel X520-DA2 (10Gbps)", "Realtek RTL8125BG (2.5Gbps)"],
 		os: "Proxmox VE 9.1",
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "PVE01.ay",
-		cpu: "Intel Core i5-13600K @ 3.5GHz",
-		memory: "DDR4-3200 32GB Non-ECC",
-		motherboard: "Gigabyte B760M DS3H D4",
-		storage: ["Gen4 NVMe 2TB x 1", "4TB SAS HDD x 6", "800GB SAS HDD x 2"],
-		network: ["RTL8125BG (2.5Gbps)", "Realtek RTL8111E (1Gbps)"],
+		name: "pve03.gj",
+		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
+		memory: "DDR4-3200 8GB Non-ECC",
+		motherboard: "GigaByte A520M K V2",
+		storage: ["128GB Gen3 NVMe x 2"],
+		network: ["Realtek RTL8125 (2.5Gbps)"],
+		os: "Proxmox VE 9.1",
+		location: "zzuniHomelab Gwangju",
+	},
+	{
+		name: "pve01.ay",
+		cpu: "Intel Xeon E-2144G @ 3.6GHz",
+		memory: "DDR4-2400 32GB ECC-Unbuffered",
+		motherboard: "ASRockRack E3C242D4U-2T",
+		storage: [
+			"500GB Gen4 NVMe x 1",
+			"4TB SAS HDD x 6",
+			"800GB SAS HDD x 2",
+		],
+		network: ["Intel X550-AT2 (10Gbps)", "Realtek RTL8125 (2.5Gbps)"],
 		os: "Proxmox VE 9.1",
 		location: "zzuniHomelab Anyang",
 	},
 	{
-		name: "TNS01.gj",
-		cpu: "AMD Ryzen 3 4350G @ 3.8GHz",
-		memory: "DDR4-3200 32GB Non-ECC",
+		name: "tns01.gj",
+		cpu: "AMD Ryzen 7 5700G @ 3.8GHz",
+		memory: "DDR4-3200 40GB Non-ECC",
 		motherboard: "Asus Prime X570-Pro",
 		storage: [
-			"Gen4 512GB NVMe x 2",
-			"Gen3 128GB NVMe x 1",
-			"2TB SATA HDD x 8",
+			"120GB SATA SSD x 2",
+			"512GB Gen4 NVMe x 2",
+			"4TB SAS HDD x 12",
+			"10TB SAS HDD x 1",
+			"16TB SATA HDD x 2",
 		],
 		network: ["Mellanox ConnectX-3 VPI CX354A (40Gbps)"],
 		os: "TrueNAS Scale 24.10",
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "TNS02.gj",
-		cpu: "Intel Xeon E3-1240L v5 @ 2.1GHz",
-		memory: "DDR4-2666 16GB Non-ECC (Actual DDR4-2133)",
-		motherboard: "AsrockRack E3C232D4U",
-		storage: ["Gen3 128GB NVMe x 1", "4TB SAS HDD x 8"],
-		network: ["Intel X520-DA2 (10Gbps)"],
-		os: "TrueNAS Scale 25.10",
-		location: "zzuniHomelab Gwangju",
-	},
-	{
-		name: "MGMT01.gj",
+		name: "mgmt01.gj",
 		cpu: "Intel Xeon E3-1270 v3 @ 3.5GHz",
 		memory: "DDR3-1600 32GB ECC-Unbuffered",
 		motherboard: "Dell 81N4V",
@@ -500,33 +537,53 @@ const SERVER_DATA = [
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "PXE.gj",
+		name: "pxe.gj",
 		cpu: "Intel Xeon E3-1220 v3 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		motherboard: "Dell 81N4V",
-		storage: ["250GB SATA SSD x 1", "1TB SATA HDD x 2"],
+		storage: ["250GB SATA SSD x 1", "2TB SATA HDD x 2"],
 		network: ["Intel X520-DA2 (10Gbps)", "Broadcom BCM5716 (1Gbps)"],
-		os: "Rocky Linux 9.6",
+		os: "Rocky Linux 9.7",
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "PBS.gj",
+		name: "pbs.gj",
 		cpu: "Intel Xeon E3-1220 v2 @ 3.1GHz",
 		memory: "DDR3-1600 16GB ECC-Unbuffered",
 		motherboard: "Dell 9T7VV",
-		storage: ["120GB SATA SSD x 1"],
+		storage: ["120GB SATA SSD x 1", "1TB SATA HDD x 2"],
 		network: ["Intel X520-DA2 (10Gbps)", "Broadcom BCM5716 (1Gbps)"],
-		os: "Proxmox Backup Server 4.0",
+		os: "Proxmox Backup Server 4.2",
 		location: "zzuniHomelab Gwangju",
 	},
 	{
-		name: "MGMT02.gj",
+		name: "mgmt02.gj",
 		cpu: "Intel Celeron N100 @ 1.1GHz",
 		memory: "DDR4-2133 4GB Non-ECC",
 		motherboard: "ASRock N100M",
 		storage: ["120GB SATA SSD x 1"],
-		network: ["Realtek RTL8111E (1Gbps)"],
+		network: ["Realtek RTL8125 (2.5Gbps)", "Realtek RTL8111E (1Gbps)"],
 		os: "Windows Server 2019 Standard",
+		location: "zzuniHomelab Gwangju",
+	},
+	{
+		name: "misc01.gj",
+		cpu: "Intel Pentium J4025 @ 2.00GHz",
+		memory: "DDR4-2666 16GB Non-ECC",
+		motherboard: "ECS GLKD-I-J4025",
+		storage: ["128GB SATA SSD x 1"],
+		network: ["Realtek RTL8111 (1Gbps)"],
+		os: "Ubuntu Server 24.04",
+		location: "zzuniHomelab Gwangju",
+	},
+	{
+		name: "fw01.gj",
+		cpu: "Intel Xeon E3-1270 v5 @ 3.6GHz",
+		memory: "DDR4-2133 16GB ECC-Unbuffered",
+		motherboard: "ASRockRack E3C232D4U",
+		storage: ["128GB Gen3 NVMe x 1"],
+		network: ["Intel I225-v (2.5Gbps"],
+		os: "OPNsense 25.7",
 		location: "zzuniHomelab Gwangju",
 	},
 	{
@@ -547,26 +604,6 @@ const SERVER_DATA = [
 		storage: ["Gen3 256GB NVMe x 1"],
 		network: ["Aquantia AQC107 (10Gbps)"],
 		os: "MacOS Sequoia",
-		location: "zzuniHomelab Gwangju",
-	},
-	{
-		name: "MISC01.gj",
-		cpu: "Intel Pentium J4025 @ 2.00GHz",
-		memory: "DDR4-2666 16GB Non-ECC",
-		motherboard: "ECS GLKD-I-J4025",
-		storage: ["128GB SATA SSD x 1"],
-		network: ["Realtek RTL8111 (1Gbps)"],
-		os: "Ubuntu Server 24.04",
-		location: "zzuniHomelab Gwangju",
-	},
-	{
-		name: "MISC02.gj",
-		cpu: "AMD Ryzen 3 3200G @ 3.6GHz",
-		memory: "DDR4-3200 8GB Non-ECC",
-		motherboard: "Asus Prime A520M-A II",
-		storage: ["Gen 3 128GB NVMe SSD x 1"],
-		network: ["Realtek RTL8125 (2.5Gbps)"],
-		os: "Ubuntu Server 24.04",
 		location: "zzuniHomelab Gwangju",
 	},
 ];
@@ -734,10 +771,10 @@ const MainPage = () => {
 					</video>
 					<div className="hero-overlay" />
 					<div className="container hero-content">
-							<div
-								className="hero-badge hero-item"
-								style={{ "--delay": "0ms" }}
-							>
+						<div
+							className="hero-badge hero-item"
+							style={{ "--delay": "0ms" }}
+						>
 							<span
 								className={`status-dot ${
 									!loading && !error && status?.isHealthy
@@ -789,10 +826,10 @@ const MainPage = () => {
 							>
 								{copy.heroPrimary}
 							</button>
-								<button
-									className="btn btn-secondary"
-									onClick={() => handleScrollTo("infrastructure")}
-								>
+							<button
+								className="btn btn-secondary"
+								onClick={() => handleScrollTo("infrastructure")}
+							>
 								{copy.heroSecondary}
 							</button>
 						</div>
@@ -866,155 +903,179 @@ const MainPage = () => {
 								{copy.infraSubtitle}
 							</p>
 						</div>
-							<div
-								className={`infra-highlight-grid ${
-									activeInfra ? "has-active" : ""
+						<div
+							className={`infra-highlight-grid ${
+								activeInfra ? "has-active" : ""
+							}`}
+						>
+							<article
+								className={`infra-highlight ${
+									activeInfra === "greeting"
+										? "is-active"
+										: ""
 								}`}
 							>
-								<article
-									className={`infra-highlight ${
-										activeInfra === "greeting" ? "is-active" : ""
-									}`}
-								>
-									<div className="infra-highlight-header">
-										<h3>
-											<i className="fas fa-user" />
-											{copy.aboutTitle}
-										</h3>
-										<button
-											type="button"
-											className="infra-highlight-action"
-											onClick={() => handleInfraClick("greeting")}
-											aria-expanded={activeInfra === "greeting"}
-										>
-											{activeInfra === "greeting"
-												? isKorean
-													? "접기"
+								<div className="infra-highlight-header">
+									<h3>
+										<i className="fas fa-user" />
+										{copy.aboutTitle}
+									</h3>
+									<button
+										type="button"
+										className="infra-highlight-action"
+										onClick={() =>
+											handleInfraClick("greeting")
+										}
+										aria-expanded={
+											activeInfra === "greeting"
+										}
+									>
+										{activeInfra === "greeting"
+											? isKorean
+												? "접기"
 												: "Collapse"
-												: isKorean
-													? "자세히 보기"
-													: "Expand"}
-											<i className="fas fa-chevron-down" />
-										</button>
-									</div>
+											: isKorean
+												? "자세히 보기"
+												: "Expand"}
+										<i className="fas fa-chevron-down" />
+									</button>
+								</div>
 								<div className="infra-highlight-preview">
 									{copy.aboutBody.map((paragraph) => (
 										<p key={paragraph}>{paragraph}</p>
 									))}
 								</div>
 								<div className="infra-highlight-detail">
-									{ABOUT_GREETING_DETAIL[langKey].map((paragraph) => (
-										<p
-											key={paragraph}
-											className="infra-highlight-detail-text"
-										>
-											{paragraph}
-										</p>
-									))}
-										<div className="infra-highlight-signature">
-											<strong>
-												{isKorean
-													? "zzuniHomelab PO. 박민준"
-													: "zzuniHomelab PO. MinJun Park"}
-											</strong>
-										</div>
+									{ABOUT_GREETING_DETAIL[langKey].map(
+										(paragraph) => (
+											<p
+												key={paragraph}
+												className="infra-highlight-detail-text"
+											>
+												{paragraph}
+											</p>
+										),
+									)}
+									<div className="infra-highlight-signature">
+										<strong>
+											{isKorean
+												? "zzuniHomelab PO. 박민준"
+												: "zzuniHomelab PO. MinJun Park"}
+										</strong>
 									</div>
-								</article>
-								<article
-									className={`infra-highlight ${
-										activeInfra === "vision" ? "is-active" : ""
-									}`}
-								>
-									<div className="infra-highlight-header">
-										<h3>
-											<i className="fas fa-eye" />
-											{copy.visionTitle}
-										</h3>
-										<button
-											type="button"
-											className="infra-highlight-action"
-											onClick={() => handleInfraClick("vision")}
-											aria-expanded={activeInfra === "vision"}
-										>
-											{activeInfra === "vision"
-												? isKorean
-													? "접기"
+								</div>
+							</article>
+							<article
+								className={`infra-highlight ${
+									activeInfra === "vision" ? "is-active" : ""
+								}`}
+							>
+								<div className="infra-highlight-header">
+									<h3>
+										<i className="fas fa-eye" />
+										{copy.visionTitle}
+									</h3>
+									<button
+										type="button"
+										className="infra-highlight-action"
+										onClick={() =>
+											handleInfraClick("vision")
+										}
+										aria-expanded={activeInfra === "vision"}
+									>
+										{activeInfra === "vision"
+											? isKorean
+												? "접기"
 												: "Collapse"
-												: isKorean
-													? "자세히 보기"
-													: "Expand"}
-											<i className="fas fa-chevron-down" />
-										</button>
-									</div>
+											: isKorean
+												? "자세히 보기"
+												: "Expand"}
+										<i className="fas fa-chevron-down" />
+									</button>
+								</div>
 								<p className="infra-highlight-preview">
 									{isKorean
 										? "zzuniHomelab이 추구하는 방향과 핵심 가치를 확인하세요."
 										: "Discover the direction and core values behind zzuniHomelab."}
-										</p>
-										<div className="infra-highlight-detail">
-											<div className="vision-composition">
-												<div className="vision-summary-panel">
-													<span>zzuniHomelab Vision</span>
-													<strong>
-														{isKorean
-															? "직접 운영하는 인프라를 더 안정적이고 열린 방향으로 발전시킵니다."
-															: "Evolving self-operated infrastructure toward reliability and openness."}
-													</strong>
-													<p>
-														{isKorean
-															? "자율성, 성능, 개선, 공유를 운영 판단의 기준으로 삼습니다."
-															: "Autonomy, performance, improvement, and sharing guide every operations decision."}
-													</p>
-												</div>
-												<div className="vision-principle-list">
-													{VISION_ITEMS[langKey].map((item) => (
+								</p>
+								<div className="infra-highlight-detail">
+									<div className="vision-composition">
+										<div className="vision-summary-panel">
+											<span>zzuniHomelab Vision</span>
+											<strong>
+												{isKorean
+													? "직접 운영하는 인프라를 더 안정적이고 열린 방향으로 발전시킵니다."
+													: "Evolving self-operated infrastructure toward reliability and openness."}
+											</strong>
+											<p>
+												{isKorean
+													? "자율성, 성능, 개선, 공유를 운영 판단의 기준으로 삼습니다."
+													: "Autonomy, performance, improvement, and sharing guide every operations decision."}
+											</p>
+										</div>
+										<div className="vision-principle-list">
+											{VISION_ITEMS[langKey].map(
+												(item) => (
 													<div
 														key={item.number}
 														className="vision-principle-item"
-														>
-															<span className="vision-principle-number">
-																{item.number}
+													>
+														<span className="vision-principle-number">
+															{item.number}
+														</span>
+														<div>
+															<strong>
+																<i
+																	className={`fas ${item.icon}`}
+																/>
+																{item.title}
+															</strong>
+															<p>
+																{
+																	item.description
+																}
+															</p>
+															<span>
+																{item.label}
 															</span>
-															<div>
-																<strong>
-																	<i className={`fas ${item.icon}`} />
-																	{item.title}
-																</strong>
-																<p>{item.description}</p>
-																<span>{item.label}</span>
-															</div>
+														</div>
 													</div>
-												))}
-											</div>
+												),
+											)}
 										</div>
 									</div>
-								</article>
-								<article
-									className={`infra-highlight ${
-										activeInfra === "history" ? "is-active" : ""
-									}`}
-								>
-									<div className="infra-highlight-header">
-										<h3>
-											<i className="fas fa-clock" />
-											{copy.historyTitle}
-										</h3>
-										<button
-											type="button"
-											className="infra-highlight-action"
-											onClick={() => handleInfraClick("history")}
-											aria-expanded={activeInfra === "history"}
-										>
-											{activeInfra === "history"
-												? isKorean
-													? "접기"
+								</div>
+							</article>
+							<article
+								className={`infra-highlight ${
+									activeInfra === "history" ? "is-active" : ""
+								}`}
+							>
+								<div className="infra-highlight-header">
+									<h3>
+										<i className="fas fa-clock" />
+										{copy.historyTitle}
+									</h3>
+									<button
+										type="button"
+										className="infra-highlight-action"
+										onClick={() =>
+											handleInfraClick("history")
+										}
+										aria-expanded={
+											activeInfra === "history"
+										}
+									>
+										{activeInfra === "history"
+											? isKorean
+												? "접기"
 												: "Collapse"
-												: isKorean
-													? "자세히 보기"
-													: "Expand"}
-											<i className="fas fa-chevron-down" />
-										</button>
-									</div>
+											: isKorean
+												? "자세히 보기"
+												: "Expand"}
+										<i className="fas fa-chevron-down" />
+									</button>
+								</div>
 								<div className="infra-highlight-preview">
 									{HISTORY_HIGHLIGHTS[langKey].map((item) => (
 										<div
@@ -1025,37 +1086,41 @@ const MainPage = () => {
 											<span>{item.text}</span>
 										</div>
 									))}
-									</div>
-										<div className="infra-highlight-detail">
-											<div className="infra-history-flow">
-												{historyGroups.map((group) => (
-													<div
-														key={group.year}
-														className="infra-history-year-group"
-													>
-														<div className="infra-history-year">
-															<strong>{group.year}</strong>
+								</div>
+								<div className="infra-highlight-detail">
+									<div className="infra-history-flow">
+										{historyGroups.map((group) => (
+											<div
+												key={group.year}
+												className="infra-history-year-group"
+											>
+												<div className="infra-history-year">
+													<strong>
+														{group.year}
+													</strong>
+													<span>
+														{isKorean
+															? `${group.items.length}개 기록`
+															: `${group.items.length} entries`}
+													</span>
+												</div>
+												<div className="infra-history-events">
+													{group.items.map((item) => (
+														<div
+															key={`${item.date}-${item.text}`}
+															className="infra-history-event"
+														>
 															<span>
-																{isKorean
-																	? `${group.items.length}개 기록`
-																	: `${group.items.length} entries`}
+																{item.month}
 															</span>
+															<p>{item.text}</p>
 														</div>
-														<div className="infra-history-events">
-															{group.items.map((item) => (
-																<div
-																	key={`${item.date}-${item.text}`}
-																	className="infra-history-event"
-																>
-																	<span>{item.month}</span>
-																	<p>{item.text}</p>
-																</div>
-															))}
-														</div>
-													</div>
-												))}
-										</div>
+													))}
+												</div>
+											</div>
+										))}
 									</div>
+								</div>
 							</article>
 						</div>
 						<div
@@ -1138,70 +1203,74 @@ const MainPage = () => {
 								<i className="fas fa-arrow-right" />
 							</button>
 						)}
+						<div
+							className={`gallery-modal ${
+								isGalleryOpen ? "open" : ""
+							}`}
+						>
 							<div
-								className={`gallery-modal ${
-									isGalleryOpen ? "open" : ""
-								}`}
-							>
-								<div
-									className="gallery-modal-overlay"
-									onClick={closeGallery}
-								/>
-								<div className="gallery-modal-content">
-									<div className="gallery-modal-header">
-										<h3>{copy.galleryTitle}</h3>
-										<button
-											className="gallery-modal-close"
-											onClick={closeGallery}
-										>
-											{copy.galleryClose}
-										</button>
-									</div>
-									<div className="gallery-modal-grid">
-										{modalGalleryImages.map((src, index) => (
-											<button
-												type="button"
-												key={`${src}-${index}`}
-												className="gallery-modal-item"
-												onClick={() => setSelectedGalleryImage(src)}
-											>
-												<img
-													src={src}
-													alt={`gallery-modal-${index}`}
-												/>
-											</button>
-										))}
-									</div>
-								</div>
-							</div>
-							<div
-								className={`image-preview-modal ${
-									selectedGalleryImage ? "open" : ""
-								}`}
-							>
-								<div
-									className="image-preview-overlay"
-									onClick={() => setSelectedGalleryImage(null)}
-								/>
-								<div className="image-preview-content">
+								className="gallery-modal-overlay"
+								onClick={closeGallery}
+							/>
+							<div className="gallery-modal-content">
+								<div className="gallery-modal-header">
+									<h3>{copy.galleryTitle}</h3>
 									<button
-										type="button"
-										className="image-preview-close"
-										onClick={() => setSelectedGalleryImage(null)}
-										aria-label={copy.galleryClose}
+										className="gallery-modal-close"
+										onClick={closeGallery}
 									>
-										<i className="fas fa-times" />
+										{copy.galleryClose}
 									</button>
-									{selectedGalleryImage && (
-										<img
-											src={selectedGalleryImage}
-											alt={copy.galleryTitle}
-										/>
-									)}
+								</div>
+								<div className="gallery-modal-grid">
+									{modalGalleryImages.map((src, index) => (
+										<button
+											type="button"
+											key={`${src}-${index}`}
+											className="gallery-modal-item"
+											onClick={() =>
+												setSelectedGalleryImage(src)
+											}
+										>
+											<img
+												src={src}
+												alt={`gallery-modal-${index}`}
+											/>
+										</button>
+									))}
 								</div>
 							</div>
 						</div>
-					</section>
+						<div
+							className={`image-preview-modal ${
+								selectedGalleryImage ? "open" : ""
+							}`}
+						>
+							<div
+								className="image-preview-overlay"
+								onClick={() => setSelectedGalleryImage(null)}
+							/>
+							<div className="image-preview-content">
+								<button
+									type="button"
+									className="image-preview-close"
+									onClick={() =>
+										setSelectedGalleryImage(null)
+									}
+									aria-label={copy.galleryClose}
+								>
+									<i className="fas fa-times" />
+								</button>
+								{selectedGalleryImage && (
+									<img
+										src={selectedGalleryImage}
+										alt={copy.galleryTitle}
+									/>
+								)}
+							</div>
+						</div>
+					</div>
+				</section>
 
 				<section id="status" className="section">
 					<div className="container">
@@ -1294,133 +1363,216 @@ const MainPage = () => {
 								className={`status-detail-panel ${
 									isStatusDetailOpen ? "is-open" : ""
 								}`}
-								>
-									<div className="status-detail-inner">
-										<div className="status-detail-block">
-											<h3 className="status-detail-title">
-												{copy.statusServersTitle}
+							>
+								<div className="status-detail-inner">
+									<div className="status-detail-block">
+										<h3 className="status-detail-title">
+											{copy.statusServersTitle}
 										</h3>
 										<div className="status-server-list">
-											{SERVER_DATA.map((server, index) => {
-												const isOpen =
-													openServerIndex === index;
-												return (
-													<div
-														key={server.name}
-														className={`status-server-item ${
-															isOpen ? "is-open" : ""
-														}`}
-													>
-														<button
-															className="status-server-summary"
-															onClick={() =>
-																handleServerToggle(index)
-															}
-															aria-expanded={isOpen}
+											{SERVER_DATA.map(
+												(server, index) => {
+													const isOpen =
+														openServerIndex ===
+														index;
+													return (
+														<div
+															key={server.name}
+															className={`status-server-item ${
+																isOpen
+																	? "is-open"
+																	: ""
+															}`}
 														>
-															<div className="status-server-cell status-server-name">
-																<span className="status-server-label">
-																	{statusDetailLabels.server}
-																</span>
-																<span className="status-server-value">
-																	{server.name}
-																</span>
-															</div>
-															<div className="status-server-cell">
-																<span className="status-server-label">
-																	{statusDetailLabels.cpu}
-																</span>
-																<span className="status-server-value">
-																	{getCpuBrand(server.cpu)}
-																</span>
-															</div>
-															<div className="status-server-cell">
-																<span className="status-server-label">
-																	{statusDetailLabels.memory}
-																</span>
-																<span className="status-server-value">
-																	{getMemorySize(server.memory)}
-																</span>
-															</div>
-															<div className="status-server-cell">
-																<span className="status-server-label">
-																	{statusDetailLabels.storage}
-																</span>
-																<span className="status-server-value">
-																	{getTotalStorage(server.storage)}
-																</span>
-															</div>
-															<div className="status-server-cell">
-																<span className="status-server-label">
-																	{statusDetailLabels.location}
-																</span>
-																<span className="status-server-value">
-																	{server.location.split(" ")[1]}
-																</span>
-															</div>
-															<i className="fas fa-chevron-down" />
-														</button>
-														<div className="status-server-detail">
-															<div className="status-server-detail-grid">
-																<div className="status-server-detail-item">
-																	<strong>
-																		{statusDetailLabels.cpu}
-																	</strong>
-																	<span>{server.cpu}</span>
+															<button
+																className="status-server-summary"
+																onClick={() =>
+																	handleServerToggle(
+																		index,
+																	)
+																}
+																aria-expanded={
+																	isOpen
+																}
+															>
+																<div className="status-server-cell status-server-name">
+																	<span className="status-server-label">
+																		{
+																			statusDetailLabels.server
+																		}
+																	</span>
+																	<span className="status-server-value">
+																		{
+																			server.name
+																		}
+																	</span>
 																</div>
-																<div className="status-server-detail-item">
-																	<strong>
-																		{statusDetailLabels.memory}
-																	</strong>
-																	<span>{server.memory}</span>
+																<div className="status-server-cell">
+																	<span className="status-server-label">
+																		{
+																			statusDetailLabels.cpu
+																		}
+																	</span>
+																	<span className="status-server-value">
+																		{getCpuBrand(
+																			server.cpu,
+																		)}
+																	</span>
 																</div>
+																<div className="status-server-cell">
+																	<span className="status-server-label">
+																		{
+																			statusDetailLabels.memory
+																		}
+																	</span>
+																	<span className="status-server-value">
+																		{getMemorySize(
+																			server.memory,
+																		)}
+																	</span>
+																</div>
+																<div className="status-server-cell">
+																	<span className="status-server-label">
+																		{
+																			statusDetailLabels.storage
+																		}
+																	</span>
+																	<span className="status-server-value">
+																		{getTotalStorage(
+																			server.storage,
+																		)}
+																	</span>
+																</div>
+																<div className="status-server-cell">
+																	<span className="status-server-label">
+																		{
+																			statusDetailLabels.location
+																		}
+																	</span>
+																	<span className="status-server-value">
+																		{
+																			server.location.split(
+																				" ",
+																			)[1]
+																		}
+																	</span>
+																</div>
+																<i className="fas fa-chevron-down" />
+															</button>
+															<div className="status-server-detail">
+																<div className="status-server-detail-grid">
+																	<div className="status-server-detail-item">
+																		<strong>
+																			{
+																				statusDetailLabels.cpu
+																			}
+																		</strong>
+																		<span>
+																			{
+																				server.cpu
+																			}
+																		</span>
+																	</div>
+																	<div className="status-server-detail-item">
+																		<strong>
+																			{
+																				statusDetailLabels.memory
+																			}
+																		</strong>
+																		<span>
+																			{
+																				server.memory
+																			}
+																		</span>
+																	</div>
 																	<div className="status-server-detail-item is-wide">
 																		<strong>
-																			{statusDetailLabels.motherboard}
+																			{
+																				statusDetailLabels.motherboard
+																			}
 																		</strong>
-																	<span>{server.motherboard}</span>
-																</div>
-																<div className="status-server-detail-item is-wide">
-																	<strong>
-																		{statusDetailLabels.storage}
-																	</strong>
-																	<ul>
-																		{server.storage.map((item, idx) => (
-																			<li key={`${server.name}-storage-${idx}`}>
-																				{item}
-																			</li>
-																		))}
-																	</ul>
-																</div>
-																<div className="status-server-detail-item is-wide">
-																	<strong>
-																		{statusDetailLabels.network}
-																	</strong>
-																	<ul>
-																		{server.network.map((item, idx) => (
-																			<li key={`${server.name}-network-${idx}`}>
-																				{item}
-																			</li>
-																		))}
-																	</ul>
-																</div>
-																<div className="status-server-detail-item">
-																	<strong>
-																		{statusDetailLabels.os}
-																	</strong>
-																	<span>{server.os}</span>
-																</div>
-																<div className="status-server-detail-item">
-																	<strong>
-																		{statusDetailLabels.location}
-																	</strong>
-																	<span>{server.location}</span>
+																		<span>
+																			{
+																				server.motherboard
+																			}
+																		</span>
+																	</div>
+																	<div className="status-server-detail-item is-wide">
+																		<strong>
+																			{
+																				statusDetailLabels.storage
+																			}
+																		</strong>
+																		<ul>
+																			{server.storage.map(
+																				(
+																					item,
+																					idx,
+																				) => (
+																					<li
+																						key={`${server.name}-storage-${idx}`}
+																					>
+																						{
+																							item
+																						}
+																					</li>
+																				),
+																			)}
+																		</ul>
+																	</div>
+																	<div className="status-server-detail-item is-wide">
+																		<strong>
+																			{
+																				statusDetailLabels.network
+																			}
+																		</strong>
+																		<ul>
+																			{server.network.map(
+																				(
+																					item,
+																					idx,
+																				) => (
+																					<li
+																						key={`${server.name}-network-${idx}`}
+																					>
+																						{
+																							item
+																						}
+																					</li>
+																				),
+																			)}
+																		</ul>
+																	</div>
+																	<div className="status-server-detail-item">
+																		<strong>
+																			{
+																				statusDetailLabels.os
+																			}
+																		</strong>
+																		<span>
+																			{
+																				server.os
+																			}
+																		</span>
+																	</div>
+																	<div className="status-server-detail-item">
+																		<strong>
+																			{
+																				statusDetailLabels.location
+																			}
+																		</strong>
+																		<span>
+																			{
+																				server.location
+																			}
+																		</span>
+																	</div>
 																</div>
 															</div>
 														</div>
-													</div>
-												);
-											})}
+													);
+												},
+											)}
 										</div>
 									</div>
 								</div>
@@ -1450,13 +1602,13 @@ const MainPage = () => {
 								{copy.contactSubtitle}
 							</p>
 						</div>
-							<div className="contact-card-stack">
-								<article
-									className="info-card contact-wide-card reveal"
-									style={{ "--delay": "0ms" }}
-								>
-									<h3>
-										<i className="fas fa-headset" />
+						<div className="contact-card-stack">
+							<article
+								className="info-card contact-wide-card reveal"
+								style={{ "--delay": "0ms" }}
+							>
+								<h3>
+									<i className="fas fa-headset" />
 									{copy.contactInfoTitle}
 								</h3>
 								<div className="contact-grid">
@@ -1506,50 +1658,54 @@ const MainPage = () => {
 											</a>
 										</div>
 									</div>
-									</div>
-								</article>
-								<article
-									className="info-card contact-wide-card reveal"
-									style={{ "--delay": "80ms" }}
+								</div>
+							</article>
+							<article
+								className="info-card contact-wide-card reveal"
+								style={{ "--delay": "80ms" }}
+							>
+								<h3>
+									<i className="fas fa-ban" />
+									{copy.emailRefusalTitle}
+								</h3>
+								<p>{copy.emailRefusalBody}</p>
+								<button
+									type="button"
+									className={`email-refusal-toggle ${
+										isEmailLawOpen ? "is-open" : ""
+									}`}
+									onClick={() =>
+										setIsEmailLawOpen((prev) => !prev)
+									}
+									aria-expanded={isEmailLawOpen}
 								>
-									<h3>
-										<i className="fas fa-ban" />
-										{copy.emailRefusalTitle}
-									</h3>
-									<p>{copy.emailRefusalBody}</p>
-									<button
-										type="button"
-										className={`email-refusal-toggle ${
-											isEmailLawOpen ? "is-open" : ""
-										}`}
-										onClick={() =>
-											setIsEmailLawOpen((prev) => !prev)
-										}
-										aria-expanded={isEmailLawOpen}
-									>
-										<span>
-											{isEmailLawOpen
-												? copy.emailRefusalClose
-												: copy.emailRefusalOpen}
-										</span>
-										<i className="fas fa-chevron-down" />
-									</button>
-									<div
-										className={`email-refusal-detail ${
-											isEmailLawOpen ? "is-open" : ""
-										}`}
-									>
-										<div className="email-refusal-body">
-											<strong>{copy.emailRefusalLawTitle}</strong>
-											{EMAIL_REFUSAL_DETAILS[langKey].map(
-												(paragraph) => (
-													<p key={paragraph}>{paragraph}</p>
-												),
-											)}
-										</div>
+									<span>
+										{isEmailLawOpen
+											? copy.emailRefusalClose
+											: copy.emailRefusalOpen}
+									</span>
+									<i className="fas fa-chevron-down" />
+								</button>
+								<div
+									className={`email-refusal-detail ${
+										isEmailLawOpen ? "is-open" : ""
+									}`}
+								>
+									<div className="email-refusal-body">
+										<strong>
+											{copy.emailRefusalLawTitle}
+										</strong>
+										{EMAIL_REFUSAL_DETAILS[langKey].map(
+											(paragraph) => (
+												<p key={paragraph}>
+													{paragraph}
+												</p>
+											),
+										)}
 									</div>
-								</article>
-							</div>
+								</div>
+							</article>
+						</div>
 					</div>
 				</section>
 			</main>
