@@ -1,112 +1,114 @@
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import * as s from "./style";
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
 import { LanguageContext } from "../../Context/LanguageContext";
+import useServiceStatus from "../../hooks/useServiceStatus";
+import useTheme from "../../hooks/useTheme";
+
+const LOGO_LIGHT = "https://mirror.zzunipark.com/.assets/zzuniHomelab.png";
+const LOGO_DARK =
+	"https://mirror.zzunipark.com/.assets/zzuniHomelab_Inverted.png";
 
 const Navbar = () => {
-	const navigate = useNavigate();
 	const { language, toggleLanguage } = useContext(LanguageContext);
-	const [mobileNavOpen, setMobileNavOpen] = useState(false);
-	const [showMobileNav, setShowMobileNav] = useState(false);
+	const { theme, toggleTheme } = useTheme();
+	const { status, loading, error } = useServiceStatus();
 
-	const goToStatus = () => {
-		window.location.href = "https://status.zzunipark.com";
-	};
+	const statusText = error
+		? language === "Korean"
+			? "상태 확인 실패"
+			: "Status Check Failed"
+		: loading
+			? language === "Korean"
+				? "상태 확인 중..."
+				: "Checking status..."
+			: language === "Korean"
+				? status?.text?.ko || "정상 운영"
+				: status?.text?.en || "Operational";
 
-	const navItems =
-		language === "Korean"
-			? [
-					{ title: "소개", route: "/about-us" },
-					{ title: "프로젝트", route: "/projects" },
-					{ title: "현황", route: "/status" },
-					{ title: "블로그", route: "/blog" },
-			  ]
-			: [
-					{ title: "About Us", route: "/about-us" },
-					{ title: "Projects", route: "/projects" },
-					{ title: "Status", route: "/status" },
-					{ title: "Blog", route: "/blog" },
-			  ];
+	const statusColor = error
+		? "#ef4444"
+		: loading
+			? "#6b7280"
+			: status?.color || "#10b981";
 
-	const refuseEmailText =
-		language === "Korean"
-			? "이메일 무단수집 거부"
-			: "Unauthorized Email Collection Refusal";
+	const themeTitle =
+		theme === "dark"
+			? language === "Korean"
+				? "라이트 모드로 변경"
+				: "Switch to light mode"
+			: language === "Korean"
+				? "다크 모드로 변경"
+				: "Switch to dark mode";
 
-	const openMobileNav = () => {
-		setMobileNavOpen(true);
-		setShowMobileNav(true);
-	};
-
-	const closeMobileNav = () => {
-		setMobileNavOpen(false);
-		setTimeout(() => {
-			setShowMobileNav(false);
-		}, 500);
-	};
+	const languageTitle =
+		language === "Korean" ? "Switch to English" : "한국어로 변경";
 
 	return (
-		<>
-			<s.MainNavbar>
-				<s.LogoBox onClick={() => navigate("/")} />
-				<s.Navigator>
-					{navItems.map((item, index) => (
-						<s.NavigatorText
-							key={index}
-							onClick={() => navigate(item.route)}
-						>
-							{item.title}
-						</s.NavigatorText>
-					))}
-				</s.Navigator>
-				<s.UtilityBox>
-					<s.Status onClick={goToStatus} />
-					<s.Globe onClick={toggleLanguage} />
-					<s.HamburgerIcon
-						onClick={() => {
-							mobileNavOpen ? closeMobileNav() : openMobileNav();
-						}}
-					>
-						<s.HamburgerLine />
-						<s.HamburgerLine />
-						<s.HamburgerLine />
-					</s.HamburgerIcon>
-				</s.UtilityBox>
-			</s.MainNavbar>
-
-			{showMobileNav && (
-				<s.MobileNavOverlay>
-					<s.MobileNavContent isClosing={!mobileNavOpen}>
-						<s.MobileNavClose onClick={closeMobileNav}>
-							&times;
-						</s.MobileNavClose>
-						<s.MobileNavMenu>
-							{navItems.map((item, index) => (
-								<s.MobileNavItem
-									key={index}
-									onClick={() => {
-										navigate(item.route);
-										closeMobileNav();
-									}}
-								>
-									{item.title}
-								</s.MobileNavItem>
-							))}
-						</s.MobileNavMenu>
-						<s.MobileNavContact>
-							<div>me@zzunipark.com</div>
-							<s.RefuseEmailButton
-								onClick={() =>
-									navigate("/refuse-email-collection")
-								}
+		<header className="header">
+			<div className="container">
+				<div className="header-content">
+					<NavLink className="logo" to="/" aria-label="zzuniHomelab">
+						<img
+							className="logo-light"
+							src={LOGO_LIGHT}
+							alt="zzuniHomelab"
+						/>
+						<img
+							className="logo-dark"
+							src={LOGO_DARK}
+							alt="zzuniHomelab"
+						/>
+					</NavLink>
+					<div className="header-info">
+						<div>
+							<a
+								href="https://status.zzunipark.com"
+								target="_blank"
+								rel="noopener noreferrer"
 							>
-								{refuseEmailText}
-							</s.RefuseEmailButton>
-						</s.MobileNavContact>
-					</s.MobileNavContent>
-				</s.MobileNavOverlay>
-			)}
-		</>
+								<span
+									className={`status-dot ${
+										!loading && !error && status?.isHealthy
+											? "pulse"
+											: ""
+									}`}
+									style={{ backgroundColor: statusColor }}
+								/>
+								<span>{statusText}</span>
+							</a>
+						</div>
+						<div>homelab.zzunipark.com</div>
+						<div>
+							{language === "Korean"
+								? "광주 · 안양, 대한민국"
+								: "Gwangju · Anyang, South Korea"}
+						</div>
+						<div className="controls">
+							<button
+								className="control-btn theme-toggle"
+								onClick={toggleTheme}
+								title={themeTitle}
+								aria-label={themeTitle}
+							>
+								<i
+									className={`fas ${
+										theme === "dark" ? "fa-sun" : "fa-moon"
+									}`}
+								/>
+							</button>
+							<button
+								className="control-btn lang-toggle"
+								onClick={toggleLanguage}
+								title={languageTitle}
+								aria-label={languageTitle}
+							>
+								<i className="fas fa-globe" />
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 	);
 };
 

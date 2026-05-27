@@ -1,0 +1,890 @@
+</div>
+</div>
+</section>
+
+<section class="readme-section" id="readme-section" style="display: none;">
+    <div class="container">
+        <div class="readme-card">
+            <h3>
+                <i class="fas fa-book-open"></i>
+                <span class="readme-title" id="readme-title">README</span>
+            </h3>
+            <div class="readme-content" id="readme-content">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="info-section">
+    <div class="container">
+        <div class="script-section-card">
+            <div class="script-selector">
+                <button class="os-btn active" data-os="ubuntu" onclick="switchOS('ubuntu', this)">
+                    Ubuntu
+                </button>
+                <button class="os-btn" data-os="debian" onclick="switchOS('debian', this)">
+                    Debian
+                </button>
+                <button class="os-btn" data-os="raspberry-pi-os" onclick="switchOS('raspberry-pi-os', this)">
+                    Raspberry Pi OS
+                </button>
+            </div>
+
+            <div class="script-command-box">
+                <code class="script-command"
+                    id="script-cmd">wget -qO- https://mirror.zzunipark.com/.scripts/ubuntu/change-mirror.sh | bash</code>
+                <button class="script-copy-btn" data-target="script-cmd" onclick="handleCopyClick(this)">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="info-cards">
+            <div class="info-card">
+                <h3>
+                    <i class="fas fa-server"></i>
+                    <span class="i18n" data-ko="서비스 정보" data-en="Service Info">서비스 정보</span>
+                </h3>
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <p><strong class="i18n" data-ko="주소" data-en="Address">주소</strong>:</p>
+                        <p
+                            style="margin-left: 16px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 0.8rem; margin-bottom: 12px;">
+                            http://mirror.zzunipark.com<br>
+                            https://mirror.zzunipark.com<br>
+                            rsync://rsync.mirror.zzunipark.com
+                        </p>
+                        <p><strong class="i18n" data-ko="위치" data-en="Location">위치</strong>: <span class="i18n"
+                                data-ko="광주광역시, 대한민국" data-en="Gwangju, South Korea">광주광역시, 대한민국</span></p>
+                        <p><strong class="i18n" data-ko="대역폭" data-en="Bandwidth">대역폭</strong>: <span class="i18n"
+                                data-ko="2.5Gbit/s" data-en="2.5Gbit/s">2.5Gbit/s</span></p>
+                        <p><strong class="i18n" data-ko="운영시간" data-en="Operating Hours">운영시간</strong>: <span
+                                class="i18n" data-ko="24시간 연중무휴" data-en="24/7 Available">24시간 연중무휴</span></p>
+                        <p><strong class="i18n" data-ko="지원 프로토콜" data-en="Supported Protocols">지원 프로토콜</strong>: HTTP,
+                            HTTPS, Rsync</p>
+                    </div>
+                    <div
+                        style="margin-top: 12px; padding: 8px; background: var(--bg-tertiary); border-radius: 4px; border-left: 3px solid var(--accent-secondary);">
+                        <p style="font-size: 0.75rem; margin: 0; color: var(--text-secondary);">
+                            <i class="fas fa-info-circle" style="margin-right: 4px;"></i>
+                            <span class="i18n" data-ko="누구나 자유롭게 사용할 수 있는 비영리 서비스입니다."
+                                data-en="A non-profit service freely available to everyone.">누구나 자유롭게 사용할 수 있는 비영리
+                                서비스입니다.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3>
+                    <i class="fas fa-chart-line"></i>
+                    <span class="i18n" data-ko="실시간 현황" data-en="Live Status">실시간 현황</span>
+                </h3>
+                <div id="service-status"
+                    style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number total">...</span>
+                            <span class="stat-label i18n" data-ko="총 패키지" data-en="Total">총 패키지</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number available">...</span>
+                            <span class="stat-label i18n" data-ko="사용가능" data-en="Available">사용가능</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number syncing">...</span>
+                            <span class="stat-label i18n" data-ko="동기화중" data-en="Syncing">동기화중</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number unavailable">...</span>
+                            <span class="stat-label i18n" data-ko="동기화 실패" data-en="Sync Failed">동기화 실패</span>
+                        </div>
+                    </div>
+                    <p
+                        style="font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin-top: auto; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+                        <span class="i18n" data-ko="마지막 업데이트" data-en="Last Update">마지막 업데이트</span>: ...
+                    </p>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3>
+                    <i class="fas fa-microchip"></i>
+                    <span class="i18n" data-ko="시스템 사양" data-en="System Specs">시스템 사양</span>
+                </h3>
+                <div class="spec-grid"
+                    style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="spec-item">
+                            <strong>CPU</strong>
+                            <span>Intel Core i7-13700K</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>RAM</strong>
+                            <span>DDR5-5200 96GiB</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong class="i18n" data-ko="저장소" data-en="Storage">저장소</strong>
+                            <span>32TiB SATA HDD</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong class="i18n" data-ko="네트워크" data-en="Network">네트워크</strong>
+                            <span>ConnectX-3 VPI CX354A</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3>
+                    <i class="fas fa-envelope"></i>
+                    <span class="i18n" data-ko="문의 및 신고" data-en="Contact & Report">문의 및 신고</span>
+                </h3>
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong class="i18n" data-ko="기술 & 오남용 신고" data-en="Technical & Abuse">기술 & 오남용
+                                    신고</strong><br>
+                                <span><a href="mailto:me@zzunipark.com">me@zzunipark.com</a></span><br>
+                                <span><a href="https://abuse.zzunipark.com"
+                                        target="_blank">https://abuse.zzunipark.com</a></span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <strong>GitHub</strong><br>
+                                <a href="https://github.com/zzunipark/zzuniMirror"
+                                    target="_blank">github.com/zzunipark/zzuniMirror</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-card guidelines-card">
+            <h3>
+                <i class="fas fa-info-circle"></i>
+                <span class="i18n" data-ko="안내사항" data-en="Guidelines">안내사항</span>
+            </h3>
+            <ul class="guidelines-list">
+                <li class="i18n"
+                    data-ko="zzuniMirror는 본 서비스를 통해 제공되는 기능이나 콘텐츠의 사용으로 인해 발생할 수 있는 손해 또는 문제에 대해 어떠한 법적 책임도 지지 않습니다. 사용자는 본 서비스를 자발적으로 이용하며, 이로 인해 발생하는 모든 결과에 대해 전적으로 본인이 책임집니다."
+                    data-en="zzuniMirror is not responsible for any damages or issues arising from the use of features or content provided by this service. Users access the service voluntarily and bear full responsibility for all outcomes.">
+                    zzuniMirror는 본 서비스를 통해 제공되는 기능이나 콘텐츠의 사용으로 인해 발생할 수 있는 손해 또는 문제에 대해 어떠한 법적 책임도 지지 않습니다. 사용자는 본 서비스를
+                    자발적으로 이용하며, 이로 인해 발생하는 모든 결과에 대해 전적으로 본인이 책임집니다.
+                </li>
+                <li class="i18n"
+                    data-ko="본 서비스는 사용자의 브라우저 정보(User Agent), IP 주소 등 접속 기록을 자동으로 수집할 수 있으며, 이는 서비스 품질 향상, 기술적 문제 해결, 통계 분석 등의 목적으로 활용됩니다. 수집된 정보는 ROKFOSS 프로젝트와 공유될 수 있으나, 법적 요구가 없는 한 외부에 공개되지 않고 비공개로 유지됩니다."
+                    data-en="This service may automatically collect access logs such as User Agent and IP address. These are used for service quality improvement, troubleshooting, and analytics. Collected data may be shared with the ROKFOSS Project but will remain confidential unless required by law.">
+                    본 서비스는 사용자의 브라우저 정보(User Agent), IP 주소 등 접속 기록을 자동으로 수집할 수 있으며, 이는 서비스 품질 향상, 기술적 문제 해결, 통계 분석 등의
+                    목적으로 활용됩니다. 수집된 정보는 ROKFOSS 프로젝트와 공유될 수 있으나, 법적 요구가 없는 한 외부에 공개되지 않고 비공개로 유지됩니다.
+                </li>
+                <li class="i18n"
+                    data-ko="비정상적인 사용이 감지될 경우, 예를 들어 자동화 도구를 이용한 과도한 요청, 시스템 자원을 과도하게 소모하는 트래픽 발생, 기타 서비스 운영에 지장을 주는 행위가 확인되면 사전 통보 없이 서비스 이용이 일시적 또는 영구적으로 제한될 수 있습니다."
+                    data-en="If abnormal usage is detected, such as excessive automated requests, traffic that heavily consumes system resources, or any behavior that disrupts service operations, access may be restricted temporarily or permanently without prior notice.">
+                    비정상적인 사용이 감지될 경우, 예를 들어 자동화 도구를 이용한 과도한 요청, 시스템 자원을 과도하게 소모하는 트래픽 발생, 기타 서비스 운영에 지장을 주는 행위가 확인되면 사전
+                    통보 없이 서비스 이용이 일시적 또는 영구적으로 제한될 수 있습니다.
+                </li>
+                <li class="i18n"
+                    data-ko="보안 및 운영 정책에 따라 일부 국가, 브라우저 환경, 또는 특정 User Agent의 경우 서비스 접속이 제한될 수 있습니다. 이는 전체 사용자에게 안정적인 서비스를 제공하기 위한 조치입니다."
+                    data-en="Access to the service may be restricted based on certain countries, browser environments, or specific User Agents in accordance with security and operational policies. This ensures a stable service experience for all users.">
+                    보안 및 운영 정책에 따라 일부 국가, 브라우저 환경, 또는 특정 User Agent의 경우 서비스 접속이 제한될 수 있습니다. 이는 전체 사용자에게 안정적인 서비스를 제공하기
+                    위한 조치입니다.
+                </li>
+                <li class="i18n"
+                    data-ko="Rsync 트래픽은 기본적으로 50Mbit/s로 제한됩니다. 만약 2.5Gbit/s 속도의 원본 서버에서 Rsync 동기화를 원하실 경우, 아이피 주소와 신청 사유를 명시하여 me@zzunipark.com으로 요청해 주시기 바랍니다."
+                    data-en="Rsync traffic is limited to 50Mbit/s by default. If you wish to synchronize using Rsync from a 2.5Gbit/s source server, please send your IP address and reason for the request to me@zzunipark.com.">
+                    Rsync 트래픽은 기본적으로 50Mbit/s로 제한됩니다. 만약 2.5Gbit/s 속도의 원본 서버에서 Rsync 동기화를 원하실 경우, 아이피 주소와 신청 사유를 명시하여
+                    me@zzunipark.com으로 요청해 주시기 바랍니다.
+                </li>
+                <li class="i18n"
+                    data-ko="zzuniMirror는 Cloudflare Enterprise를 이용하며, ICN 엣지 라우팅을 통해 국내 사용자에게는 빠른 속도를 제공하고, 글로벌 사용자도 Cloudflare 캐싱을 통해 원활하게 서비스를 이용할 수 있습니다."
+                    data-en="zzuniMirror uses Cloudflare Enterprise with ICN edge routing, providing fast speeds for domestic users and smooth access for global users through Cloudflare caching.">
+                    zzuniMirror는 Cloudflare Enterprise를 이용하며, ICN 엣지 라우팅을 통해 국내 사용자에게는 빠른 속도를 제공하고, 글로벌 사용자도 Cloudflare
+                    캐싱을 통해 원활하게 서비스를 이용할 수 있습니다.
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="site-footer-container">
+        <div class="site-footer-left">
+            <div class="site-footer-logo">
+                <img src="https://mirror.zzunipark.com/.assets/zzuniMirror.png" alt="zzuniMirror"
+                    class="footer-logo-light" />
+                <img src="https://mirror.zzunipark.com/.assets/zzuniMirror_Inverted.png" alt="zzuniMirror"
+                    class="footer-logo-dark" />
+            </div>
+        </div>
+        <div class="site-footer-right">
+            <p class="footer-main-text">© 2023-2026 zzuniMirror.</p>
+            <p class="footer-small-text">
+                <span class="i18n" data-ko="본 미러 서비스는 누구나 자유롭게 사용할 수 있습니다."
+                    data-en="This mirror service is freely available to everyone.">본 미러 서비스는 누구나 자유롭게 사용할 수
+                    있습니다.</span><br>
+                <span class="i18n" data-ko="단, &quot;zzuniMirror&quot; 명칭 및 로고 등 브랜드 사용은 허용되지 않습니다."
+                    data-en="Use of the &quot;zzuniMirror&quot; name, logo, or other branding is not permitted.">단,
+                    "zzuniMirror" 명칭 및 로고 등 브랜드 사용은 허용되지 않습니다.</span>
+            </p>
+            <p class="footer-main-text">
+                <span class="i18n" data-ko="zzuniMirror는" data-en="zzuniMirror is running on">zzuniMirror는</span>
+                <a href="https://homelab.zzunipark.com" target="_blank" class="footer-link">zzuniHomelab</a>
+                <span class="i18n" data-ko="인프라에서 구동됩니다." data-en="infrastructure.">인프라에서 구동됩니다.</span>
+            </p>
+            <p class="footer-main-text">
+                <span class="i18n" data-ko="zzuniMirror는" data-en="zzuniMirror is a part of the">zzuniMirror는</span>
+                <a href="https://krfoss.org/" target="_blank" class="footer-link">ROKFOSS</a>
+                <span class="i18n" data-ko="프로젝트의 일원입니다." data-en="project.">프로젝트의 일원입니다.</span>
+            </p>
+            <p class="footer-main-text">
+                <span class="i18n" data-ko="zzuniMirror는 " data-en="zzuniMirror is supported by ">zzuniMirror는 </span><a
+                    href="https://eliv.digital/" target="_blank" rel="noopener noreferrer" class="footer-link">PROJECT
+                    ELIV</a><span class="i18n" data-ko="로부터 빠르고 안전한 네트워킹 환경을 지원받고 있습니다."
+                    data-en=" for fast and secure networking infrastructure.">로부터 빠르고 안전한 네트워킹 환경을 지원받고 있습니다.</span>
+            </p>
+        </div>
+    </div>
+</footer>
+<style>
+    /* Script Section 스타일 */
+    .script-section {
+        background: var(--bg-secondary);
+        padding: 32px 0;
+        border-top: 1px solid var(--border-primary);
+        border-bottom: 1px solid var(--border-primary);
+    }
+
+    .script-section-card {
+        background: var(--bg-secondary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .script-selector {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .os-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-primary);
+        border-radius: 8px;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .os-btn:hover {
+        background: var(--card-bg);
+        color: var(--text-primary);
+        border-color: var(--accent-primary);
+    }
+
+    .os-btn.active {
+        background: var(--accent-primary);
+        color: white;
+        border-color: var(--accent-primary);
+    }
+
+    .script-command-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-primary);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.2s ease;
+    }
+
+    .script-command-box:hover {
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+    }
+
+    .script-command {
+        flex: 1;
+        background: none;
+        border: none;
+        padding: 16px 60px 16px 20px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        line-height: 1.4;
+        white-space: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .script-command::-webkit-scrollbar {
+        display: none;
+    }
+
+    .script-copy-btn {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--accent-primary);
+        border: none;
+        color: white;
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        transition: all 0.2s ease;
+        opacity: 0.9;
+    }
+
+    .script-copy-btn:hover {
+        opacity: 1;
+        background: var(--accent-secondary);
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .script-copy-btn:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+
+    .script-copy-btn.copied {
+        background: var(--status-available);
+    }
+
+    .script-copy-btn.copied i:before {
+        content: "\f00c";
+    }
+
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
+        .script-section {
+            padding: 24px 0;
+        }
+
+        .script-selector {
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .os-btn {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+        }
+
+        .os-btn i {
+            font-size: 0.9rem;
+        }
+
+        .script-command {
+            padding: 14px 52px 14px 16px;
+            font-size: 0.8rem;
+        }
+
+        .script-copy-btn {
+            width: 32px;
+            height: 32px;
+            right: 8px;
+            font-size: 0.75rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .script-section {
+            padding: 20px 0;
+        }
+
+        .script-selector {
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .os-btn {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+        }
+
+        .script-command {
+            padding: 12px 48px 12px 14px;
+            font-size: 0.75rem;
+        }
+
+        .script-copy-btn {
+            width: 28px;
+            height: 28px;
+            right: 6px;
+            font-size: 0.7rem;
+        }
+    }
+
+    /* Site Footer */
+    .site-footer {
+        background: var(--card-bg);
+        border-top: 1px solid var(--border-primary);
+        padding: 20px 0;
+        margin-top: auto;
+    }
+
+    .site-footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .site-footer-left {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .site-footer-logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-logo-light {
+        height: 48px;
+        width: auto;
+        max-width: 180px;
+        object-fit: contain;
+        display: block;
+    }
+
+    .footer-logo-dark {
+        height: 48px;
+        width: auto;
+        max-width: 180px;
+        object-fit: contain;
+        display: none;
+    }
+
+    [data-theme="dark"] .footer-logo-light {
+        display: none;
+    }
+
+    [data-theme="dark"] .footer-logo-dark {
+        display: block;
+    }
+
+
+
+    .site-footer-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .footer-main-text {
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        margin: 0 0 4px 0;
+        line-height: 1.5;
+        text-align: right;
+        font-weight: 500;
+    }
+
+    .footer-main-text:last-child {
+        margin-bottom: 0;
+    }
+
+    .footer-small-text {
+        color: var(--text-secondary);
+        font-size: 0.68rem;
+        margin: 0 0 10px 0;
+        line-height: 1.5;
+        text-align: right;
+    }
+
+    .footer-link {
+        color: var(--accent-primary);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .footer-link:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .site-footer {
+            padding: 16px 0;
+        }
+
+        .site-footer-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .site-footer-right {
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .footer-main-text {
+            text-align: left;
+            font-size: 0.8rem;
+        }
+
+        .footer-small-text {
+            text-align: left;
+            font-size: 0.65rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .footer-logo-light,
+        .footer-logo-dark {
+            height: 36px;
+        }
+
+        .footer-main-text {
+            font-size: 0.7rem;
+        }
+
+        .footer-small-text {
+            font-size: 0.6rem;
+        }
+    }
+</style>
+<script>
+    function copyToClipboard(text, buttonElement) {
+        console.log('Attempting to copy:', text);
+        console.log('Navigator clipboard available:', !!navigator.clipboard);
+        console.log('Secure context:', window.isSecureContext);
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                console.log('Clipboard API copy successful');
+                showCopySuccess(buttonElement);
+            }).catch((err) => {
+                console.warn('Clipboard API failed, using fallback:', err);
+                fallbackCopyToClipboard(text, buttonElement);
+            });
+        } else {
+            console.log('Using fallback copy method');
+            fallbackCopyToClipboard(text, buttonElement);
+        }
+    }
+
+    function fallbackCopyToClipboard(text, buttonElement) {
+        console.log('Using fallback copy method for:', text);
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        textArea.style.opacity = "0";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        try {
+            const successful = document.execCommand('copy');
+            console.log('Document.execCommand copy result:', successful);
+            if (successful) {
+                showCopySuccess(buttonElement);
+            } else {
+                console.error('Document.execCommand copy failed');
+                alert('복사 실패: 수동으로 복사해주세요');
+            }
+        } catch (err) {
+            console.error('클립보드 복사 실패:', err);
+            alert('복사 실패: 수동으로 복사해주세요');
+        }
+
+        document.body.removeChild(textArea);
+    }
+
+    function showCopySuccess(buttonElement) {
+        const icon = buttonElement.querySelector('i');
+        const originalClass = icon.className;
+
+        buttonElement.classList.add('copied');
+        icon.className = 'fas fa-check';
+
+        setTimeout(() => {
+            buttonElement.classList.remove('copied');
+            icon.className = originalClass;
+        }, 1500);
+    }
+
+    function handleCopyClick(buttonElement) {
+        console.log('Direct onclick handler called');
+
+        const targetId = buttonElement.getAttribute('data-target');
+        console.log('Target ID from onclick:', targetId);
+
+        const commandElement = document.getElementById(targetId);
+        console.log('Command element from onclick:', commandElement);
+
+        if (commandElement) {
+            const command = commandElement.textContent.trim();
+            console.log('Command to copy from onclick:', command);
+            copyToClipboard(command, buttonElement);
+        } else {
+            console.error('Command element not found for ID from onclick:', targetId);
+        }
+    }
+
+    function switchOS(os, clickedButton) {
+        console.log('Switching OS to:', os);
+
+        document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('active'));
+        clickedButton.classList.add('active');
+
+        const commandElement = document.getElementById('script-cmd');
+        if (os === 'ubuntu') {
+            commandElement.textContent = 'wget -qO- https://mirror.zzunipark.com/.scripts/ubuntu/change-mirror.sh | bash';
+        } else if (os === 'debian') {
+            commandElement.textContent = 'wget -qO- https://mirror.zzunipark.com/.scripts/debian/change-mirror.sh | bash';
+        } else if (os === 'raspberry-pi-os') {
+            commandElement.textContent = 'wget -qO- https://mirror.zzunipark.com/.scripts/raspberry-pi-os/change-mirror.sh | bash';
+        }
+
+        console.log('Command updated to:', commandElement.textContent);
+    }
+
+    function initScriptCopyButtons() {
+        console.log('Initializing script copy buttons...');
+
+        const copyButtons = document.querySelectorAll('.script-copy-btn');
+        console.log('Found copy buttons:', copyButtons.length);
+
+        copyButtons.forEach((button, index) => {
+            console.log(`Setting up button ${index}:`, button);
+
+            button.addEventListener('click', (e) => {
+                console.log('Copy button clicked:', e.target);
+                e.preventDefault();
+                e.stopPropagation();
+
+                const targetId = button.getAttribute('data-target');
+                console.log('Target ID:', targetId);
+
+                const commandElement = document.getElementById(targetId);
+                console.log('Command element:', commandElement);
+
+                if (commandElement) {
+                    const command = commandElement.textContent.trim();
+                    console.log('Command to copy:', command);
+                    copyToClipboard(command, button);
+                } else {
+                    console.error('Command element not found for ID:', targetId);
+                }
+            });
+        });
+
+        console.log('Script copy buttons initialization complete');
+    }
+
+    async function loadReadme() {
+        const readmeSection = document.getElementById('readme-section');
+        const readmeContent = document.getElementById('readme-content');
+        const readmeTitle = document.getElementById('readme-title');
+
+        if (!readmeSection || !readmeContent) return;
+
+        const currentPath = window.location.pathname;
+        const isDirectoryPath = currentPath.endsWith('/');
+
+        if (!isDirectoryPath) return;
+
+        const readmeFiles = [
+            'README.md',
+            'README.txt',
+            'README',
+            'readme.md',
+            'readme.txt',
+            'readme'
+        ];
+
+        let readmeFound = false;
+        let readmeFileName = '';
+        let readmeText = '';
+
+        for (const fileName of readmeFiles) {
+            try {
+                const response = await fetch(currentPath + fileName);
+                if (response.ok) {
+                    readmeText = await response.text();
+                    readmeFileName = fileName;
+                    readmeFound = true;
+                    break;
+                }
+            } catch (error) {
+                console.debug(`README file ${fileName} not found:`, error);
+            }
+        }
+
+        if (!readmeFound) {
+            readmeSection.style.display = 'none';
+            return;
+        }
+
+        readmeTitle.textContent = readmeFileName;
+
+        const htmlContent = convertMarkdownToHtml(readmeText);
+        readmeContent.innerHTML = htmlContent;
+
+        readmeSection.style.display = 'block';
+        readmeSection.classList.add('fade-in');
+    }
+
+    function convertMarkdownToHtml(markdown) {
+        let html = markdown;
+
+        html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+
+        html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+        html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+        html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+        html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+        html = html.replace(/^\* (.+$)/gm, '<li>$1</li>');
+        html = html.replace(/^\- (.+$)/gm, '<li>$1</li>');
+        html = html.replace(/^(\d+)\. (.+$)/gm, '<li>$2</li>');
+
+        html = html.replace(/(<li>.*<\/li>)/gs, function (match) {
+            const lines = match.split('\n');
+            let result = '<ul>\n';
+            lines.forEach(line => {
+                if (line.trim().startsWith('<li>')) {
+                    result += line + '\n';
+                }
+            });
+            result += '</ul>';
+            return result;
+        });
+
+        html = html.replace(/^---$/gm, '<hr>');
+
+        html = html.replace(/^> (.+$)/gm, '<blockquote>$1</blockquote>');
+
+        const paragraphs = html.split(/\n\s*\n/);
+        html = paragraphs.map(para => {
+            para = para.trim();
+            if (para === '') return '';
+
+            if (para.match(/^<(h[1-6]|ul|ol|pre|blockquote|hr)/)) {
+                return para;
+            }
+
+            return `<p>${para}</p>`;
+        }).join('\n\n');
+
+        html = html.replace(/<p><\/p>/g, '');
+        html = html.replace(/<p>\s*<\/p>/g, '');
+
+        return html;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('click', (e) => {
+            if (e.target.id === 'lang-toggle' || e.target.closest('#lang-toggle')) {
+                setTimeout(() => {
+                    if (window.packageData) {
+                        updateServiceStatus(window.packageData);
+                    }
+                    loadReadme();
+                }, 100);
+            }
+        });
+
+        setTimeout(() => {
+            if (window.packageData) {
+                updateServiceStatus(window.packageData);
+            }
+
+            loadReadme();
+
+            setInterval(() => {
+                if (window.packageData) {
+                    updateServiceStatus(window.packageData);
+                }
+            }, 300000);
+        }, 500);
+    });
+
+    async function updateServiceStatus(data) {
+        const statusElement = document.getElementById('service-status');
+        if (!statusElement) return;
+
+        const packages = data.packages || {};
+        const totalPackages = Object.keys(packages).length;
+        const availablePackages = Object.values(packages).filter(p => p.status === 'available').length;
+        const syncingPackages = Object.values(packages).filter(p => p.status === 'syncing').length;
+        const failedPackages = Object.values(packages).filter(p => p.status === 'failed').length;
+        const unavailablePackages = Object.values(packages).filter(p => p.status === 'unavailable').length + failedPackages;
+        const currentLang = localStorage.getItem('zzuniMirror_lang') || 'ko';
+
+        let lastUpdateText = '';
+        if (data.lastUpdated) {
+            const updateDate = new Date(data.lastUpdated);
+            lastUpdateText = updateDate.toLocaleString(currentLang === 'ko' ? 'ko-KR' : 'en-US');
+        } else {
+            lastUpdateText = currentLang === 'ko' ? '정보 없음' : 'No data';
+        }
+
+        const statusHtml = `
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number total">${totalPackages}</span>
+                        <span class="stat-label">${currentLang === 'ko' ? '총 패키지' : 'Total Packages'}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number available">${availablePackages}</span>
+                        <span class="stat-label">${currentLang === 'ko' ? '사용가능' : 'Available'}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number syncing">${syncingPackages}</span>
+                        <span class="stat-label">${currentLang === 'ko' ? '동기화중' : 'Syncing'}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number unavailable">${unavailablePackages}</span>
+                        <span class="stat-label">${currentLang === 'ko' ? '동기화 실패' : 'Sync Failed'}</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-secondary); text-align: center; margin-top: auto; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
+                    <span>${currentLang === 'ko' ? '마지막 업데이트' : 'Last Update'}</span>: ${lastUpdateText}
+                </p>
+            `;
+        statusElement.innerHTML = statusHtml;
+    }
+
+
+</script>
+
+
+
+</body>
+
+</html>
