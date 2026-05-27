@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
 import { LanguageContext } from "../../Context/LanguageContext";
 import useServiceStatus from "../../hooks/useServiceStatus";
 import useTheme from "../../hooks/useTheme";
@@ -47,7 +46,7 @@ const Navbar = () => {
 		<header className="header">
 			<div className="container">
 				<div className="header-content">
-					<NavLink className="logo" to="/" aria-label="zzuniHomelab">
+					<a className="logo" href="/" aria-label="zzuniHomelab">
 						<img
 							className="logo-light"
 							src={LOGO_LIGHT}
@@ -58,7 +57,7 @@ const Navbar = () => {
 							src={LOGO_DARK}
 							alt="zzuniHomelab"
 						/>
-					</NavLink>
+					</a>
 					<div className="header-info">
 						<div>
 							<a

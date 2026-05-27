@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
 import { LanguageContext } from "../../Context/LanguageContext";
 
 const LOGO_LIGHT = "https://mirror.zzunipark.com/.assets/zzuniHomelab.png";
@@ -15,11 +14,7 @@ const Footerbar = () => {
 			<div className="site-footer-container">
 				<div className="site-footer-left">
 					<div className="site-footer-logo">
-						<NavLink
-							className="logo"
-							to="/"
-							aria-label="zzuniHomelab"
-						>
+						<a className="logo" href="/" aria-label="zzuniHomelab">
 							<img
 								className="footer-logo-light"
 								src={LOGO_LIGHT}
@@ -30,7 +25,7 @@ const Footerbar = () => {
 								src={LOGO_DARK}
 								alt="zzuniHomelab"
 							/>
-						</NavLink>
+						</a>
 					</div>
 				</div>
 				<div className="site-footer-right">

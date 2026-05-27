@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
 import Navbar from "../../Components/Navbar";
 import Footerbar from "../../Components/Footerbar";
 import { LanguageContext } from "../../Context/LanguageContext";
@@ -766,7 +765,6 @@ const groupHistoryByYear = (items) =>
 
 const MainPage = () => {
 	const { language } = useContext(LanguageContext);
-	const location = useLocation();
 	const isKorean = language === "Korean";
 	const langKey = isKorean ? "ko" : "en";
 	const copy = useMemo(() => COPY[langKey], [langKey]);
@@ -787,7 +785,7 @@ const MainPage = () => {
 	const modalGalleryImages = GALLERY_IMAGES.slice(0, MODAL_GALLERY_COUNT);
 	const hasMoreGallery = GALLERY_IMAGES.length > PRIMARY_GALLERY_COUNT;
 
-	useScrollReveal([location.pathname, language]);
+	useScrollReveal([language]);
 
 	const statusText = error
 		? isKorean
@@ -830,7 +828,7 @@ const MainPage = () => {
 	return (
 		<>
 			<Navbar />
-			<main key={location.pathname} className="page page-transition">
+			<main className="page page-transition">
 				<section id="home" className="hero-section">
 					<video
 						className="hero-video"
